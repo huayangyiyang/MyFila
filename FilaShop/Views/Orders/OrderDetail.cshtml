@@ -1,0 +1,455 @@
+﻿@using FilaShop.Models
+
+@{
+    Userinfo userinfo = ViewBag.user as Userinfo;
+
+    // Response.Write("用户昵称："+userinfo.Nickname);
+
+    //当前用户的最新订单
+    Orders norder = ViewBag.uorder as Orders;
+    //当前用户的订单详情
+    List<OrderDetail> olist = ViewBag.uorderdetail as List<OrderDetail>;
+    
+}
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>
+        商品列表
+    </title>
+    <meta content="," name="keywords">
+    <meta content="全部分类," name="description">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="mobile-agent" content="format=[wml|xhtml|html5];url=http://www.fila.cn/m/list/j1_j5">
+    <link rel="alternate" media="only screen and (max-width:640px)" href="http://www.fila.cn/m/list/j1_j5">
+    <meta name="applicable-device" content="pc">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="keywords" content="斐乐,斐乐官方旗舰店,斐乐旗舰店,FILA官方商城,FILA官网，FILA,斐乐官网,FILA网上商城">
+    <meta name="Description" content="访问斐乐(FILA)官网,了解最新的品牌资讯,成为会员,切身体验尊崇的购物旅程,尽在FILA中国官方网站Fila.cn">
+    <link rel="icon" href="//www.fila.cn/favicon.ico" type="image/x-icon">
+    <script language="javascript" type="text/javascript">
+    var u = navigator.userAgent;
+            if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1
+                            || u.indexOf('Windows Phone') > -1 || u.indexOf('iPhone') > -1
+                            || u.indexOf('iPad') > -1) {
+                            window.location.href ='http://www.fila.cn/m/list/j1_j5';
+
+            }
+    </script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css"><!--site header common-->
+    <!--[if lt IE 9]>
+    <script src="~/Scripts/html5fix.js" type="text/javascript" charset="utf-8" ></script>
+    <![endif]-->
+
+    <script src="~/Scripts/jquery.min.js" type="text/javascript" charset="utf-8">
+    </script>
+    <script type="text/javascript" src="~/Scripts/vue.min.js">
+    </script><!-- 列表页样式 -->
+    <link rel="stylesheet" href="~/Content/82027472763e44c5bc99dcaa522470bd.css" type="text/css">
+    <link href="~/Content/orders/public.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/orders/base.css">
+    <script type="text/javascript" src="~/scripts/orders/jquery_cart.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="~/Content/orders/checkOut.css">
+    <style type="text/css">
+        .bgcolor {
+            color: white;
+            font-weight: bold;
+            background-color: mediumblue;
+        }
+
+        .backstr {
+            color: white;
+            font-weight: bold;
+            background-color: dodgerblue;
+        }
+
+            .backstr a {
+                color: white;
+            }
+
+        .pageSize {
+            width: 50px;
+            height: 35px;
+            border: 1px solid #DDDDDD;
+        }
+
+        .nocanclick:hover {
+            background-color: none;
+        }
+
+        .nocontent {
+            color: red;
+            font-size: 25px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .page-header {
+            margin: 0 auto;
+        }
+
+        .cart-h1 {
+            text-align: center;
+            margin: 0 auto;
+            background-color: #03234C;
+            color: white;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .address-content {
+            width: 80%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .address-content-first-h3 {
+            color: black;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid red;
+        }
+
+
+        .receivedetail {
+            padding: 20px;
+        }
+
+        .divbtn {
+            text-align: right;
+            padding: 20px;
+        }
+
+            .divbtn > input {
+                width: 200px;
+                height: 45px;
+            }
+
+        .submit {
+            background-color: #03234C;
+            color: white;
+            font-size: 18px;
+        }
+
+        .cancel {
+            border: 1px #03234C solid;
+            color: #03234C;
+            font-size: 18px;
+        }
+
+        .paytype {
+            height: 200px;
+            width: 100%;
+            margin: 0 auto;
+            padding-top: 50px;
+            text-align: center;
+        }
+
+            .paytype > div {
+                float: left;
+            }
+
+        .clearfloat {
+            float: none;
+            clear: both;
+            width: 0;
+            height: 0;
+        }
+
+        .divimg01 {
+            height: 90px;
+            width: 250px;
+            border: 1px solid #03234C;
+            padding: 20px;
+        }
+
+        .divimg01 {
+            margin-left: 6%;
+        }
+
+            .divimg01:hover {
+                border: 1px solid #03234C;
+            }
+    </style>
+</head>
+<body>
+
+
+    <!-- 公共部分 Header -->
+    <header class="fila-header">
+        <div class="logo">
+            <a href="~/Product/List">
+                <img src="~/Images/fila_blue_150.png" alt="">
+            </a>
+        </div>
+        <div class="fila-navbar">
+            <div class="navbar-search" style="visibility:hidden;">
+                <input id="key" class="text" type="text" autocomplete="off" name="keyword" value="@Request.QueryString["keyword"]">
+                <button class="button" id="searchbtn01">搜索</button>
+            </div>
+            <ul class="navbar-list">
+
+                <!-- 未登录 -->
+                @if (userinfo != null)
+                {
+                    <li class="navbar-user ">
+                        <a href="~/User/CommandCenter" target="_blank">
+                            您好，
+                            <span>@userinfo.Nickname</span>
+                        </a>
+                    </li>
+                    <li class="navbar-logout ">
+                        <a href="~/User/LoginOut" title="退出">退出</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count " id="cart-count"> @ViewBag.cartcount</span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+
+                }
+                else
+                {
+                    <li class="navbar-login">
+                        <a href="~/User/Login" target="_blank" title="登入">登入</a>
+                    </li>
+                    <li class="navbar-register">
+                        <a href="~/User/Register" target="_blank" title="注册">注册</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count hide" id="cart-count"> </span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+                }
+
+
+                <li class="navbar-country">
+                    <a href="#" target="_blank">
+                        <i class="icon icon-country"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="main clearfix">
+        <div class="page-header  cart-title">
+            <h3 class="cart-h1">
+                订单提交成功
+            </h3>
+        </div>
+        <div class="address-content">
+             <div class="receivedetail">
+                 <h4>收货人信息：</h4>
+                 <span >姓名：</span><span>@norder.Address.ReceiverName</span><br />
+                 <span>电话：</span><span>@norder.Address.Phone</span><br />
+                 <span>省市区：</span><span> @norder.Address.Area.Area2.Area2.Name    @norder.Address.Area.Area2.Name  @norder.Address.Area.Name</span><br />
+                 <span>地址：</span><span>      @norder.Address.DetailAddress</span><br/>
+                 <span>下单时间：</span><span>   @ViewBag.endtime</span>
+             </div>
+        </div>
+        <div class="checkout-box-ft address-content">
+            <!-- 商品清单  一个隐藏的form表单存放选中的收货地址和订单信息-->
+
+                <div id="checkoutGoodsList" class="checkout-goods-box">
+                    <div class="xm-box">
+                        <div class="box-hd">
+                            <h2 class="title">订单编号：@norder.ordernum</h2>
+                        </div>
+                        <div class="box-bd">
+                            <dl class="checkout-goods-list">
+                                <dt class="clearfix">
+                                    <span class="col col-1" style="width:750px;">商品名称</span>
+                                    <span class="col col-2">购买价格</span>
+                                    <span class="col col-3">购买数量</span>
+                                    <span class="col col-4">小计（元）</span>
+                                </dt>
+                                @foreach (var item in olist)
+                                {
+                                    <dd class="item clearfix">
+                                        <div class="item-row">
+                                            <div class="col col-1">
+                                                <div class="g-pic">
+                                                    <img src="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage" srcset="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage 2x" width="40" height="40" />
+                                                </div>
+                                                <div class="g-info">
+                                                    <a href="~/Product/Detail/@item.GoodsId">
+                                                        @item.Product.Name   @item.Product.ProductColor.Name  @item.Product.ProductSize.Name
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col col-2">@string.Format("{0:0.00}", item.Product.NewPrice) 元</div>
+                                            <div class="col col-3">@item.Number</div>
+                                            <div class="col col-4">@string.Format("{0:0.00}", item.Product.NewPrice * item.Number) 元</div>
+                                        </div>
+                                    </dd>
+                                }
+
+
+                            </dl>
+                            <div class="checkout-count clearfix">
+                                <div class="checkout-count-extend xm-add-buy" style="visibility:hidden;">
+                                    <h3 class="title"></h3><br />
+                                    <input type="text" />
+
+                                </div>
+                                <!-- checkout-count-extend -->
+                                <div class="checkout-price">
+                                    <ul>
+
+                                        <li>
+                                            订单总额：<span>@string.Format("{0:0.00}", norder.Price) 元</span>
+                                        </li>
+
+
+
+                                        <li>
+                                            运费：<span id="postageDesc">@string.Format("{0:0.00}", 0) 元</span>
+                                        </li>
+                                    </ul>
+                                    <p class="checkout-total">应付总额：<span><strong id="totalPrice">@string.Format("{0:0.00}", norder.Price)</strong>元</span></p>
+                                </div>
+
+                                
+                                <!--  -->
+                            </div>
+
+                            
+
+
+                            </div>
+
+
+
+
+
+                            <div class="checkout-count-extend xm-add-buy" style="width:100%;border-bottom:1px solid #DFDFDF;border-left:1px solid #DFDFDF;border-right:1px solid #DFDFDF; margin-bottom:20px;" >
+                                
+                                    
+                                            <form action="" method="post" class="sureform">
+                                                @*订单编号*@
+                                                <input type="hidden" name="Id" value="@ViewBag.bianhao" />
+                                                
+                                                @*订单总额*@
+                                                <input type="hidden" name="sum" value="@string.Format("{0:0.00}", norder.Price)" />
+
+
+                                               <div class="paytype">
+                                                   <div class="divimg01">
+                                                       <img src="~/Images/wechat-pay.png" />
+                                                   </div>
+                                                   <div class="divimg01">
+                                                       <img src="~/Images/on-pay.png" />
+                                                   </div>
+                                                   <div class="divimg01">
+                                                       <img src="~/Images/alipay.png" />
+                                                   </div>
+
+                                               </div>
+                                                <div class="clearfloat"></div>
+
+                                                <div class="divbtn">
+
+
+                                                    <input type="button" name="name" class="cancel" onclick="javascript: cancel(@norder.Id);" value="取消" />
+                                                    <input type="submit" name="name" class="submit"  value="确认支付" />
+                                                </div>
+                                            </form>
+                                     
+                                
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    
+
+    <script src="~/Scripts/orders/base.min.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/orders/address_all.js"></script>
+    <script type="text/javascript" src="~/Scripts/orders/checkout.min.js"></script>
+    <script>
+        function cancel(id) {
+            //更改此订单状态
+            $.post('/Orders/UpdateState', { 'id': id,'state':'取消订单' }, function () { });
+            
+        }
+
+        $('.sureform').submit(function(){
+            return false;
+        })
+    </script>
+    
+    <!--收货地址body部分结束-->
+    <!-- 公共部分 Footer -->
+    <footer class="fila-footer clearfix">
+        <div class="ft-left fl">
+            <ul class="link-list">
+                <li>
+                    <a href="/n-20.html" target="_blank">购物服务</a>
+                </li>
+                <li>
+                    <a href="/history.html" target="_blank">关于品牌</a>
+                </li>
+                <li>
+                    <a href="/shop.html" target="_blank">查找门店</a>
+                </li>
+            </ul>
+            <div class="ft-follow">
+                <span>关注FILA的官方媒体:</span>
+                <a class="ft-sina" href="https://weibo.com/fila2010?refer_flag=1001030101_" target="_blank"></a>
+                <a class="ft-weixin">
+                    <div class="ft-weixin-tip">
+                        <img src="~/Images/weixin0525.jpg">
+                    </div>
+                </a>
+            </div>
+            <div class="ft-service">
+                <span>售后服务电话: 400-886-7699</span>
+            </div>
+        </div>
+        <div class="ft-right fr">
+            <span>&copy;FILA体育&nbsp;闽ICP备11020421号-8</span>
+        </div>
+    </footer>
+    <div class="fixed-toolbar">
+        <a class="fixed-service" onclick="xiaoneng_isExitsFunction();" href="javascript:;">客服</a>
+    </div>
+
+    <div style='display:none' data-rel='Baidu Analytics'>
+        <script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?8e1f31faa8383ed7a42a8e58efe4a621";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+        </script>
+    </div>
+
+    <!--[if lt IE 9]><script src="~/Scripts/respond.min.js"></script><![endif]-->
+   
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="~/scripts/orders//unslider.min.js" type="text/javascript"></script>
+
+   
+</body>
+</html>

@@ -1,0 +1,1060 @@
+﻿@using FilaShop.Models
+
+@{
+    Userinfo userinfo = ViewBag.user as Userinfo;
+
+    //当前用户的收货地址列表
+    IList<Address> addresslist = ViewBag.addresslist as List<Address>;
+
+
+    //定义一个默认地址的id
+    var morenaddressid=0;
+
+    //默认地址
+    foreach (var item in addresslist)
+    {
+        if (item.Isdefault == true)
+        {
+            morenaddressid = item.Id;
+        }
+    }
+
+
+    var province = ViewBag.province as List<Area>;
+
+    //当前用户的最新订单
+    Orders norder = ViewBag.uorder as Orders;
+    //当前用户的订单详情
+    List<OrderDetail> olist = ViewBag.uorderdetail as List<OrderDetail>;
+
+}
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>商品列表</title>
+    <meta content="," name="keywords" />
+    <meta content="全部分类," name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="mobile-agent" content="format=[wml|xhtml|html5];url=http://www.fila.cn/m/list/j1_j5">
+    <link rel="alternate" media="only screen and (max-width:640px)" href="http://www.fila.cn/m/list/j1_j5">
+    <meta name="applicable-device" content="pc">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="keywords" content="斐乐,斐乐官方旗舰店,斐乐旗舰店,FILA官方商城,FILA官网，FILA,斐乐官网,FILA网上商城">
+    <meta name="Description" content="访问斐乐(FILA)官网,了解最新的品牌资讯,成为会员,切身体验尊崇的购物旅程,尽在FILA中国官方网站Fila.cn">
+    <link rel="icon" href="//www.fila.cn/favicon.ico" type="image/x-icon">
+    <script language="javascript">
+	        var u = navigator.userAgent;
+	        if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1
+	                        || u.indexOf('Windows Phone') > -1 || u.indexOf('iPhone') > -1
+	                        || u.indexOf('iPad') > -1) {
+	                        window.location.href ='http://www.fila.cn/m/list/j1_j5';
+
+	        }
+
+    </script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--site header common-->
+    <!--[if lt IE 9]>
+    <script src="~/Scripts/html5fix.js" type="text/javascript" charset="utf-8" ></script>
+    <![endif]-->
+    <script src="~/Scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="~/Scripts/vue.min.js"></script>
+    <!-- 列表页样式 -->
+    <link rel="stylesheet" href="~/Content/82027472763e44c5bc99dcaa522470bd.css">
+
+    <link href="~/Content/orders/public.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="~/Content/orders/base.css" />
+    <script type="text/javascript" src="~/scripts/orders/jquery_cart.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/orders/checkOut.css" />
+
+
+    <style>
+        .bgcolor {
+            color: white;
+            font-weight: bold;
+            background-color: mediumblue;
+        }
+
+        .backstr {
+            color: white;
+            font-weight: bold;
+            background-color: dodgerblue;
+        }
+
+            .backstr a {
+                color: white;
+            }
+
+        .pageSize {
+            width: 50px;
+            height: 35px;
+            border: 1px solid #DDDDDD;
+        }
+
+        .nocanclick:hover {
+            background-color: none;
+        }
+
+        .nocontent {
+            color: red;
+            font-size: 25px;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .page-header{
+            margin:0 auto;
+        }
+        .cart-h1{
+            text-align:center;
+            margin:0 auto;
+            background-color:#03234C;
+            color:white;
+            padding-top:10px;
+            padding-bottom:10px;
+        }
+       .address-content{
+           width:80%;
+           margin:0 auto;
+           padding:10px;
+       }
+       
+       .address-content-first-h3{
+           color:black;
+           padding-top:10px;
+           padding-bottom:10px;
+           border-bottom:1px solid red;
+       }
+       
+       .first-address{
+           width:330px;
+           height:200px;
+          
+       }
+       .first-address-jiahao{
+           padding-top:10px;
+           width:330px;
+           height:195px;
+           
+       }
+       .first-address{
+           padding:10px;
+           font-size:14px;
+       }
+       .editbutton{
+           width:120px;
+           height:35px;
+           border:1px solid black;
+       }
+       .editbutton:hover{
+           border:1px solid blue;
+           color:red;
+           background-color:darkgray;
+       }
+       .deletebtn:hover{
+           border:1px solid blue;
+           color:red;
+            background-color:darkgray;
+       }
+       .deletebtn{
+           width:120px;
+           height:35px;
+           border:1px solid black;
+       }
+       .div-btn-01{
+           margin-top:5px;
+       }
+       .address-content-second>div{
+           float:left;
+       }
+       .clear-float{
+           float:none;
+           clear:both;
+       }
+       .first-address-content{
+           width:290px;
+           height:180px;
+           border:2px gray solid;
+           padding-left:10px;
+           
+       }
+       .first-address-jiahao02{
+           margin-left:10px;
+           width:290px;
+           height:180px;
+           border:2px gray solid;
+           padding-left:10px;
+           padding-top:50px;
+           text-align:center;
+       }
+       .addressman{
+           padding-top:5px;
+       }
+       .redborder{
+           border:2px red solid;
+       }
+       .shouthis{
+           visibility:visible;
+       }
+       .hidethis{
+           display:none;
+       }
+       .add-new-address{
+           padding:20px;
+           display:none;
+           height:400px;
+           border:1px solid blue;
+           margin:0 auto;
+       }
+       .addnewaddrssform{
+
+       }
+       .checkout-container .checkout-maddr .addr-default .add-new-mddr .btn-new-maddr {
+            float: left !important;
+        }
+
+        .cart-container .cart-body .c-ci-title .col-xs-9 .text-warning .glyphicon-warning-sign {
+            color: #e6002d;
+        }
+       .addressform{
+           width:800px;
+           height:600px;
+           background-color:greenyellow;
+           display:none;
+       }
+       .li01addborder{
+          border:2px solid blue;
+       }
+       .oldliborder{
+           border:1px solid gray;
+       }
+        .spanhidden {
+            visibility:visible;
+        }
+        .morenhide{
+            visibility:hidden;
+        }
+        .thirddiv{
+            position:absolute;
+            margin:0 auto;
+            width:100%;
+            height:100%;
+            margin:0 auto;
+            border:1px solid black;
+            margin-top:-300px;
+            margin-left:-30px;
+            background-color:darkgray;
+        }
+        .thirddivdisplay{
+            display:none;
+        }
+        .addUseraddressdiv{
+            width:500px;
+            height:150px;
+            margin:0 auto;
+            padding-top:50px;
+            padding-left:30px;
+            text-align:center;
+        }
+        .addressdiv02{
+            height:150px;
+            width:250px;
+            
+            padding:2px;
+        }
+        .receivemandiv01>div{
+            float:left;
+        }
+        .clearfloat{
+            width:0;
+            height:0;
+            float:none;
+            clear:both;
+        }
+        .deleteaddress{
+            text-decoration:none;
+        }
+        .select01{
+            width:100px;
+            height:30px;
+            margin-left:5px;
+            border:1px solid black;
+            
+        }
+        .selecthide{
+            visibility:hidden;
+        }
+        .selectshow {
+            visibility:visible;
+        }
+        .select00{
+            width:100px;
+            height:30px;
+            margin-left:5px;
+            border:1px solid black;
+        }
+        .select02{
+            width:100px;
+            margin-left:5px;
+            height:30px;
+            border:1px solid black;
+           
+        }
+        .showthisdiv{
+            display:block;
+        }
+        .hidethisdiv{
+            display:none;
+        }
+        .inputsubmit:hover{
+            border:1px solid blue;
+            background-color:white;
+            color:blue;
+        }
+        .addresscolse:hover {
+            border:1px solid blue;
+            color:blue;
+        }
+        .submitbtn{
+            margin-left:15px;
+            width:60px;
+            height:40px;
+            border:1px solid black;
+            background-color:grey;
+        }
+        .closebtn{
+            margin-left:60%;
+            width:60px;
+            height:40px;
+            border:1px solid black;
+        }
+        .divvis{
+            visibility:hidden;
+        }
+        .adressbtnedit{
+            width:118px; 
+        }
+       .address-form{
+           margin:0 auto;
+           width:60%;
+           padding:15px;
+           border:1px solid blue;
+           margin-top:10%;
+           background-color:white;
+       }
+       .address-province,.address-shi,.address-qu{
+           display:none;
+           
+       }
+    </style>
+   
+
+</head>
+<body>
+   
+
+    <!-- 公共部分 Header -->
+    <header class="fila-header">
+        <div class="logo">
+            <a href="~/Product/List">
+                <img src="~/Images/fila_blue_150.png" alt="">
+            </a>
+        </div>
+        <div class="fila-navbar">
+            <div class="navbar-search" style="visibility:hidden;">
+                <input id="key" class="text" type="text" autocomplete="off" name="keyword" value="@Request.QueryString["keyword"]">
+                <button class="button" id="searchbtn01">搜索</button>
+            </div>
+            <ul class="navbar-list">
+
+                <!-- 未登录 -->
+                @if (userinfo != null)
+                {
+                    <li class="navbar-user ">
+                        <a href="~/User/Detail" target="_blank">
+                            您好，
+                            <span>@userinfo.Nickname</span>
+                        </a>
+                    </li>
+                    <li class="navbar-logout ">
+                        <a href="~/User/LoginOut" title="退出">退出</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count " id="cart-count"> @ViewBag.cartcount</span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+
+                }
+                else
+                {
+                    <li class="navbar-login">
+                        <a href="~/User/Login" target="_blank" title="登入">登入</a>
+                    </li>
+                    <li class="navbar-register">
+                        <a href="~/User/Register" target="_blank" title="注册">注册</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count hide" id="cart-count"> </span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+                }
+
+
+                <li class="navbar-country">
+                    <a href="#" target="_blank">
+                        <i class="icon icon-country"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="main clearfix">
+        <div class="page-header  cart-title">
+            <h3 class="cart-h1">
+               订单--添加地址
+            </h3>
+        </div>
+        <div class="address-content">
+             <div class="address-content-first">
+                 <h3 class="address-content-first-h3">收货地址</h3>
+             </div>
+            <div class="address-content-second">
+                @foreach (var item in addresslist)
+                {
+                    string redborder= "";//边框颜色
+                    string hidethis = "";//隐藏
+                    string shouthis = "";//显示
+                    if (item.Isdefault == true)
+                    {
+                        morenaddressid = item.Id;
+                        redborder = "redborder";
+                        hidethis = "";
+                        shouthis = "shouthis";
+                    }
+                    else
+                    {
+                        redborder = "";
+                        hidethis = "hidethis";
+                        shouthis = "";
+                    }
+                  <div class="first-address ">
+                      <div class="first-address-content @redborder">
+                           
+                          <input type="radio" style="display:none;" name="showaddressid" value="@item.Id" />
+                          <p class="addressman">@item.ReceiverName</p><p class="addressphone">@item.Phone</p>
+                          <hr />
+                          <p class="addressqu"> @item.Area.Area2.Area2.Name @item.Area.Area2.Name  @item.Area.Name</p>
+                          <p class="address-province">@item.Area.Area2.Area2.Id</p>
+                          <p class="address-shi">@item.Area.Area2.Id</p>
+                          <p class="address-qu">@item.AreaId</p>
+                          <p class="addressdetail">@item.DetailAddress</p>
+                         
+                          <span class="isdefault-address @hidethis "><img src="~/Images/check_true.png" width="15" height="15">默认收货地址</span>
+                          <div class="div-btn-01 @hidethis ">
+                              <input type="button" class="editbutton"  name="editbutton" value="编辑" />
+                              <input type="button" name="deletebtn"  class="deletebtn" value="删除" />
+                                                          @* onclick="javascript:deletethis(@item.Id);"
+                                      onclick="javascript:editthis(@item.Id);"
+                                                          *@
+                          </div>
+                        
+                      </div>
+                  </div>
+                    
+
+                }
+                  <div class="first-address-jiahao">
+                      <div class="first-address-jiahao02">
+                          <a href="javascript:addNewAddress();">
+                              <span class="iconfont icon-add"><img src="~/Images/orders/add_cart.png"></span><br />
+                              使用新地址
+                          </a>
+                     </div>
+                  </div>
+            </div>
+            <div class="clear-float"></div>
+            <div class="add-new-address">
+                <form action="" method="get" id="addnewaddrssform" class="addnewaddrssform" >
+                    <div style="height:45px;border-bottom:1px solid gray;">
+                        <h4>收货人地址信息管理&nbsp;&nbsp;<span class="receiveman01" style="font-weight:bold;"></span></h4>
+                    </div>
+                    <hr />
+                    <div style="height:45px;margin-top:5px;display:none;">
+                        <span>收货人id：</span><input style="width:250px;height:30px;border:1px solid black;" type="text" name="Id" class="aeditaddressid" id="addressid" value="" />
+                    </div>
+
+                    <div style="height:45px;margin-top:5px;">
+                        <span>收货人姓名：</span><input style="width:250px;height:30px;border:1px solid black;" type="text" name="ReceiverName" class="receivemanname" id="receivemanname" value=""
+                                                  placeholder="收货人姓名2-12位中文" />
+                        <span id="receivemannamespan1"></span>
+                    </div>
+
+                    <div style="height:45px;margin-top:5px;">
+                        <span>收货人电话：</span>
+                        <input style="width:250px;height:30px;border:1px solid black;" type="text" name="Phone" class="receivemanphone" id="receivemanphone" value=""
+                               placeholder="收货人电话是11位手机号" /><span id="receivemanphonespan1"></span>
+                    </div>
+                    <div style="height:45px;margin-top:5px;">
+                        <span>收货人地区：</span>
+                        <select onchange="getNext(this); clearThree(this);" data-lever-index="0" id="select00" class="select00">
+                            <option value="-1">请选择</option>
+                            @foreach (var item in province)
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+
+                        <select onchange="getNext(this);" data-lever-index="1" class="select01 " style="visibility:hidden;">
+                            <option value="-1">请选择</option>
+                        </select>
+
+                        <select name="AreaId" class="select02 " data-lever-index="2" id="select02" style="visibility:hidden;"></select><span id="receivemanAreaIdspan1"></span>
+                    </div>
+
+                    <div style="height:45px;margin-top:5px;">
+                        <span>具体地址：&nbsp;</span><input style="width:400px;height:30px;border:1px solid black;" type="text" name="DetailAddress" class="addressdetail" id="addressdetail"
+                                                       placeholder="具体地址" value="" />
+                        <span id="receivemandetailspan1"></span>
+                    </div>
+
+                    <div style="height:60px;margin-top:5px; border-top:1px solid gray;padding-top:10px;">
+                        <span>默认收货地址：</span>
+                        <input type="checkbox" name="IsDefault" class="addressiddetail" id="addressiddetail" value="false" />
+
+                        <input type="button" name="close" value="关闭" id="addresscolse" class="addresscolse closebtn" />
+                        <input type="submit" class="inputsubmit submitbtn " name="submit" value="提交" />
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+
+             <!-- 收货地址 END-->
+             <div id="checkoutPayment">
+                                    <!-- 支付方式 -->
+                                    <div class="xm-box">
+                                        <div class="box-hd ">
+                                            <h2 class="title">支付方式</h2>
+                                        </div>
+                                        <div class="box-bd">
+                                            <ul id="checkoutPaymentList" class="checkout-option-list clearfix J_optionList">
+                                                <li class="item selected">
+                                                    <input type="radio" name="Checkout[pay_id]" checked="checked" value="1">
+                                                    <p>
+                                                        在线支付                                <span></span>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- 支付方式 END-->
+                                    <div class="xm-box">
+                                        <div class="box-hd ">
+                                            <h2 class="title">配送方式</h2>
+                                        </div>
+                                        <div class="box-bd">
+                                            <ul id="checkoutShipmentList" class="checkout-option-list clearfix J_optionList">
+                                                <li class="item selected">
+                                                    <input type="radio" data-price="0" name="Checkout[shipment_id]" checked="checked" value="1">
+                                                    <p>
+                                                        快递配送（免运费）                                <span></span>
+                                                    </p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- 配送方式 END-->                    <!-- 配送方式 END-->
+                                </div>
+                               
+                               
+          </div>
+          <div class="checkout-box-ft address-content">
+                                <!-- 商品清单  一个隐藏的form表单存放选中的收货地址和订单信息-->
+              <form id="ordersform" action="~/Orders/Update" method="get" >
+                  <input type="hidden" name="orderId" value="@norder.Id" class="formorderid" />
+                  <input type="hidden" name="addressid" value="@morenaddressid" class="formaddressid" />
+
+
+                  <div id="checkoutGoodsList" class="checkout-goods-box">
+                      <div class="xm-box">
+                          <div class="box-hd">
+                              <h2 class="title">确认订单信息</h2>
+                          </div>
+                          <div class="box-bd">
+                              <dl class="checkout-goods-list">
+                                  <dt class="clearfix">
+                                      <span class="col col-1" style="width:750px;">商品名称</span>
+                                      <span class="col col-2">购买价格</span>
+                                      <span class="col col-3">购买数量</span>
+                                      <span class="col col-4">小计（元）</span>
+                                  </dt>
+                                  @foreach (var item in olist)
+                                                {
+                                      <dd class="item clearfix">
+                                          <div class="item-row">
+                                              <div class="col col-1">
+                                                  <div class="g-pic">
+                                                      <img src="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage" srcset="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage 2x" width="40" height="40" />
+                                                  </div>
+                                                  <div class="g-info">
+                                                      <a href="~/Product/Detail/@item.GoodsId">
+                                                          @item.Product.Name   @item.Product.ProductColor.Name  @item.Product.ProductSize.Name
+                                                      </a>
+                                                  </div>
+                                              </div>
+
+                                              <div class="col col-2">@string.Format("{0:0.00}", item.Product.NewPrice) 元</div>
+                                              <div class="col col-3">@item.Number</div>
+                                              <div class="col col-4">@string.Format("{0:0.00}", item.Product.NewPrice * item.Number) 元</div>
+                                          </div>
+                                      </dd>
+                                                }
+
+
+                              </dl>
+                              <div class="checkout-count clearfix">
+                                  <div class="checkout-count-extend xm-add-buy" style="visibility:hidden;">
+                                      <h3 class="title"></h3><br />
+                                      <input type="text" />
+
+                                  </div>
+                                  <!-- checkout-count-extend -->
+                                  <div class="checkout-price">
+                                      <ul>
+
+                                          <li>
+                                              订单总额：<span>@string.Format("{0:0.00}", norder.Price) 元</span>
+                                          </li>
+
+
+
+                                          <li>
+                                              运费：<span id="postageDesc">0元</span>
+                                          </li>
+                                      </ul>
+                                      <p class="checkout-total">应付总额：<span><strong id="totalPrice">@string.Format("{0:0.00}", norder.Price)</strong>元</span></p>
+                                  </div>
+                                  <!--  -->
+                              </div>
+                          </div>
+                      </div>
+
+                      <!--S 加价购 产品选择弹框 -->
+                      <div class="modal hide modal-choose-pro" id="J_choosePro-664">
+                          <div class="modal-header">
+                              <span class="close" data-dismiss='modal'><i class="iconfont">&#xe617;</i></span>
+                              <h3>选择产品</h3>
+                              <div class="more">
+                                  <div class="xm-recommend-page clearfix">
+                                      <a class="page-btn-prev   J_carouselPrev iconfont" href="javascript: void(0);">&#xe604;</a><a class="page-btn-next  J_carouselNext iconfont" href="javascript: void(0);">&#xe605;</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-body J_chooseProCarousel">
+                              <div class="J_carouselWrap modal-choose-pro-list-wrap">
+                                  <ul class="clearfix J_carouselList"></ul>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <a href="#" class="btn btn-disabled J_chooseProBtn">加入购物车</a>
+                          </div>
+                      </div>
+                      <!--E 加价购 产品选择弹框 -->
+                      <!--S 保障计划 产品选择弹框 -->
+
+
+                  </div>
+                  <!-- 商品清单 
+                  <input type="hidden" id="couponType" name="Checkout[couponsType]">
+                  <input type="hidden" id="couponValue" name="Checkout[couponsValue]">
+                  END -->
+                  <div class="checkout-confirm">
+
+                      <a href="~/Cart/List" class="btn btn-lineDakeLight btn-back-cart">返回购物车</a>
+                      <input type="submit" class="btn btn-primary" value="立即下单" id="checkoutToPay" />
+                  </div>
+
+              </form>
+           </div>
+         
+        </div>
+                
+                <script src="~/Scripts/orders/base.min.js"></script>
+
+                <script type="text/javascript" src="~/Scripts/orders/address_all.js"></script>
+                <script type="text/javascript" src="~/Scripts/orders/checkout.min.js"></script>
+            
+                 <script>
+                     @*订单提交 给订单添加收货地址*@
+                     $('#ordersform').submit(function () {
+                         if ($('#formaddressid').val().val()>0) {
+                             if ($('#formorderid').val() > 0 && $('#formorderid').val()==(@norder.Id)) {
+                                 return true;
+                             }else{
+                                 return false;
+                             }
+                         } else if ($('#formaddressid').val() == null || $('#formaddressid').val()==0) {
+                             alert('收货地址不能为空，请选择');
+                             return false;
+                         }
+
+                     });
+
+                 </script>
+            <!--收货地址body部分结束-->
+            
+       
+       
+
+   
+                   
+    
+    
+     <!-- 公共部分 Footer -->
+                    <footer class="fila-footer clearfix">
+                        <div class="ft-left fl">
+                            <ul class="link-list">
+                                <li>
+                                    <a href="/n-20.html" target="_blank">购物服务</a>
+                                </li>
+                                <li>
+                                    <a href="/history.html" target="_blank">关于品牌</a>
+                                </li>
+                                <li>
+                                    <a href="/shop.html" target="_blank">查找门店</a>
+                                </li>
+                            </ul>
+                            <div class="ft-follow">
+                                <span>关注FILA的官方媒体:</span>
+                                <a class="ft-sina" href="https://weibo.com/fila2010?refer_flag=1001030101_" target="_blank"></a>
+                                <a class="ft-weixin">
+                                    <div class="ft-weixin-tip">
+                                        <img src="~/Images/weixin0525.jpg">
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="ft-service">
+                                <span>售后服务电话: 400-886-7699</span>
+                            </div>
+                        </div>
+                        <div class="ft-right fr">
+                            <span>&copy;FILA体育&nbsp;闽ICP备11020421号-8</span>
+                        </div>
+                    </footer>
+                    <div class="fixed-toolbar">
+                        <a class="fixed-service" onclick="xiaoneng_isExitsFunction();" href="javascript:;">客服</a>
+                    </div>
+                   
+                    <div style='display:none' data-rel='Baidu Analytics'>
+                        <script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?8e1f31faa8383ed7a42a8e58efe4a621";
+		  var s = document.getElementsByTagName("script")[0];
+		  s.parentNode.insertBefore(hm, s);
+		})();
+                        </script>
+                    </div>
+                   
+                    <!--[if lt IE 9]><script src="~/Scripts/respond.min.js"></script><![endif]-->
+          <script type="text/javascript">
+              //使用新增地址
+              function addNewAddress(){
+                  $('.add-new-address').show();
+                  $('.receiveman01').html('新增').css('color', 'red');
+                  $('.addnewaddrssform').attr('action', '/Address/Add');
+                  $('.addnewaddrssform').find('input[type="text"]').val('');
+                  $('.addnewaddrssform').find('input[type="text"]').next('span').html('');
+                  $('.select00').val('-1');
+                  //市级
+                  $('.select01').css('visibility', 'hidden');
+                  $('.select02').css('visibility', 'hidden');
+              }
+
+              //编辑按钮  --编辑地址  ,就是把当前选中的地址添加到  打开的编辑表单里
+              $('.editbutton').click(function () {
+                  $('.add-new-address').show();
+                  $('.receiveman01').html('编辑').css('color', 'red');
+                  $('.addnewaddrssform').attr('action', '/Address/Edit');
+                  var editaddressid = $(this).parent().parent().find('input[type="radio"]').val();
+                  var editrecename = $(this).parent().parent().find('p[class="addressman"]').html();
+                  var editrecephone = $(this).parent().parent().find('p[class="addressphone"]').html();
+
+                  var editrecedetail = $(this).parent().parent().find('p[class="addressdetail"]').html();
+                  var editreceprovince = $(this).parent().parent().find('p[class="address-province"]').html();
+                  var editreceshi = $(this).parent().parent().find('p[class="address-shi"]').html();
+                  var editrecequ = $(this).parent().parent().find('p[class="address-qu"]').html();
+                  
+                 
+                  
+                  //编辑框id
+                  $('.aeditaddressid').val(editaddressid);
+                  //编辑框名字
+                  $('.receivemanname').val(editrecename);
+                  //编辑框电话
+                  $('.receivemanphone').val(editrecephone);
+
+
+                  $('select[data-lever-index]').css('visibility', 'visible');
+                  //编辑框具体地址
+                  $('.addressdetail').val(editrecedetail);
+                  //省级
+
+                  $('.select00').val(editreceprovince).change();
+                  //市级
+                  $('.select01').val(editreceshi).change();
+                  $('.select02').val(editrecequ).change();
+
+                 
+                  $('.addressiddetail').prop('checked', true).val('true');
+
+                  
+              });
+             
+
+              //删除,没有实现同步，未能实现同步刷新
+              $('.deletebtn').click(function () {
+                  var addressid = $(this).parent().parent().find('input[type="radio"]').val();
+                  $.post('/Address/Delete', { 'addressid': addressid }, function () {
+                     
+                  });
+                  $(this).parent().parent().parent('.first-address').remove();
+                  $('.formaddressid').val('');
+              })
+              
+
+
+              //关闭窗口
+              $('#addresscolse').click(function () {
+                  $('.add-new-address').hide();
+              });
+               
+              //点击1个地址的div边框改变颜色，同时显示  默认地址  编辑和删除按钮
+              $('.first-address-content').click(function () {
+                  $('.first-address-content').css('border', '2px solid gray');
+                  $('.div-btn-01').addClass('hidethis');
+                  $('.isdefault-address ').addClass('hidethis');
+                  //即时更改数据库状态
+                 var addressid= $(this).find('input[type="radio"]').val();
+                 $.post('/Address/Update', { 'addressid': addressid }, function () {
+                 });
+                 //$('.first-address-content').children().find('.div-btn-01')
+                 $(this).css('border', '2px solid red');
+                 $(this).find('.div-btn-01').removeClass('hidethis');
+                 $(this).find('.isdefault-address ').removeClass('hidethis');
+                 $('.formaddressid').val(addressid);
+              });
+
+              
+              //省市县三级联动，省级选项变动  绑定函数
+              function getNext(obj) {
+                  // var id=$(obj).val();
+                  $.ajaxSettings.async = false;
+                  $.post('/Cart/AreaList', { 'id': $(obj).val() }, function (data) {
+                      $(obj).next().empty();//清空
+                      $(data).each(function (i, e) {
+                          var option = '<option value="' + e.Id + '">' + e.Name + '</option>';
+                          $(obj).next().css('visibility', 'visible').append(option);
+                      });
+                  });
+              };
+
+              //清理第三级
+              function clearThree(obj) {
+                  $(obj).next().next().empty().css('visibility', 'hidden');
+              }
+
+
+
+
+
+	
+              //修改地址表单的验证
+
+              var receiveName = $('#receivemanname');//收件人名字
+              var phone = $('#receivemanphone');//收件人电话
+              var detailAddress = $('#addressdetail');//具体地址
+              var select02 = $('#select02')//具体区县;
+
+              var renamespan = $('#receivemannamespan1');//收货人提示框
+              var rephone = $('#receivemanphonespan1');//收货人电话
+              var rearea = $('#receivemanAreaIdspan1');//收货人地区
+              var redetail = $('#receivemandetailspan1');//收货人具体地址
+              var province = $('#select00');//收货人的省市
+              var aressform = $('#addnewaddrssform');//form表单
+              //  $('#receivemannamespan1').html('收件人姓名格式不正确').css('color', 'red').css('font-size', '11px');
+              //脚本验证 增加地址的是否输入正确
+              receiveName.blur(function () {
+                  checkIsTrueOrFalse(/^[\u4e00-\u9fa5]{2,10}$/, renamespan, receiveName, '收货人姓名输入的格式不正确')
+              });
+              receiveName.keyup(function () {
+                  checkIsTrueOrFalse(/^[\u4e00-\u9fa5]{2,10}$/, renamespan, receiveName, '收货人姓名输入的格式不正确')
+              });
+
+              phone.focus(function () {
+                  if (renamespan.html() != '√') {
+                      phone.blur();
+                      receiveName.focus();
+                      renamespan.html('收货人名称格式不正确').css('color', 'red');
+                  }
+              });
+              var regstr = /^1[357869]\d{9}$/;
+              phone.keyup(function () {
+
+                  if (regstr.test(phone.val())) {
+                      rephone.html('√').css('color', 'green');
+                  } else {
+                      rephone.html('手机号格式不正确').css('color', 'red');
+                  }
+              });
+
+              phone.blur(function () {
+
+                  if (regstr.test(phone.val())) {
+                      rephone.html('√').css('color', 'green');
+                  } else {
+                      rephone.html('手机号格式不正确').css('color', 'red');
+                  }
+              });
+
+              province.focus(function () {
+                  if (renamespan.html() != '√') {
+                      receiveName.focus();
+                      renamespan.html('收货人名称格式不正确').css('color', 'red');
+                  } else {
+                      if (rephone.html() != '√') {
+                          phone.focus();
+                          renamespan.html('手机号格式不正确').css('color', 'red');
+                      }
+                  }
+              });
+
+
+              select02.change(function () {
+
+                  if (renamespan.html() == '√' && rephone.html() == '√') {
+                      if (select02.val() != "" && select02.val() != null && select02.val() > 0) {
+                          alert(select02.val());
+                          rearea.html('√').css('color', 'green');
+                          //  alert(select02.val());
+                      } else {
+                          rearea.html('地区不能为空').css('color', 'red');
+                      }
+                  }
+
+              });
+
+
+              detailAddress.focus(function () {
+                  if (renamespan.html() != '√') {
+                      receiveName.focus();
+                      renamespan.html('收货人名称格式不正确').css('color', 'red');
+                      if (rephone.html() != '√') {
+                          phone.focus();
+                          renamespan.html('电话格式不对').css('color', 'red');
+
+                          if (rearea.html() != '√') {
+                              province.focus();
+                              rearea.html('地区不能为空').css('color', 'red');
+                          }
+                      }
+
+                  }
+              });
+              detailAddress.keyup(function () {
+                  checkIsTrueOrFalse(/^[\u4e00-\u9fa5a-zA-Z0-9]{4,}$/, redetail, detailAddress, '地址格式不对');
+              });
+
+              detailAddress.blur(function () {
+                  checkIsTrueOrFalse(/^[\u4e00-\u9fa5a-zA-Z0-9]{4,}$/, redetail, detailAddress, '地址格式不对');
+              });
+
+
+              aressform.submit(function () {
+                  if (renamespan.html() == '√') {
+
+                      if (rephone.html() == '√') {
+
+                          if (rearea.html() == '√') {
+
+                              if (redetail.html() == '√') {
+                                  return true;
+
+                              } else {
+                                  detailAddress.focus();
+                                  redetail.html('地址格式不对').css('color', 'red');
+                                  return false;
+                              }
+
+
+                          } else {
+                              province.focus();
+                              rearea.html('地区不能为空').css('color', 'red');
+                              return false;
+                          }
+
+                      } else {
+                          phone.focus();
+                          renamespan.html('电话格式不对').css('color', 'red');
+                          return false;
+                      }
+                  } else {
+                      receiveName.focus();
+                      renamespan.html('收货人名称格式不正确').css('color', 'red');
+                      return false;
+                  }
+
+              });
+
+       
+              //默认收货地址 的值改变
+              //默认地址是否被选中
+              $('.addressiddetail').change(function () {
+                  if ($('.addressiddetail').prop('checked')) {
+                      $('.addressiddetail').val('true');
+
+                  } else {
+                      $('.addressiddetail').val('');
+                      $('.addressiddetail').val('false');
+                  }
+
+              });
+              //验证函数
+              function checkIsTrueOrFalse(regstr, conspan, coninput, errstr) {
+                  if (coninput.val().length == 0) {
+                      conspan.html('不能为空').css('color', 'red');
+                  } else {
+                      if (regstr.test(coninput.val())) {
+                          conspan.html('√').css('color', 'green');
+                          return true;
+                      } else {
+                          conspan.html(errstr).css('color', 'red');
+                          return false;
+                      }
+                  }
+
+              };
+         </script>
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="~/scripts/orders//unslider.min.js" type="text/javascript"></script>
+    
+    @*<script src="~/scripts/orders//index.js" type="text/javascript"></script>*/*@
+</body>
+</html>

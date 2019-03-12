@@ -1,0 +1,475 @@
+﻿
+@using WebApp.Models
+@{ 
+    Goods goods = new Goods();
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>女跑步文化鞋</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="robots" content="index, follow" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/product/public.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/product/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/product/index.css" />
+    <script src="~/scripts/jquery.min.js" type="text/javascript" charset="utf-8">
+    </script>
+
+    
+    
+</head>
+<body class="">
+    <header>
+        <div class="nav clearfloat">
+            <div class="nav-top">
+                <!--<a href="http://www.361-kids.com/" target="_blank">361°童装</a>-->
+                <a href="/Index/country.html" class="area" target="_blank">English</a>
+                <!--<a  href="http://cn.361sport.com/shop.asp" target="_blank">店铺查询</a>-->
+            </div>
+            <div class="nav-con">
+                <a href="/" class="logo"><img src="~/Images/picture/logo.png" /></a>
+                <div class="menu">
+                    <div class="menu-con">
+                        <a href="#">首页</a>
+                        <a class="mall current" href="~/Product/List">商城</a>
+                        <!--<a  href="/Subject/index.html" id="activity">活动</a><a class="science" href="/Technology/index.html">科技</a>-->
+                        <a href="/News/index.html">新闻</a>
+                        <a href="/Group/index.html">团购定制</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right fr">
+                <div class="search">
+                    <div class="search-con">
+                        <input type="" value="" placeholder="查找鞋服" />
+                        <button class="search-input"></button>
+                    </div>
+                </div>
+                <div class="personal">
+                    <a href="/Member/login.html" class="personal-img"></a>
+                </div>
+                <a href="/Cart/index.html" class="shopping"><span>0</span></a>
+            </div>
+            <div class="shoppingCart">
+                <div class="no-shoppingCart">
+                    <h2>您的购物车还没有产品</h2>
+                    <button onclick="window.location.href='/Product/List'">去逛逛</button>
+                </div>
+            </div>
+        </div>
+        <div class="dropdown dropdown-science">
+            <div class="swiper-container swiper-technology">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="dropdown-con clearfloat">
+                            <a href="/Technology/index/name/NFO%E7%A3%81%E6%82%AC%E6%B5%AE.html"><img src="~/Images/picture/59bb7019c5e29.jpg" /></a>
+                            <a href="/Technology/index/name/BOUNDAIR%C2%B0.html"><img src="~/Images/picture/59bb733094e6e.jpg" /></a>
+                            <a href="/Technology/index/name/%E6%B0%94%E6%82%AC%E6%B5%AE%E7%A7%91%E6%8A%80.html"><img src="~/Images/picture/59bb717003b6c.jpg" /></a>
+                            <a href="/Technology/index/name/%E8%B6%85%E5%BC%BA%E9%81%BF%E9%9C%87MD%E6%9D%90%E6%96%99.html"><img src="~/Images/picture/59bb705d397cd.jpg" /></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="dropdown-con clearfloat">
+                            <a href="/Technology/index/name/%E7%89%B9%E7%A7%8D%E6%A9%A1%E8%83%B6%E8%8A%B1%E7%BA%B9.html"><img src="~/Images/picture/59bb707601e3e.jpg" /></a>
+                            <a href="/Technology/index/name/%E5%8F%8C%E6%82%AC%E6%B5%AE%E7%A7%91%E6%8A%80.html"><img src="~/Images/picture/59bb70cdefda6.jpg" /></a>
+                            <a href="/Technology/index/name/FLEXI%E6%98%93%E7%AA%9D%E6%8A%98%E5%8A%9F%E8%83%BD.html"><img src="~/Images/picture/59bb70bba324c.jpg" /></a>
+                            <a href="/Technology/index/name/SPONGEE.html"><img src="~/Images/picture/59bb73146a489.jpg" /></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="dropdown-con clearfloat">
+                            <a href="/Technology/index/name/%E9%98%B2%E4%BE%A7%E7%BF%BB%E7%BB%93%E6%9E%84.html"><img src="~/Images/picture/59bb72d369c49.jpg" /></a>
+                            <a href="/Technology/index/name/%E7%A1%AC%E5%9C%B0%E5%80%8D%E8%80%90%E7%A3%A8%E6%8A%80%E6%9C%AF.html"><img src="~/Images/picture/59bb70a49a55b.jpg" /></a>
+                            <a href="/Technology/index/name/%E9%82%A6%E5%BC%B9%E7%A7%91%E6%8A%80.html"><img src="~/Images/picture/59bb735b46423.jpg" /></a>
+                            <a href="/Technology/index/name/%E9%9B%B6%E6%84%9F%E9%92%88%E7%BB%87%E6%8A%80%E6%9C%AF.html"><img src="~/Images/picture/59bb6feda0016.jpg" /></a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="dropdown-con clearfloat">
+                            <a href="/Technology/index/name/ARCHLOCK%E8%B6%B3%E5%BC%93%E9%94%81.html"><img src="~/Images/picture/59bb7046e2ffb.jpg" /></a>
+                            <a href="/Technology/index/name/sac-AIR%E6%B0%94%E6%82%AC%E6%B5%AE.html"><img src="~/Images/picture/59bb70338bd68.jpg" /></a>
+                            <a href="/Technology/index/name/COOL.html"><img src="~/Images/picture/59bb72f22a734.jpg" /></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination swiper-pagination-white"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+        <div class="mall-nav">
+            <div class="mall-nav-con">
+                <ul class="mall-nav-tit">
+                    <li><a href="/Product/shop.html?pclass=78">新品上市</a></li>
+                    <li><a href="/Product/shop.html?hots=1">热卖上市</a></li>
+                    <!--
+                                  <li><a href="#">新品预览</a></li><li><a href="#">折扣优惠</a></li>-->
+                </ul>
+                <ul>
+                    <li class="mall-nav-tit2"><a href="/Product/shop.html?sex=1&amp;pclass=4">男鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=1&amp;sports=12">跑步鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=1&amp;sports=13">篮球鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=1&amp;sports=42">休闲生活鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=1&amp;sports=20">综训鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=1&amp;sports=16">户外鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=1&amp;sports=17">滑板鞋</a></li>
+                </ul>
+                <ul>
+                    <li class="mall-nav-tit2"><a href="/Product/shop.html?sex=0&amp;pclass=4">女鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=0&amp;sports=12">跑步鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=0&amp;sports=42">休闲生活鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=0&amp;sports=20">综训鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=0&amp;sports=16">户外鞋</a></li>
+                    <li><a href="/Product/shop.html?pclass=4&amp;sex=0&amp;sports=17">滑板鞋</a></li>
+                </ul>
+                <ul>
+                    <li class="mall-nav-tit2"><a href="/Product/shop.html?sex=1&amp;pclass=7">男装</a></li>
+                    <li><a href="/Product/shop.html?sex=1&amp;keyword=T%E6%81%A4">T恤/polo/背心</a></li>
+                    <li><a href="/Product/shop.html?sex=1&amp;keyword=%E5%8D%AB%E8%A1%A3">卫衣</a></li>
+                    <li><a href="/Product/shop.html?sex=1&amp;keyword=%E5%A4%96%E5%A5%97">外套/马甲</a></li>
+                    <li><a href="/Product/shop.html?pclass=7&amp;sex=1&amp;sports=13">篮球服</a></li>
+                    <li><a href="/Product/shop.html?sex=1&amp;keyword=%E5%81%A5%E8%BA%AB%E6%9C%8D">健身服</a></li>
+                    <li><a href="/Product/shop.html?sex=1&amp;keyword=%E8%A3%A4">裤装</a></li>
+                </ul>
+                <ul>
+                    <li class="mall-nav-tit2"><a href="/Product/shop.html?sex=0&amp;pclass=7">女装</a></li>
+                    <li><a href="/Product/shop.html?sex=0&amp;keyword=T%E6%81%A4">T恤/polo/背心</a></li>
+                    <li><a href="/Product/shop.html?sex=0&amp;keyword=%E5%8D%AB%E8%A1%A3">卫衣</a></li>
+                    <li><a href="/Product/shop.html?sex=0&amp;keyword=%E5%A4%96%E5%A5%97">外套/马甲</a></li>
+                    <li><a href="/Product/shop.html?pclass=7&amp;sex=0&amp;sports=13">篮球服</a></li>
+                    <li><a href="/Product/shop.html?sex=0&amp;keyword=%E5%81%A5%E8%BA%AB%E6%9C%8D">健身服</a></li>
+                    <li><a href="/Product/shop.html?sex=0&amp;keyword=%E8%A3%A4">裤装</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="activity">
+            <div class="swiper-container swiper-navactivelist">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="activity-con clearfloat">
+                            <a href="/Subject/index/zhuti/asian.html"><img src="~/Images/picture/active_1226.jpg" /><p>“热爱无国界” 火炬手选拔”</p></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination swiper-pagination-white"></div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="wrap">
+        <div class="product-con">
+            <div class="breadcrumb breadcrumb-product">
+                <span>所有分类</span>&gt;
+                <a href="/">首页</a>&gt;
+                <a href="/Product/shop.html">商品列表</a>&gt;
+                <b>女跑步文化鞋</b>
+            </div>
+            <div class="pv_xc">
+                <div class="pvxc_left">
+                    <div id="piclist" data-dcolor="">
+                        <div class="smallpic">
+                            <a class="selected"><span id="goodsimage" style="visibility:hidden"></span><img src="~/Images/picture/m_5b615b840dddb.jpg" data-mig="http://361cdn.361sport.com/product/2018/08/01/5b615b840dddb.jpg" data-big="http://361cdn.361sport.com/product/2018/08/01/5b615b840dddb.jpg" /></a>
+                            <a><img src="~/Images/picture/m_5b615b8460df6.jpg" data-mig="http://361cdn.361sport.com/product/2018/08/01/5b615b8460df6.jpg" data-big="http://361cdn.361sport.com/product/2018/08/01/5b615b8460df6.jpg" /></a>
+                            <a><img src="~/Images/picture/m_5b615b84af4e2.jpg" data-mig="http://361cdn.361sport.com/product/2018/08/01/5b615b84af4e2.jpg" data-big="http://361cdn.361sport.com/product/2018/08/01/5b615b84af4e2.jpg" /></a>
+                            <a><img src="~/Images/picture/m_5b615b8509e9e.jpg" data-mig="http://361cdn.361sport.com/product/2018/08/01/5b615b8509e9e.jpg" data-big="http://361cdn.361sport.com/product/2018/08/01/5b615b8509e9e.jpg" /></a>
+                        </div>
+                        <div class="bigpic fr">
+                            <div class="tb-booth tb-pic tb-s310">
+                                <img src="~/Images/picture/5b615b840dddb.jpg" rel="http://361cdn.361sport.com/product/2018/08/01/5b615b840dddb.jpg" class="jqzoom" alt="" style="cursor: crosshair;" />
+                                <span class="picfd"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pvxc_right">
+                    <span id="productid" style="visibility:hidden">4</span>
+                    <h2 id="productname">女跑步文化鞋</h2>
+                    <h3 id="productnewprice">￥249.00</h3>
+                    <!---->
+                    <div class="discount-con">
+                        <span>原价:<b id="productoldprice">249.00</b></span>
+                        <span>运费: 不包邮 <a class="postage-express-btn" href="javascript:void(0);">( 运费详情 ) </a></span>
+                        <!--<span><b>赠送积分：249</b><a href="/About/info.html?info=15" target="_blank">（积分规则）</a></span>-->
+                        <!--运费详情-->
+                    </div>
+                    <p class="product-color">颜色分类<span id="productcolor">361度白/乌黑色</span></p>
+                    <ul class="product-color-choice">
+                        <li class="select" data-color="361度白/乌黑色"><img title="361度白/乌黑色" id="color_id" src="~/Images/picture/s_5b615b840dddb.jpg" /></li>
+                        <li data-color="太空灰/烟熏粉"><img title="太空灰/烟熏粉" id="color_id" src="~/Images/picture/s_5b615b8554b09.jpg" /></li>
+                        <li data-color="乌黑色/361度白"><img title="乌黑色/361度白" id="color_id" src="~/Images/picture/s_5b615b8691114.jpg" /></li>
+                        <li data-color="乌黑色/杜鹃紫"><img title="乌黑色/杜鹃紫" id="color_id" src="~/Images/picture/s_5b615b87d7c82.jpg" /></li>
+                    </ul>
+                    <div class="product-size">
+                        <span id="productSize" style="visibility:hidden"></span>
+                        <button id="sizebtn" data-size="" data-count="" class="size">尺码选择 +</button>
+                        <strong><span>数量</span><button id="changenumber" data-type="less">-</button><input type="text" name="number" id="productnumber" value="1" readonly="readonly" /><button id="changenumber" data-type="add">+</button></strong>
+                        <div class="product-size-choice">
+                            <ul></ul>
+                            <!--<a href="#" class="guide">尺码指南</a>-->
+                        </div>
+                    </div>
+                    <div class="product-buy" data-pid="9048">
+                        <button  id="addTocart">加入购物车</button>
+                        <button  id="tobuynow">立即购买</button>
+                        <div class="product-buy-operation">
+                            @*控件上的提示信息可以通过title属性来设置*@
+                            <a id="collectProduct" class="product-operation-sdf"  href="#" title="收藏商品">收藏</a>
+                            <b class="product-operation-sdf">
+                                分享
+                                <div class="bdsharebuttonbox">
+                                    <a href="#" class="bds_more" data-cmd="more"></a>
+                                </div>
+                            </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*提交商品信息到购物车中*@
+        <script>
+            $('#addTocart').click(function () {
+                //var goodsid = $('#productid').html();
+                var goodsname = $('#productname').html();
+                var goodsnewprice = $('#productnewprice').html();
+                var gooodscolor = $('#productcolor').html();
+                var goodssize = $('#productSize').html();
+                var goodsnumber = $('#productnumber').val();
+                var goodsimage=$('#goodsimage').html();
+                $.get('/Cart/Add', {
+                   // "goodsid": goodsid,
+                    "goodsname": goodsname,
+                    "goodsnewprice": goodsnewprice,
+                    "gooodscolor": gooodscolor,
+                    "goodssize": goodssize,
+                    "goodsnumber": goodsnumber,
+                    "goodsimgae": goodsimage
+                }, function () { });
+            });
+        </script>
+        <form  class="shopform" style="display:none" method="get" action="~/Cart/Add">
+            <input type="hidden" name="goodsname" id="goodsname" value="" />
+            <input type="hidden" name="goodsnewprice" id="goodsnewprice" value="" />
+            <input type="hidden" name="gooodscolor" id="gooodscolor" value="" />
+            <input type="hidden" name="goodssize" id="goodssize" value="" />
+            <input type="hidden" name="goodsnumber" id="goodsnumber" value="" />
+            <input type="hidden" name="goodsimage" id="goodsimage" value="" />
+            
+        </form>
+
+        
+        <div class="product-details">
+            <div class="product-details-tit">
+                <ul class="clearfloat">
+                    <li class="select">商品详情</li>
+                    <li>商品评论</li>
+                    <li>尺码说明</li>
+                </ul>
+            </div>
+            <div class="product-details-con" style="min-height: 400px;">
+                <div class="show">
+                    <!--
+                                      <strong class="product-introduce"><ul><li>品牌：</li><li>货号：581822245</li><li>上市时间：2018年夏季</li><li>性别：女</li><li style="display:block; width:100%;">商品描述：</li></ul></strong>-->
+                    <p><img src="~/Images/picture/1533106944135955.jpg" title="1533106944135955.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106944357985.jpg" title="1533106944357985.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106944116349.jpg" title="1533106944116349.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106945175104.jpg" title="1533106945175104.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106945132668.jpg" title="1533106945132668.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106945547556.jpg" title="1533106945547556.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106945912701.jpg" title="1533106945912701.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106946432747.jpg" title="1533106946432747.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106946321214.jpg" title="1533106946321214.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106947623678.jpg" title="1533106947623678.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106947568831.jpg" title="1533106947568831.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106947275410.jpg" title="1533106947275410.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106948257487.jpg" title="1533106948257487.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106948966098.jpg" title="1533106948966098.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106948732099.jpg" title="1533106948732099.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106949898190.jpg" title="1533106949898190.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106949833727.jpg" title="1533106949833727.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106949755407.jpg" title="1533106949755407.jpg" /></p>
+                    <p><img src="~/Images/picture/1533106949103684.jpg" title="1533106949103684.jpg" /></p>
+                    <p><br /></p>
+                </div>
+                <div>
+                    <ul class="commodity-review">
+                        <li class="orderCheckout-codeNull" style="text-align:center; border-bottom:none;">暂无评论</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="~/Images/picture/cmsm_07.jpg" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+			var baseUrl = "http://361cdn.361sport.com/shop";
+			var imgCdbUrl = "http://361cdn.361sport.com";
+			$('.product-details-tit li').click(function(){
+			    var index = $(this).index();
+			    $(this).addClass('select').siblings().removeClass('select');
+			    $('.product-details-con div').eq(index).addClass('show').siblings().removeClass('show');
+			});
+			var skulist = '[{"pro_color":"361\u5ea6\u767d\/\u4e4c\u9ed1\u8272","pic1":"\/2018\/08\/01\/5b615b840dddb.jpg","pic2":"\/2018\/08\/01\/5b615b8460df6.jpg","pic3":"\/2018\/08\/01\/5b615b84af4e2.jpg","pic4":"\/2018\/08\/01\/5b615b8509e9e.jpg","colorsize":[{"pro_sizes":"35","pro_count":"0"},{"pro_sizes":"36","pro_count":"0"},{"pro_sizes":"37","pro_count":"131"},{"pro_sizes":"38","pro_count":"100"},{"pro_sizes":"39","pro_count":"39"},{"pro_sizes":"40","pro_count":"6"}],"number":6},{"pro_color":"\u592a\u7a7a\u7070\/\u70df\u718f\u7c89","pic1":"\/2018\/08\/01\/5b615b8554b09.jpg","pic2":"\/2018\/08\/01\/5b615b859fc3f.jpg","pic3":"\/2018\/08\/01\/5b615b85edb27.jpg","pic4":"\/2018\/08\/01\/5b615b8644988.jpg","colorsize":[{"pro_sizes":"35","pro_count":"53"},{"pro_sizes":"36","pro_count":"0"},{"pro_sizes":"37","pro_count":"112"},{"pro_sizes":"38","pro_count":"13"},{"pro_sizes":"39","pro_count":"1"},{"pro_sizes":"40","pro_count":"5"}],"number":6},{"pro_color":"\u4e4c\u9ed1\u8272\/361\u5ea6\u767d","pic1":"\/2018\/08\/01\/5b615b8691114.jpg","pic2":"\/2018\/08\/01\/5b615b86e8625.jpg","pic3":"\/2018\/08\/01\/5b615b873f8cd.jpg","pic4":"\/2018\/08\/01\/5b615b878e230.jpg","colorsize":[{"pro_sizes":"35","pro_count":"123"},{"pro_sizes":"36","pro_count":"508"},{"pro_sizes":"37","pro_count":"596"},{"pro_sizes":"38","pro_count":"237"},{"pro_sizes":"39","pro_count":"65"},{"pro_sizes":"40","pro_count":"45"}],"number":6},{"pro_color":"\u4e4c\u9ed1\u8272\/\u675c\u9e43\u7d2b","pic1":"\/2018\/08\/01\/5b615b87d7c82.jpg","pic2":"\/2018\/08\/01\/5b615b882fce1.jpg","pic3":"\/2018\/08\/01\/5b615b887e163.jpg","pic4":"\/2018\/08\/01\/5b615b88cd467.jpg","colorsize":[{"pro_sizes":"35","pro_count":"11"},{"pro_sizes":"36","pro_count":"24"},{"pro_sizes":"37","pro_count":"0"},{"pro_sizes":"38","pro_count":"0"},{"pro_sizes":"39","pro_count":"0"},{"pro_sizes":"40","pro_count":"0"}],"number":6}]';
+			var piclist = '[{"pro_color":"361\u5ea6\u767d\/\u4e4c\u9ed1\u8272","pic1":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/5b615b840dddb.jpg","pic2":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/5b615b8460df6.jpg","pic3":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/5b615b84af4e2.jpg","pic4":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/5b615b8509e9e.jpg","mig1":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/5b615b840dddb.jpg","sig1":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/m_5b615b840dddb.jpg","mig2":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/5b615b8460df6.jpg","sig2":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/m_5b615b8460df6.jpg","mig3":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/5b615b84af4e2.jpg","sig3":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/m_5b615b84af4e2.jpg","mig4":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/5b615b8509e9e.jpg","sig4":"http:\/\/361cdn.361sport.com\/product\/2018\/08\/01\/m_5b615b8509e9e.jpg"}]';
+			var buyItemsUrl = "/Product/buyitems.html";
+			var loginUrl = "/Member/login.html";
+			var loginfrom = "iframe";
+			var collectUrl = "/Product/collect.html";
+			var bdTextTitle = "女跑步文化鞋";
+			window._bd_share_config={"common":{"bdSnsKey":{},"bdText":bdTextTitle,"bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+    <script type="text/javascript" src="~/scripts/enlarge.js"></script>
+    <script type="text/javascript" src="~/scripts/buy.js"></script>
+    <script type="text/javascript" src="~/scripts/login.js"></script>
+    <script src="~/scripts/swiper.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/scripts/common.js" type="text/javascript" charset="utf-8"></script>
+    <a href="javascript:;" class="return-top"></a>
+    <div class="footer">
+        <div class="footer-con clearfloat">
+            <dl>
+                <dt>
+                    关于361&deg;
+                </dt>
+                <dd>
+                    <a href="http://ir.361sport.com/s/index.php" target="_blank">投资者关系</a>
+                </dd>
+                <dd>
+                    <a href="/About/index.html">集团简介</a>
+                </dd>
+                <dd>
+                    <a href="http://361bift.361sport.com" target="_blank">361&deg;BIFT</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=11">社会责任</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=12">品牌历程</a>
+                </dd>
+                <dd>
+                    <a href="/News/index.html">品牌新闻</a>
+                </dd>
+                <dd>
+                    <a href="/Jobs/index.html">集团招聘</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=14">联系我们</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    如何购物
+                </dt>
+                <dd>
+                    <a href="http://cn.361sport.com/shop.asp" target="_blank">店铺查询</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=1">购物流程</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=2">订单查询</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=15">会员及积分体系</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    支付方式
+                </dt>
+                <dd>
+                    <a href="/About/info.html?info=3">支付方式</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=4">发票说明</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    物流配送
+                </dt>
+                <dd>
+                    <a href="/About/info.html?info=5">配送时间和范围</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=6">配送费用</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=7">商品验收</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    售后服务
+                </dt>
+                <dd>
+                    <a href="/About/info.html?info=9">退换货流程</a>
+                </dd>
+                <dd>
+                    <a href="/About/info.html?info=8">售后服务政策</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>
+                    联系方式
+                </dt>
+                <dd>
+                    QQ客服：476849964
+                </dd>
+                <dd>
+                    全国服务热线
+                </dd>
+                <dd>
+                    400-6661-361
+                </dd>
+                <dd>
+                    工作时间：周一至周五（工作日）
+                </dd>
+                <dd>
+                    (9:00-12:00 13:00-18:00)
+                </dd>
+                <dd style="margin-top: 20px;">
+                    地址：福建省厦门市湖里区墩岭路159号三六一度大楼
+                </dd>
+                <dd>
+                    邮编：361009
+                </dd>
+            </dl>
+            <div class="fr footerConcern-us">
+                <h2>关注我们</h2>
+                <ul>
+                    <li><a href="http://weibo.com/361sport?refer_flag=1001030101_" target="view_window"><img src="~/Images/picture/microblog.png" /></a></li>
+                    <li class="WeChat"><img src="~/Images/picture/wechat.png" /></li>
+                </ul>
+                <div class="code">
+                    <div>
+                        <img src="~/Images/picture/subscription.jpg" />
+                        <p>361&deg;订阅号</p>
+                    </div>
+                    <div>
+                        <img src="~/Images/picture/service.jpg" />
+                        <p>361&deg;服务号</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="certificate"><a href="/About/flink.html" style="color: #808080; margin-right: 50px;">友情链接</a>中国 闽ICP备05003868号 &copy;2013 三六一度(中国)有限公司 All Rights Reserved</p>
+    </div>
+    <script type="text/javascript">
+		$('.search-input').hover(function(){
+			$(".search").addClass('active')
+		});
+		$(document).on("click","div.active button.search-input",function(){
+			window.location.href = "/Product/shop.html?keyword="+$(this).siblings("input").val();
+			return true;
+		})
+    </script>
+</body>
+</html>

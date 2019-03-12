@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4948a0d0d52a44ea8d0a08c6991dd597" Name="Diagram1">
+        <EntityTypeShape EntityType="MyShopModel.Address" Width="1.5" PointX="10" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.Area" Width="1.5" PointX="7.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.cart" Width="1.5" PointX="5.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.Goods" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.GoodsColor" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.GoodsComment" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.GoodsImage" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.GoodsSize" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.GoodsType" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.Sex" Width="1.5" PointX="7.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyShopModel.Userinfo" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="MyShopModel.FK__Address__AreaId__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__Address__UserId__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__Area__ParentId__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__cart__UserId__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__Goods__GoodsColo__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__Goods__GoodsSize__21B6055D" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__Goods__TypeId__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__GoodsComm__Goods__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__GoodsImag__Goods__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__GoodsComm__UserI__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="MyShopModel.FK__GoodsType__PId__1CF15040" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

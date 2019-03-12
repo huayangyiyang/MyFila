@@ -1,0 +1,459 @@
+﻿@using FilaShop.Models
+@model List<Cart>
+
+
+@{ 
+
+    //当前用户购物车的长度
+    var cartcount = Model.Count();
+
+    //用户所有的地址集合
+    List<Address> addresslist = ViewBag.addresslist as List<Address>;
+    // Response.Write(addresslist.Count());
+    //省市区县表集合
+    List<Area> arealist = ViewBag.areaParent as List<Area>;
+
+    Userinfo userinfo = Session["user"] as Userinfo;
+    //商品总价：
+    decimal? goodsSum = 0;
+
+    int? address_Id=0;
+
+    //定义provinceid  省级id
+
+    //编辑按钮传递的id值
+    Address editAddress= ViewBag.editAddress as Address;
+
+}
+<!DOCTYPE HTML>
+<html >
+<head>
+    <meta charset="utf-8" />
+    <title>我的购物车</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="mobile-agent" content="format=[wml|xhtml|html5];url=http://www.fila.cn/m/cart.html">
+    <link rel="alternate" media="only screen and (max-width:640px)" href="http://www.fila.cn/m/cart.html">
+    <meta name="applicable-device" content="pc">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="keywords" content="斐乐,斐乐官方旗舰店,斐乐旗舰店,FILA官方商城,FILA官网，FILA,斐乐官网,FILA网上商城">
+    <meta name="Description" content="访问斐乐(FILA)官网,了解最新的品牌资讯,成为会员,切身体验尊崇的购物旅程,尽在FILA中国官方网站Fila.cn">
+    <link rel="icon" href="//www.fila.cn/favicon.ico" type="image/x-icon">
+    <script language="javascript">
+	        var u = navigator.userAgent;
+	        if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1
+	                        || u.indexOf('Windows Phone') > -1 || u.indexOf('iPhone') > -1
+	                        || u.indexOf('iPad') > -1) {
+	                        window.location.href ='http://www.fila.cn/m/cart.html';
+
+	        }
+
+    </script>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="~/scripts/jquery-3.3.1.js"></script>
+   
+    <script src="~/scripts/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/scripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--site header common-->
+    <!--[if lt IE 9]>
+    <script src="Scripts/html5fix.js" type="text/javascript" charset="utf-8"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="~/Content/30e30d00a7484a32be420342efb88932.css">
+    <link rel="stylesheet" href="~/Content/reset.css">
+    <link rel="stylesheet" href="~/Content/carts.css">
+    <style type="text/css">
+        .checkout-container .checkout-maddr .addr-default .add-new-mddr .btn-new-maddr {
+            float: left !important;
+        }
+
+        .cart-container .cart-body .c-ci-title .col-xs-9 .text-warning .glyphicon-warning-sign {
+            color: #e6002d;
+        }
+       .addressform{
+           width:800px;
+           height:600px;
+           background-color:greenyellow;
+           display:none;
+       }
+       .li01addborder{
+          border:2px solid blue;
+       }
+       .oldliborder{
+           border:1px solid gray;
+       }
+        .spanhidden {
+            visibility:visible;
+        }
+        .morenhide{
+            visibility:hidden;
+        }
+        .thirddiv{
+            position:absolute;
+            margin:0 auto;
+            width:100%;
+            height:100%;
+            margin:0 auto;
+            border:1px solid black;
+            margin-top:-300px;
+            margin-left:-30px;
+            background-color:darkgray;
+        }
+        .thirddivdisplay{
+            display:none;
+        }
+        .addUseraddressdiv{
+            width:500px;
+            height:150px;
+            margin:0 auto;
+            padding-top:50px;
+            padding-left:30px;
+            text-align:center;
+        }
+        .addressdiv02{
+            height:150px;
+            width:250px;
+            
+            padding:2px;
+        }
+        .receivemandiv01>div{
+            float:left;
+        }
+        .clearfloat{
+            width:0;
+            height:0;
+            float:none;
+            clear:both;
+        }
+        .deleteaddress{
+            text-decoration:none;
+        }
+        .select01{
+            width:100px;
+            height:30px;
+            margin-left:5px;
+            border:1px solid black;
+            
+        }
+        .selecthide{
+            visibility:hidden;
+        }
+        .selectshow {
+            visibility:visible;
+        }
+        .select00{
+            width:100px;
+            height:30px;
+            margin-left:5px;
+            border:1px solid black;
+        }
+        .select02{
+            width:100px;
+            margin-left:5px;
+            height:30px;
+            border:1px solid black;
+           
+        }
+        .showthisdiv{
+            display:block;
+        }
+        .hidethisdiv{
+            display:none;
+        }
+        .inputsubmit:hover{
+            border:1px solid blue;
+            background-color:white;
+            color:blue;
+        }
+        .addresscolse:hover {
+            border:1px solid blue;
+            color:blue;
+        }
+        .submitbtn{
+            margin-left:15px;
+            width:60px;
+            height:40px;
+            border:1px solid black;
+            background-color:grey;
+        }
+        .closebtn{
+            margin-left:60%;
+            width:60px;
+            height:40px;
+            border:1px solid black;
+        }
+        .divvis{
+            visibility:hidden;
+        }
+        .adressbtnedit{
+            width:118px; 
+        }
+       .address-form{
+           margin:0 auto;
+           width:60%;
+           padding:15px;
+           border:1px solid blue;
+           margin-top:10%;
+           background-color:white;
+       }
+       .cart-h1{
+           color:#002965;font-size:20px;font-weight:bold;
+       }
+       .sumnumber{
+           height:124px;
+       }
+       .goproductlist{
+           height:80px;
+           margin:0 auto;
+       }
+       .goproductlist>h2>a{
+           text-decoration:none;
+
+       }
+    </style>
+   <script>
+       $(function () {
+          
+
+       });
+   </script>
+</head>
+<body>
+
+    <!-- 公共部分 Header -->
+    <header class="fila-header">
+        <div class="logo">
+            <a href="~/Product/List">
+                <img src="~/Images/fila_blue_150.png" alt="">
+            </a>
+        </div>
+        <div class="fila-navbar">
+           <div class="navbar-search   divvis">
+                <input id="key" class="text" type="text" autocomplete="off" name="keyword" value="@Request.QueryString["keyword"]">
+                <button class="button" id="searchbtn01">搜索</button>
+          </div>
+            <ul class="navbar-list">
+
+                <!-- 未登录 -->
+                @if (userinfo != null)
+                {
+                    <li class="navbar-user ">
+                        <a href="~/User/CommandCenter" target="_blank">
+                            您好，
+                            <span>@userinfo.Nickname</span>
+                        </a>
+                    </li>
+                    <li class="navbar-logout ">
+                        <a href="~/User/LoginOut" title="退出">退出</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count " id="cart-count"> @ViewBag.cartcount</span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+
+                }
+                else
+                {
+                    <li class="navbar-login">
+                        <a href="~/User/Login" target="_blank" title="登入">登入</a>
+                    </li>
+                    <li class="navbar-register">
+                        <a href="~/User/Register" target="_blank" title="注册">注册</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count hide" id="cart-count"> </span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+                }
+
+
+                <li class="navbar-country">
+                    <a href="#" target="_blank">
+                        <i class="icon icon-country"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="main">
+
+        <div class="page-header  cart-title">
+            <h1 class="cart-h1">
+                购物车
+            </h1>
+        </div>
+
+        @*购物车中商品信息展示*@
+       
+       
+        <section class="cartMain">
+            <div class="cartMain_hd">
+                <ul class="order_lists cartTop">
+                    <li class="list_chk">
+                        <!--所有商品全选-->
+                        <input type="checkbox" id="all" class="whole_check">
+                        <label for="all" class=""></label>
+                        全选
+                    </li>
+                    <li class="list_con">商品信息</li>
+                    <li class="list_info">商品参数</li>
+                    <li class="list_price">单价</li>
+                    <li class="list_amount">数量</li>
+                    <li class="list_sum">金额</li>
+                    <li class="list_op">操作</li>
+                </ul>
+            </div>
+
+            <div class="cartBox" >
+                <form action="~/Orders/Add" method="get"  id="formcart">
+                    <div class="order_content">
+
+                        @foreach (var item in Model)
+                        {
+
+                            <ul class="order_lists">
+                                <li class="list_chk" style="padding-top:40px;">
+                                    <input type="checkbox" id="checkbox_@item.Id" value="@item.Id" class="son_check">
+                                    <label for="checkbox_@item.Id"></label>
+                                </li>
+                                <li class="list_con">
+                                    <div class="list_img">
+                                        <a href="javascript:;">
+                                            <img src="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage" style="width:70px;height:90px;" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="list_text" style="padding-top:40px;"><a href="~/Product/Detail/@item.ProductId">@item.Product.Name</a></div>
+                                </li>
+                                <li class="list_info" style="padding-top:40px;">
+                                    <p>颜色：@item.Product.ProductColor.Name</p>
+                                    <p>尺寸：@item.Product.ProductSize.Name</p>
+                                </li>
+                                <li class="list_price" style="padding-top:40px;">
+                                    <p class="price">￥@string.Format("{0:0.00}", item.Product.NewPrice)</p>
+                                </li>
+                                <li class="list_amount" style="padding-top:40px;">
+                                    <div class="amount_box">
+                                        <input type="hidden" value="@item.ProductId" name="Goodsid" disabled="disabled">
+                                        <input type="hidden" value="@item.Id" name="Cartid" disabled="disabled">
+                                        
+                                        <a href="javascript:;" class="reduce reSty">-</a>
+                                        <input type="text" value="@item.Number" name="Number" style="height:24px;" class="sum" disabled="disabled">
+                                        <a href="javascript:;" class="plus">+</a>
+                                    </div>
+                                </li>
+                                <li class="list_sum" style="padding-top:40px;">
+                                    <p class="sum_price">￥@string.Format("{0:0.00}", item.Product.NewPrice * item.Number)</p>
+                                </li>
+                                <li class="list_op" style="padding-top:40px;">
+                                    <p class="del"><a href="javascript:" class="delBtn">移除商品</a></p>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+
+
+
+                    @*商品件数 和总价*@
+                    <input type="hidden" name="piece_num" class="textpiece_num" value="" />
+                    <input type="hidden" name="total_text" class="texttotal_text" value="" />
+                </form>
+
+           </div>
+
+
+   
+
+    <!--底部-->
+            <div class="bar-wrapper">
+                <div class="bar-right">
+                    <div class="piece">已选商品<strong class="piece_num">0</strong>件</div>
+                    <div class="totalMoney">共计:￥ <strong class="total_text">0.00</strong></div>
+                    <div class="calBtn">
+                        <a href="javascript:getCheckedId();">结算</a>
+                    </div>
+            
+               
+             </div>
+    </div>
+    </section>
+        
+    <section class="model_bg"></section>
+    <section class="my_model" style="height:140px;">
+        <p class="title">删除宝贝<span class="closeModel">X</span></p>
+        <p>您确认要删除该宝贝吗？</p>
+        <div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a></div>
+    </section>
+
+    <script src="~/scripts/cartlist/jquery.min.js"></script>
+    <script src="~/scripts/cartlist/carts.js"></script>
+    <div style="text-align:center;">
+        <p></p>
+    </div>
+       
+        </div>
+
+    <!-- 公共部分 Footer -->
+    <script>
+        var updateurl = '/Cart/Update/';//修改数量跳转页面
+        var deleterul = '/Cart/delete/';//删除商品
+        function getCheckedId() {
+            
+            //多选框被选中，larb标签添加mark属性
+            var marklarb = $('.mark');
+            var sumnumber = 0;
+            if (marklarb.length > 0) {
+                marklarb.each(function () {
+                    // $('.mark').parent().find('input[name="Goodsid"]')
+                    marklarb.parent().parent().find('input[name="Goodsid"]').removeAttr('disabled', 'disabled');
+                    marklarb.parent().parent().find('input[name="Number"]').removeAttr('disabled', 'disabled');
+
+                })
+               
+            }
+            $('.textpiece_num').val($('.piece_num').html());
+            $('.texttotal_text').val($('.total_text').html());
+            
+            $('#formcart').submit();
+        };
+       
+        $('.reduce').click(function () {
+            var cartid = $(this).prev('input').val();
+            var goodnum = $(this).next('input').val();
+            alert('goodnum=' + goodnum);
+            if (goodnum>1) {
+                alert('updateurl=' + updateurl + ',cartid=' + cartid);
+                $.post(updateurl, { 'cartid': cartid, 'stryunsuan': '-' }, function () { });
+            } else {
+                alert('商品数量不能少于1');
+            }
+            
+        });
+        $('.plus').click(function () {
+            var cartid = $(this).prev().prev().prev('input').val();
+          alert('updateurl=' + updateurl + ',cartid=' + cartid);
+            $.post(updateurl, { 'cartid': cartid, 'stryunsuan': '+' }, function () { });
+        });
+
+        //删除商品
+       // function deleteCart(id) {
+       //     $.post(deleterul, { 'id': id }, function () {
+        //    });
+       // }
+       
+    </script>
+
+    
+</body>
+</html>

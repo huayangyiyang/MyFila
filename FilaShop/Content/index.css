@@ -1,0 +1,143 @@
+﻿//5列图
+@import "var.css";
+@import "header.css";
+.theme-p{
+  color: @them-color;
+  padding: 0 15px;
+  margin-top: 30px;
+  text-align: center;
+  font-size: 16px;
+  height: 40px;
+  overflow: hidden;
+}
+.sign-pic-5{
+
+  .scale-img{
+    &:hover{
+      img{
+        -webkit-transform: scale(1.2);
+      }
+    }
+    width: 100%;
+    //height: 340px;
+    overflow: hidden;
+    img{
+      -webkit-transition:all .5s ease;
+      -webkit-transform-origin:center center;
+    }
+  }
+  img{
+    width: 100%;
+    max-width: 100%;
+  }
+  p{
+    .theme-p();
+  }
+}
+
+.index-video-L{
+  width: 430px !important;
+  p{
+    .theme-p();
+  }
+}
+.index-video-R{
+  width: 730px;
+  float: right;
+  margin-top: 32px;
+  p{
+    .theme-p();
+  }
+}
+.explore-btn{
+  display: block;
+  width: 196px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 2px solid @them-color;
+  color: @them-color;
+  margin: 30px auto;
+  font-size: 12px;
+  font-weight: bold;
+  transition: background-color .35s;
+  &:hover{
+    color: #FFF;
+    background-color: @them-color;
+  }
+}
+.borderBottom{
+  border-bottom: 1px solid #ddd;
+}
+
+//pic-tit-fila
+.list-row-pic{
+  .col-md-3{
+    min-height: 435px;
+    margin-bottom: 20px;
+  }
+  .list-row-wrap{
+    position: absolute;
+    background-color: #FFF;
+    border: 2px solid#FFF;
+    padding: 20px 15px;
+    transition: border .3s;
+    &:hover{
+      border: 2px solid @them-color;
+      z-index: 888;
+      .pic-sm-fila{
+        display: block;
+      }
+    }
+    .pic-sm-fila{
+      display: none;
+      margin-top: 30px;
+      border-bottom: 1px solid #03234c;
+      padding-bottom: 10px;
+      li{
+        padding-left: 3px;
+        padding-right: 1px;
+        img{
+          border: 1px solid transparent;
+        }
+      }
+      li.current{
+        img{
+          border:1px solid @them-color ;
+        }
+      }
+    }
+    p.mt15{
+      color: @them-color;
+    }
+  }
+  .pic-tit-fila{
+    border-bottom: 1px solid @them-color;
+    color: @them-color;
+    margin-top: 40px;
+  }
+}
+.index-bottom{
+  p{
+    .theme-p();
+  }
+}
+.scale-big-img{
+  &:hover{
+    img{
+      -webkit-transform:scale(1);
+    }
+  }
+  width: 370px;
+  height: 370px;
+  overflow: hidden;
+  img{
+    -webkit-transform:scale(1.2);
+    -webkit-transition: all .5s ease;
+  }
+}
+.divider-line{
+  height: 0;
+  width: 100%;
+  border-bottom: 1px solid #DDD;
+}

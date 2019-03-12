@@ -1,0 +1,680 @@
+﻿@using FilaShop.Models
+@model Orders
+
+@{
+    Userinfo userinfo = ViewBag.user as Userinfo;
+    var strstate = "待付款";
+
+    //添加隐藏的Class
+    //隐藏 订单付款 
+    var hidepay ="";
+    //隐藏取消订单
+    var hideCancel = "";
+    //隐藏右侧进度状态
+    var hidestate = "";
+    //订单取消后的显示
+    var orderIsCancel = "orderIsCancel";
+    //退货中
+    var orderIsBack = "orderIsBack";
+
+    //改订单的商品总数
+    var sum = 0;
+}
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>我的订单</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="~/scripts/analytics.js"></script>
+    <script src="~/scripts/hm.js"></script>
+    <script src="~/scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/scripts/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+    <script src="~/scripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!--[if lt IE 9]>
+    <script src="/public/javascripts/html5fix.js?vaabf" type="text/javascript" charset="utf-8" ></script>
+    <![endif]-->
+
+    <script async="" src="~/scripts/38db9c6f3f7d4cc29624ce2c74d5c4b6.js"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-111270368-1');
+    </script>
+    <link rel="stylesheet" href="~/Content/theme.css">
+    <link rel="stylesheet" href="~/Content/global.css">
+    <link rel="stylesheet" href="~/Content/swiper.css">
+    <link rel="stylesheet" href="~/Content/styles.css">
+    <link rel="stylesheet" href="~/Content/common_180905.css">
+    <style>
+        .hidethis{
+            display:none;
+        }
+        .googssum{
+            color:red;
+            font-size:13px;
+        }
+       .sum{
+           color:blue;
+       }
+    </style>
+</head>
+<body class="order-detail-html">
+
+    <header class="fila-header">
+        <div class="logo">
+            <a href="~/Product/List">
+                <img src="~/Images/fila_blue_150.png" alt="">
+            </a>
+        </div>
+        <div class="fila-navbar">
+            <div class="navbar-search" style="visibility:hidden;">
+                <input id="key" class="text" type="text" autocomplete="off" name="keyword" value="@Request.QueryString["keyword"]">
+                <button class="button" id="searchbtn01">搜索</button>
+            </div>
+            <ul class="navbar-list">
+
+                <!-- 未登录 -->
+                @if (userinfo != null)
+                {
+                    <li class="navbar-user ">
+                        <a href="~/User/Detail" target="_blank">
+                            您好，
+                            <span>@userinfo.Nickname</span>
+                        </a>
+                    </li>
+                    <li class="navbar-logout ">
+                        <a href="~/User/LoginOut" title="退出">退出</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count " id="cart-count"> @ViewBag.cartcount</span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+
+                }
+                else
+                {
+                    <li class="navbar-login">
+                        <a href="~/User/Login" target="_blank" title="登入">登入</a>
+                    </li>
+                    <li class="navbar-register">
+                        <a href="~/User/Register" target="_blank" title="注册">注册</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count hide" id="cart-count"> </span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+                }
+
+
+                <li class="navbar-country">
+                    <a href="#" target="_blank">
+                        <i class="icon icon-country"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="container main-container main">
+        <div class="order-detail-container">
+            <ol class="breadcrumb">
+                <li><a href="~/User/CommandCenter/@Model.UserId">会员中心</a></li>
+                <li><a href="~/User/CommandCenter/@Model.UserId">全部订单</a></li>
+                <li class="active">订单详情</li>
+            </ol>
+            <!-- 订单进度 -->
+            <div class="row order-process-bar">
+
+                <div class="col-xs-3">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="order-status-wrap">
+                                <div>订单号：@Model.ordernum</div>
+                                <div class="order-status">
+                                                                        @*//隐藏 订单付款
+                                         var hidepay ="";
+                                        //隐藏取消订单
+                                        var hideCancel = "";
+                                        //隐藏右侧进度状态
+                                        var hidestate = "";
+                                            //订单取消后的显示
+                                    var orderIsCancel = "orderIsCancel";
+                                                                        *@
+                                    @switch (Model.OrderState)
+                                    {
+
+                                        case 0:
+                                            //待付款
+                                            strstate = "待付款";
+                                            orderIsCancel = "hidethis";
+                                            orderIsBack= "hidethis";
+                                            break;
+                                        case 1:
+                                            //待发货
+                                            hidepay= "hidethis";//隐藏付款选项
+                                            orderIsCancel = "hidethis";
+                                            orderIsBack = "hidethis";
+                                            strstate = "待发货";
+
+                                            break;
+                                        case 2:
+                                            // 待收货
+                                            hidepay = "hidethis";
+                                            orderIsCancel = "hidethis";
+                                            orderIsBack = "hidethis";
+                                            strstate = "待收货";
+
+                                            break;
+                                        case 3:
+                                            // 取消
+                                            hidepay = "hidethis";
+                                            hidestate = "hidethis";
+                                            hideCancel = "hidethis";
+                                            orderIsBack = "hidethis";
+                                            orderIsCancel = "";
+                                            strstate = "订单取消";
+
+                                            break;
+                                        case 4:
+                                            // 退货
+                                            hidepay = "hidethis";
+                                            hidestate = "hidethis";
+                                            hideCancel = "hidethis";
+                                            orderIsCancel = "hidethis";
+                                            orderIsBack = "";
+                                            strstate = "退货中……";
+
+                                            break;
+                                        case 5:
+                                            // 交易成功，交易关闭
+                                            orderIsCancel = "hidethis";
+                                            hidepay = "hidethis";
+                                            orderIsBack = "hidethis";
+                                            hideCancel = "hidethis";
+                                            orderIsBack = "hidethis";
+                                            strstate = "交易成功，交易关闭";
+                                            break;
+
+                                        default:
+                                            break;
+                                    }
+
+                                    @strstate
+                                </div>
+                                <a href="#" class="theme-btn-border @hidepay">订单付款</a>
+                                <input type="hidden" class="orderid-hidden" name="name" value="@Model.Id" />
+                                <span href="javascript:;" class="btn btn-block mt10 cancelOrder @hideCancel" data-toggle="modal" data-target="#ordercancel1903060009948">订单取消</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-9 ">
+                    
+                         <div class="row row-process  @orderIsCancel">
+                             <div class="alert alert-warning">
+                                 <h3>订单已取消</h3>
+                                 <p>
+                                     <h4>订单已取消,若您需要购买该订单商品,请重新下单!</h4><br>
+
+                                 </p>
+                             </div>
+                         </div>
+                            <div class="row row-process  @orderIsBack">
+                                <div class="alert alert-warning">
+                                    <h3>退货中……</h3>
+                                    <p>
+                                        <h4>订单目前状态是退货中,若您需要购买该订单商品,请重新下单!</h4><br>
+
+                                    </p>
+                                </div>
+                            </div>
+                        <div class="row row-process @hidestate">
+                            @if (Model.OrderState == 0)
+                            {
+                                <div class="col-xs-3  active">
+                                    <div class="well well-sm order-icon1"></div>
+                                    <p>提交订单</p>
+                                    <p class="time-status">@Model.OrderTime</p>
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="col-xs-3  ">
+                                    <div class="well well-sm order-icon1"></div>
+                                    <p>提交订单</p>
+                                    <p class="time-status">@Model.OrderTime</p>
+                                </div>
+                            }
+
+                            @if (Model.OrderState == 1)
+                            {
+                                <div class="col-xs-3 active">
+                                    <div class="well well-sm well-line-before order-icon2"></div>
+                                    <p>付款成功</p>
+                                    <p class="time-status"></p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-xs-3 ">
+                                    <div class="well well-sm well-line-before order-icon2"></div>
+                                    <p>付款成功</p>
+                                    <p class="time-status"></p>
+                                </div>
+                            }
+
+                            @if (Model.OrderState == 2)
+                            {
+                                <div class="col-xs-3 active">
+                                    <div class="well well-sm well-line-before order-icon3"></div>
+                                    <p>商品出库</p>
+                                    <p class="time-status"></p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-xs-3 ">
+                                    <div class="well well-sm well-line-before order-icon3"></div>
+                                    <p>商品出库</p>
+                                    <p class="time-status"></p>
+                                </div>
+                            }
+                            @if (Model.OrderState == 5)
+                            { <div class="col-xs-3 active">
+                                <div class="well well-sm well-line-before order-icon4"></div>
+                                <p>确认收货</p>
+                                <p class="time-status"></p>
+                            </div>
+                            }
+                            else
+                            {
+                                <div class="col-xs-3 ">
+                                    <div class="well well-sm well-line-before order-icon4"></div>
+                                    <p>确认收货</p>
+                                    <p class="time-status"></p>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                <div class="col-xs-12">
+                    <span style="margin-left: 333px;"></span><span class="ml30"></span>
+                </div>
+
+            </div>
+            <!-- END 订单进度 -->
+            <div class="row row-tit">
+                <div class="col-xs-3">
+                    <div class="order-detail-info">
+                        收货人信息
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="order-detail-info">
+                        配送信息
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="order-detail-info">
+                        支付信息
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="order-detail-info">
+                        发票信息
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row-con">
+                <div class="col-xs-3">
+                    <div class="order-detail-info">
+                        <p>@Model.Address.ReceiverName&nbsp;&nbsp;+86 @Model.Address.Phone</p>
+                        <p>@Model.Address.Area.Area2.Area2.Name @Model.Address.Area.Area2.Name  @Model.Address.Area.Name</p>
+                        <p>@Model.Address.DetailAddress</p>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="order-detail-info">
+                        <p>官方配送</p>
+                        <!--<dt>发货状态:</dt>-->
+                        <!--<dd>未发货</dd>-->
+
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="order-detail-info">
+                        <p>付款方式：</p>
+                        <p class="googssum">商品总额：@string.Format("{0:0.00}", Model.Price)<!-- 429.00 --></p>
+                        <p>运费金额：0.00</p>
+                        <p> </p>
+                        <p>优惠券：0.00</p>
+                        <p>订单优惠：0.00<!-- 0.00 --></p>
+                        <p>积分抵扣：0.00</p>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="order-detail-info-last">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt30">
+                <table class="table order-detail-tab">
+                    <tr>
+                        <th width="20%">商品名称</th>
+                        <th width="16%">SKU货号</th>
+                        <th width="16%">单价（元）</th>
+                        <th width="16%">数量</th>
+                        <th width="16%">实际发货数量</th>
+                        <th>交易状态</th>
+                    </tr>
+
+                    @foreach (var item in Model.OrderDetail)
+                    {
+                        sum +=Convert.ToInt32( item.Number);
+                        <tr class="tr-item">
+                            <td class="first-td">
+                                <div class="noborder-tab">
+                                    <div style="padding: 0;width: 25%;float: left;">
+                                        <a href="~/Product/Detail/@item.GoodsId">
+                                            <img class="img-thumbnail" src="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage" alt="@item.Product.Name-@item.Product.ProductColor.Name/@item.Product.ProductSize.Name" width="50" height="50" />
+                                        </a>
+                                    </div>
+                                    <div style="text-align: left;width: 75%;float: left;line-height: 20px;" class="goods-content">
+                                        <a href="~/Product/Detail/@item.GoodsId">
+                                            @item.Product.Name<br />
+                                            @item.Product.ProductColor.Name/@item.Product.ProductSize.Name
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td>
+                                <span class="i-g-price">@string.Format("{0:0.00}", item.Product.NewPrice)</span><br>
+                                <del class="market-price hide" style="color: #ccc">@string.Format("{0:0.00}",item.Product.OldPrice)</del>
+                            </td>
+                            <td>@item.Number</td>
+                            <td>@item.Number</td>
+                            <td>
+                                @switch (Model.OrderState)
+                                {
+
+                                    case 0:
+                                        //待付款
+                                        strstate = "待付款";
+                                        break;
+                                    case 1:
+                                        //待发货
+
+                                        strstate = "待发货";
+
+                                        break;
+                                    case 2:
+                                        // 待收货
+
+                                        strstate = "待收货";
+
+                                        break;
+                                    case 3:
+                                        // 取消
+
+                                        strstate = "订单取消";
+
+                                        break;
+                                    case 4:
+                                        // 退货
+
+                                        strstate = "退货中……";
+
+                                        break;
+                                    case 5:
+                                        // 交易成功，交易关闭
+                                        strstate = "交易成功，交易关闭";
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+
+                                @strstate
+                            </td>
+                        </tr>
+                    }
+                    
+                </table>
+                <div class="row">
+                    <div class="col-xs-3 col-xs-offset-6">
+                    </div>
+                    <div class="col-xs-3">
+                        <dl class="dl-horizontal">
+
+                            <!--<dt>运费：</dt>
+                            <dd>￥<span>0.00</span></dd>-->
+                            <!--<dt>订单应付总金额：</dt>-->
+                            <!--<dd>-->
+                            <!--￥<strong>429.00</strong>-->
+                            <!--</dd>-->
+                            <!-- <dt>商品总价（优惠前）：</dt>
+                            <dd>￥<span>429.00</span></dd> -->
+                            <dt>商品总价：</dt>
+                            <dd>￥<span class="googssum">@string.Format("{0:0.00}", Model.Price)<!-- 429.00 --></span></dd>
+                            <!--<dt>积分抵扣：</dt>
+                            <dd>-￥<span>0.00</span></dd>-->
+                            <dt>促销优惠：</dt>
+                            <dd>-￥<span class="googssum">0.00</span></dd>
+                            <dt><span class="sum">@sum</span> 件商品，成交总金额：</dt>
+                            <dd>￥<span class="googssum">@string.Format("{0:0.00}", Model.Price)</span></dd>
+
+                        </dl>
+                        <div class="text-center mt30">
+                            <a href="~/User/CommandCenter/@Model.UserId" class="theme-btn-border">返回订单列表</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" aria-hidden="false" id="ordercancel1903060009948">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title">取消订单 # @Model.ordernum</h3><span class="e91010">订单取消后不能撤销</span>
+                    </div>
+                    <form method="post" action="~/Orders/UpdateState/@Model.Id" id='order_edit_form' class="form">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">
+                                        取消原因
+                                    </label>
+                                    <div class="col-md-8">
+                                        <select class="form-control" name='memo'>
+                                            <option value='我不想买了'>我不想买了</option>
+                                            <option value='信息填写错误，重新拍'>信息填写错误，重新拍</option>
+                                            <option value='付款遇到问题'>付款遇到问题</option>
+                                            <option value='拍错，重新拍'>拍错，重新拍</option>
+                                            <option value='其他原因'>其他原因</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="modal-footer" style="text-align: center;">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="submit" class="btn" style="background-color: #03234c;color: #FFF;">确认取消</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+    $(function(){
+        $('.tr-item').each(function() {
+            var g_price = new Number($(this).find('.i-g-price').text());
+            var m_price = new Number($(this).find('.market-price').text());
+            if((g_price-m_price)<0){
+                $(this).find('.market-price').removeClass('hide');
+            }
+        });
+    });
+
+        </script>
+    </div>
+
+    <footer class="fila-footer clearfix">
+        <div class="ft-left fl">
+            <ul class="link-list">
+                <li>
+                    <a href="/n-20.html" target="_blank">购物服务</a>
+                </li>
+                <li>
+                    <a href="/history.html" target="_blank">关于品牌</a>
+                </li>
+                <li>
+                    <a href="/shop.html" target="_blank">查找门店</a>
+                </li>
+            </ul>
+            <div class="ft-follow">
+                <span>关注FILA的官方媒体:</span>
+                <a class="ft-sina" href="http://weibo.com/fila2010?refer_flag=1001030101_" target="_blank"></a>
+                <a class="ft-weixin">
+                    <div class="ft-weixin-tip">
+                        <img src="~/images/weixin0525.jpg">
+                    </div>
+                </a>
+            </div>
+            <div class="ft-service">
+                <span>售后服务电话: 400-886-7699</span>
+            </div>
+        </div>
+        <div class="ft-right fr">
+            <span>&copy;FILA体育&nbsp;闽ICP备11020421号-8</span>
+        </div>
+    </footer>
+    <div class="fixed-toolbar">
+        <a class="fixed-service" onclick="xiaoneng_isExitsFunction();" href="javascript:;">客服</a>
+    </div>
+    <script src="~/scripts/header_180905.js"></script>
+    <script charset="utf-8">
+        //取消按钮点击事件
+       
+
+
+
+/*购物数量 事件拦截开始*/
+
+$(function(){
+    var change_event_timer = 0;
+    var _change_quantity = function(ipt,num){
+        ipt = $(ipt),last_val = parseInt(ipt.val());
+        var set_v = last_val+num;
+        ipt.val(set_v);
+        if(isNaN(ipt.val()) || ipt.val()<1){
+            ipt.val('1');
+        }
+        if(ipt.attr('data-max') && set_v>parseInt(ipt.attr('data-max'))){
+            ipt.val(ipt.attr('data-max'));
+        }
+        if(ipt.attr('data-min') && set_v<parseInt(ipt.attr('data-min'))){
+            ipt.val(ipt.attr('data-min'));
+        }
+        if(set_v === parseInt($(ipt).attr('data-now')))return;
+
+        //限购商品限制数量加减
+        if($('.order-max').length>0){
+            var max_buy = new Number($('.notice-restrict .order-max').text());
+            if(set_v >= max_buy){
+                ipt.attr('data-now',max_buy);
+                ipt.val(max_buy);
+            }
+        }
+        if($('.order-max').length==0&&$('.member-max').length>0){
+            var max_buy = new Number($('.notice-restrict .member-max').text());
+            if(set_v >= max_buy){
+                ipt.attr('data-now',max_buy);
+                ipt.val(max_buy);
+            }
+        }
+
+        //预约商品限制数量加减
+        if(!$('.reserve-quantity').hasClass('hide')){
+            var $el = $('#J_sale_buy_num');
+            var max_sale = $el.data('max-sale');
+            if(set_v >= max_sale ){
+                ipt.attr('data-now',max_sale);
+                ipt.val(max_sale);
+            }
+        }
+
+        $(ipt).attr('data-now',set_v);
+        ipt.trigger('_change',[ipt.val(),num]);
+    }
+
+    $(document).on('click','.product-quantity .spinner-buttons',function(e){
+        var btn = $(this);
+        btn.find('button').eq(0).blur();
+        if(btn.data('animating'))return;
+        if(btn.next('.spinner-input').length){
+            _change_quantity(btn.next('.spinner-input'),-1);
+        }
+        if(btn.prev('.spinner-input').length){
+            _change_quantity(btn.prev('.spinner-input'),+1);
+        }
+        btn.data('animating',true);
+        btn.css('opacity',.2);
+        btn.animate({opacity:1},'slow',function(){
+            $(this).removeData('animating');
+        });
+
+
+    });
+    $(document).on('keyup','.product-quantity .spinner-input',function(e){
+        switch (e.keyCode) {
+            case 38:
+                _change_quantity(this,+1);
+                break;
+            case 40:
+                _change_quantity(this,-1);
+                break;
+            default:
+                _change_quantity(this,0);
+        }
+    });
+});
+
+/*购物数量 事件拦截结束*/
+    </script>
+    <div style="display:none" data-rel="Baidu Analytics">
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?8e1f31faa8383ed7a42a8e58efe4a621";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+        </script>
+    </div>
+</body>
+</html>
