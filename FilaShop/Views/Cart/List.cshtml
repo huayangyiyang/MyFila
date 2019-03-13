@@ -62,8 +62,8 @@
     <script src="Scripts/html5fix.js" type="text/javascript" charset="utf-8"></script>
     <![endif]-->
     <link rel="stylesheet" href="~/Content/30e30d00a7484a32be420342efb88932.css">
-    <link rel="stylesheet" href="~/Content/reset.css">
-    <link rel="stylesheet" href="~/Content/carts.css">
+    <link rel="stylesheet" href="~/Content/carts/reset.css">
+    <link rel="stylesheet" href="~/Content/carts/carts.css">
     <style type="text/css">
         .checkout-container .checkout-maddr .addr-default .add-new-mddr .btn-new-maddr {
             float: left !important;
@@ -331,21 +331,21 @@
                                 <li class="list_con">
                                     <div class="list_img">
                                         <a href="javascript:;">
-                                            <img src="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage" style="width:70px;height:90px;" alt="">
+                                            <img src="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage" style="width:70px;height:90px;" alt="">
                                         </a>
                                     </div>
-                                    <div class="list_text" style="padding-top:40px;"><a href="~/Product/Detail/@item.ProductId">@item.Product.Name</a></div>
+                                    <div class="list_text" style="padding-top:40px;"><a href="~/Product/Detail/@item.GoodsId">@item.Goods.Name</a></div>
                                 </li>
                                 <li class="list_info" style="padding-top:40px;">
-                                    <p>颜色：@item.Product.ProductColor.Name</p>
-                                    <p>尺寸：@item.Product.ProductSize.Name</p>
+                                    <p>颜色：@item.Goods.GoodsColor.Name</p>
+                                    <p>尺寸：@item.Goods.GoodsSize.Name</p>
                                 </li>
                                 <li class="list_price" style="padding-top:40px;">
-                                    <p class="price">￥@string.Format("{0:0.00}", item.Product.NewPrice)</p>
+                                    <p class="price">￥@string.Format("{0:0.00}", item.Goods.NewPrice)</p>
                                 </li>
                                 <li class="list_amount" style="padding-top:40px;">
                                     <div class="amount_box">
-                                        <input type="hidden" value="@item.ProductId" name="Goodsid" disabled="disabled">
+                                        <input type="hidden" value="@item.GoodsId" name="Goodsid" disabled="disabled">
                                         <input type="hidden" value="@item.Id" name="Cartid" disabled="disabled">
                                         
                                         <a href="javascript:;" class="reduce reSty">-</a>
@@ -354,7 +354,7 @@
                                     </div>
                                 </li>
                                 <li class="list_sum" style="padding-top:40px;">
-                                    <p class="sum_price">￥@string.Format("{0:0.00}", item.Product.NewPrice * item.Number)</p>
+                                    <p class="sum_price">￥@string.Format("{0:0.00}", item.Goods.NewPrice * item.Number)</p>
                                 </li>
                                 <li class="list_op" style="padding-top:40px;">
                                     <p class="del"><a href="javascript:" class="delBtn">移除商品</a></p>
@@ -366,8 +366,8 @@
 
 
                     @*商品件数 和总价*@
-                    <input type="hidden" name="piece_num" class="textpiece_num" value="" />
-                    <input type="hidden" name="total_text" class="texttotal_text" value="" />
+                    <input type="hidden" name="textpiece_num" class="textpiece_num" value="" />
+                    <input type="hidden" name="texttotal_text" class="texttotal_text" value="" />
                 </form>
 
            </div>
@@ -396,8 +396,8 @@
         <div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a></div>
     </section>
 
-    <script src="~/scripts/cartlist/jquery.min.js"></script>
-    <script src="~/scripts/cartlist/carts.js"></script>
+    <script src="~/scripts/carts/jquery.min.js"></script>
+    <script src="~/scripts/carts/carts.js"></script>
     <div style="text-align:center;">
         <p></p>
     </div>
@@ -423,34 +423,59 @@
                
             }
             $('.textpiece_num').val($('.piece_num').html());
-            $('.texttotal_text').val($('.total_text').html());
+            $('.texttotal_text').val($('.total_text').html().substring(1));
             
             $('#formcart').submit();
         };
        
         $('.reduce').click(function () {
+            //购物车编号
             var cartid = $(this).prev('input').val();
+            //商品数量
             var goodnum = $(this).next('input').val();
-            alert('goodnum=' + goodnum);
+           // $(this).next('input').val(parseInt(goodnum) - 1);
+            //商品单价
+            var price = $(this).parent().parent().prev().find('p[class="price"]').html();
+            var pricethis = parseFloat(price.substring(1)).toFixed(2) * (goodnum - 1);
             if (goodnum>1) {
-                alert('updateurl=' + updateurl + ',cartid=' + cartid);
                 $.post(updateurl, { 'cartid': cartid, 'stryunsuan': '-' }, function () { });
+              //  $(this).parent().parent().next().find('p[class="sum_price"]').html(pricethis);
+               
             } else {
                 alert('商品数量不能少于1');
             }
             
         });
-        $('.plus').click(function () {
-            var cartid = $(this).prev().prev().prev('input').val();
-          alert('updateurl=' + updateurl + ',cartid=' + cartid);
-            $.post(updateurl, { 'cartid': cartid, 'stryunsuan': '+' }, function () { });
+        //移除某件商品
+        $('.delBtn').click(function () {
+            var cartnowid = null;
+            cartnowid = $(this).parent().parent().prev().prev().find('input[name="Cartid"]').val();
+            $.post(deleterul, { 'id': cartnowid }, function () { });
         });
 
-        //删除商品
-       // function deleteCart(id) {
-       //     $.post(deleterul, { 'id': id }, function () {
-        //    });
-       // }
+        $('.plus').click(function () {
+            //商品单价
+            var price = $(this).parent().parent().prev().find('p[class="price"]').html().substring(1);
+           
+            //商品数量
+            var goodnum = $(this).prev('input').val();
+          
+
+           // $(this).prev('input').val(parseInt(goodnum) + 1);
+            //购物车编号
+            var cartid = $(this).prev().prev().prev('input').val();
+            var pricethis = (parseInt(price)) * (parseInt(goodnum) + 1);
+           
+            //使用ajax修改数据库
+            $.post(updateurl, { 'cartid': cartid, 'stryunsuan': '+' }, function () { });
+            //每行总价
+           // $(this).parent().parent().next().find('p[class="sum_price"]').html(pricethis);
+            
+        });
+
+
+        
+       
        
     </script>
 

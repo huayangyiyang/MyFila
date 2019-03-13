@@ -1,0 +1,173 @@
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\ApplicationInsights.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\csc.exe
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\vbc.exe
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\VBCSCompiler.exe
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\WebApp.dll.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\WebApp.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\WebApp.pdb
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.Web.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.ApplicationInsights.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Helpers.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Mvc.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Razor.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Webpages.Deployment.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Webpages.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Webpages.Razor.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.Web.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.ApplicationInsights.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Razor.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Webpages.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Webpages.Deployment.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Webpages.Razor.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Helpers.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\System.Web.Mvc.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\zh-Hans\System.Web.Razor.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\zh-Hans\System.Web.Helpers.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\zh-Hans\System.Web.Mvc.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\obj\Debug\WebApp.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\obj\Debug\WebApp.pdb
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\EntityFramework.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\EntityFramework.SqlServer.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\EntityFramework.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\EntityFramework.SqlServer.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+D:\新建文件夹\CSharp\WebApp\bin\ApplicationInsights.config
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\csc.exe
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\System.Collections.Immutable.dll
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\vbc.exe
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\VBCSCompiler.exe
+D:\新建文件夹\CSharp\WebApp\bin\roslyn\VBCSCompiler.exe.config
+D:\新建文件夹\CSharp\WebApp\bin\WebApp.dll.config
+D:\新建文件夹\CSharp\WebApp\bin\WebApp.dll
+D:\新建文件夹\CSharp\WebApp\bin\WebApp.pdb
+D:\新建文件夹\CSharp\WebApp\bin\EntityFramework.dll
+D:\新建文件夹\CSharp\WebApp\bin\EntityFramework.SqlServer.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.Web.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.WindowsServer.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.ApplicationInsights.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.Web.Infrastructure.dll
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Helpers.dll
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Mvc.dll
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Razor.dll
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Webpages.Deployment.dll
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Webpages.dll
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Webpages.Razor.dll
+D:\新建文件夹\CSharp\WebApp\bin\EntityFramework.xml
+D:\新建文件夹\CSharp\WebApp\bin\EntityFramework.SqlServer.xml
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.Web.xml
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.AI.WindowsServer.xml
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.ApplicationInsights.xml
+D:\新建文件夹\CSharp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Razor.xml
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Webpages.xml
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Webpages.Deployment.xml
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Webpages.Razor.xml
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Helpers.xml
+D:\新建文件夹\CSharp\WebApp\bin\System.Web.Mvc.xml
+D:\新建文件夹\CSharp\WebApp\bin\zh-Hans\EntityFramework.resources.dll
+D:\新建文件夹\CSharp\WebApp\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\新建文件夹\CSharp\WebApp\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\新建文件夹\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.resources.dll
+D:\新建文件夹\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+D:\新建文件夹\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+D:\新建文件夹\CSharp\WebApp\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\新建文件夹\CSharp\WebApp\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\新建文件夹\CSharp\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+D:\新建文件夹\CSharp\WebApp\obj\Debug\WebApp.dll
+D:\新建文件夹\CSharp\WebApp\obj\Debug\WebApp.pdb
+F:\CSharp\WebApp\bin\ApplicationInsights.config
+F:\CSharp\WebApp\bin\roslyn\csc.exe
+F:\CSharp\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\CSharp\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\CSharp\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\CSharp\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\CSharp\WebApp\bin\roslyn\System.Collections.Immutable.dll
+F:\CSharp\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+F:\CSharp\WebApp\bin\roslyn\vbc.exe
+F:\CSharp\WebApp\bin\roslyn\VBCSCompiler.exe
+F:\CSharp\WebApp\bin\roslyn\VBCSCompiler.exe.config
+F:\CSharp\WebApp\bin\WebApp.dll.config
+F:\CSharp\WebApp\bin\WebApp.dll
+F:\CSharp\WebApp\bin\WebApp.pdb
+F:\CSharp\WebApp\bin\EntityFramework.dll
+F:\CSharp\WebApp\bin\EntityFramework.SqlServer.dll
+F:\CSharp\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+F:\CSharp\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+F:\CSharp\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\CSharp\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\CSharp\WebApp\bin\Microsoft.AI.Web.dll
+F:\CSharp\WebApp\bin\Microsoft.AI.WindowsServer.dll
+F:\CSharp\WebApp\bin\Microsoft.ApplicationInsights.dll
+F:\CSharp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\CSharp\WebApp\bin\Microsoft.Web.Infrastructure.dll
+F:\CSharp\WebApp\bin\System.Web.Helpers.dll
+F:\CSharp\WebApp\bin\System.Web.Mvc.dll
+F:\CSharp\WebApp\bin\System.Web.Razor.dll
+F:\CSharp\WebApp\bin\System.Web.Webpages.Deployment.dll
+F:\CSharp\WebApp\bin\System.Web.Webpages.dll
+F:\CSharp\WebApp\bin\System.Web.Webpages.Razor.dll
+F:\CSharp\WebApp\bin\EntityFramework.xml
+F:\CSharp\WebApp\bin\EntityFramework.SqlServer.xml
+F:\CSharp\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+F:\CSharp\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\CSharp\WebApp\bin\Microsoft.AI.Web.xml
+F:\CSharp\WebApp\bin\Microsoft.AI.WindowsServer.xml
+F:\CSharp\WebApp\bin\Microsoft.ApplicationInsights.xml
+F:\CSharp\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\CSharp\WebApp\bin\System.Web.Razor.xml
+F:\CSharp\WebApp\bin\System.Web.Webpages.xml
+F:\CSharp\WebApp\bin\System.Web.Webpages.Deployment.xml
+F:\CSharp\WebApp\bin\System.Web.Webpages.Razor.xml
+F:\CSharp\WebApp\bin\System.Web.Helpers.xml
+F:\CSharp\WebApp\bin\System.Web.Mvc.xml
+F:\CSharp\WebApp\bin\zh-Hans\EntityFramework.resources.dll
+F:\CSharp\WebApp\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\CSharp\WebApp\bin\zh-Hans\System.Web.Razor.resources.dll
+F:\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.resources.dll
+F:\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+F:\CSharp\WebApp\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+F:\CSharp\WebApp\bin\zh-Hans\System.Web.Helpers.resources.dll
+F:\CSharp\WebApp\bin\zh-Hans\System.Web.Mvc.resources.dll
+F:\CSharp\WebApp\obj\Debug\WebApp.dll
+F:\CSharp\WebApp\obj\Debug\WebApp.pdb

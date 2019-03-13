@@ -1,0 +1,4 @@
+F:\CSharp\AddOrderNumber\bin\Debug\AddOrderNumber.dll
+F:\CSharp\AddOrderNumber\bin\Debug\AddOrderNumber.pdb
+F:\CSharp\AddOrderNumber\obj\Debug\AddOrderNumber.dll
+F:\CSharp\AddOrderNumber\obj\Debug\AddOrderNumber.pdb

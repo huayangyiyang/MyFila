@@ -10,12 +10,12 @@ namespace FilaShop.Controllers
     
     public class TestController : Controller
     {
-        private MyFilaEntities db = new MyFilaEntities();
+        private MyShopEntities db = new MyShopEntities();
         // GET: Test
         public ActionResult List()
         {
-
-            return View();
+            ViewBag.Area = db.Area.ToList();
+            return View(db.Address.ToList());
         }
 
 

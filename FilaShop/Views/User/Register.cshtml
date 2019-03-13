@@ -5,7 +5,7 @@
     <title>注册成为会员</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <link href="~/content/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" async="" src="~/scripts/analytics.js"></script>
     <script src="~/scripts/hm.js"></script>
     <script src="~/scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -13,22 +13,22 @@
     <script src="~/scripts/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 
     <!--[if lt IE 9]>
-    <script src="static/js/html5fix.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="Scripts/html5fix.js" type="text/javascript" charset="utf-8" ></script>
     <![endif]-->
 
-    <script async="" src="static/js/17129caf57204fb9be31d78d8fe5ff78.js"></script>
+    <script async="" src="~/scripts/cdbea393ea2f4cd6ad0cdd0b31e76f16.js"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'UA-111270368-1');
     </script>
-    <link rel="stylesheet" href="~/content/theme.css">
-    <link rel="stylesheet" href="~/content/global.css">
-    <link rel="stylesheet" href="~/content/login.css">
-    <link rel="stylesheet" href="~/content/public.css">
-    <link rel="stylesheet" href="~/content/header.css">
-    <link rel="stylesheet" href="~/content/common_180905.css">
+    <link rel="stylesheet" href="~/Content/theme.css">
+    <link rel="stylesheet" href="~/Content/global.css">
+    <link rel="stylesheet" href="~/Content/login.css">
+    <link rel="stylesheet" href="~/Content/public.css">
+    <link rel="stylesheet" href="~/Content/header.css">
+    <link rel="stylesheet" href="~/Content/common_180905.css">
     <script src="~/scripts/jquery.validate.min.js"></script>
     <script src="~/scripts/validate-extends.js"></script>
     <script src="~/scripts/message.js"></script>
@@ -43,7 +43,7 @@
     <header class="fila-header">
         <div class="logo">
             <a href="/">
-                <img src="~/Images/fila_blue_150.png" alt="">
+                <img src="~/images/fila_blue_150.png" alt="">
             </a>
         </div>
         <div class="fila-navbar">
@@ -88,47 +88,44 @@
             <div class="panel panel-default signup-panel">
                 <div class="panel-heading clearfix">
                     <span>欢迎加入</span>
-                    <a href="/"><img src="~/Images/login-logo.png" alt=""></a>
-                    <!-- <a href="/"><img src="static/picture/login-logo.png" alt=""></a> -->
+                    <a href="/"><img src="~/images/login-logo.png" alt=""></a>
+                    <!-- <a href="/"><img src="Picture/login-logo.png" alt=""></a> -->
                 </div>
                 <div class="panel-body">
-                    <form id="member_signup_form" class="form-horizontal" action="/passport-create.html" method="post">
+                    <form id="member_signup_form" class="form-horizontal" action="~/User/Register" method="post">
                         <!-- 登陆后跳转地址 -->
                         <input type="hidden" name="forward" value="">
                         <div class="form-group">
                             <div class="col-md-5">
-                                <input type="text" autocomplete='off' name="pam_account[login_name]" class="form-control" id="input_login_name" placeholder="手机号">
+                                <input type="text" autocomplete='off' name="Username" class="form-control" id="input_login_name" placeholder="用户名">
+                                <input type="hidden" class="returnurl" name="returnurl" value="@ViewBag.returnurl" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <input type="text" autocomplete='off' name="Nickname" class="form-control" id="input_nick_name" placeholder="昵称">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-5">
+                                <input type="password" name="Password" class="form-control" id="input_login_password" placeholder="密码">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-5">
-                                <input type="password" name="pam_account[login_password]" class="form-control" id="input_login_password" placeholder="密码">
+
+                                <input type="password" name="ConfirmPassword" class="form-control" id="input_psw_confirm" placeholder="确认密码">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-5">
-                                <input type="password" name="pam_account[psw_confirm]" class="form-control" id="input_psw_confirm" placeholder="确认密码">
+                                <input type="text" name="VCode" class="form-control" id="vcode" placeholder="图形验证码">
+                                <img src="~/User/VerifyCode" alt="验证码" onclick="$(this).prop('src',$(this).attr('data-src')+'?'+new Date().getTime())" data-src="../User/VerifyCode" class="posa imgcode" style="right: 15px;top: 10px;" />
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-md-5">
-                                <input type="text" name="img_vcode" class="form-control" id="img_vcode" placeholder="图形验证码">
-                                <img src="static/picture/vcode-index-passport.html" alt="验证码" onclick="$(this).prop('src',$(this).attr('data-src')+'?'+new Date().getTime())" data-src="/vcode-index-passport.html" class="posa imgcode" style="right: 15px;top: 10px;" />
-                            </div>
-                        </div>
-                        <div class="form-group get-vcode">
-                            <div class="col-md-5">
-                                <input type="text" name="vcode" class="form-control" id="input_vcode" placeholder="手机验证码">
-                            </div>
-                            <!-- <div class="col-md-2">
-                                <div class="local-vcode">
-                                    <img src="static/picture/vcode-index-passport.html" alt="验证码" />
-                                    <button type="button" class="btn btn-link btn-sm" onclick="$(this).prev().prop('src',$(this).attr('data-src')+'?'+new Date().getTime())" data-src="/vcode-index-passport.html" >更换验证码</button>
-                                </div> -->
-                            <div class="mobile-vcode" style="display:block;">
-                                <button type="button" data-loading-text="正在发送..." class="btn btn-default">获取验证码</button>
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <div class="col-md-5">
                                 <div class="checkbox">
@@ -146,7 +143,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-5">
-                                <a class="text-center" href="/passport-login.html">已有账号？立即登录</a>
+                                <a class="text-center" href="~/User/Login??returnUrl=@ViewBag.returnurl">已有账号？立即登录</a>
                             </div>
                         </div>
                     </form>
@@ -249,20 +246,26 @@
     */
 
     void function(signup_form){
+
         function check_input(){
             var input_login_name = $.trim($('#input_login_name').val());
             var input_login_password = $.trim($('#input_login_password').val());
             var input_psw_confirm = $.trim($('#input_psw_confirm').val());
             var img_vcode = $.trim($('#img_vcode').val());
             var input_vcode = $.trim($('#input_vcode').val());
-            var mobile = /^1[3|4|5|7|8|6|9]\d{9}$/;
-            if(input_login_name=='' || !mobile.test(input_login_name)){
-                $('#input_login_name').focus().siblings('.error').remove().end().after('<div class="error error-normal">请输入正确的手机号码！</div>');
+
+            var usernameRegExp = /^[a-zA-Z\d]{6,}$/;
+
+            // 验证用户名
+            if (input_login_name == '' || !usernameRegExp.test(input_login_name)) {
+                $('#input_login_name').focus().siblings('.error').remove().end().after('<div class="error error-normal">用户名至少为六位</div>');
                 $('.imgcode').click();
                 return false;
             }else{
                 $('#input_login_name').siblings('.error').remove() ;
             }
+
+            // 验证密码是否为空
             if(input_login_password==''){
                 $('#input_login_password').focus().siblings('.error').remove().end().after('<div class="error error-normal">请输入密码！</div>');
                 $('.imgcode').click();
@@ -270,6 +273,8 @@
             }else{
                 $('#input_login_password').siblings('.error').remove() ;
             }
+
+            // 验证密码是否小于6位
             if(input_login_password.length<6){
                 $('#input_login_password').focus().siblings('.error').remove().end().after('<div class="error error-normal">密码长度不能小于6位！</div>');
                 $('.imgcode').click();
@@ -277,6 +282,8 @@
             }else{
                 $('#input_login_password').siblings('.error').remove() ;
             }
+
+            // 验证确认密码是否为空
             if(input_psw_confirm==''){
                 $('#input_psw_confirm').focus().siblings('.error').remove().end().after('<div class="error error-normal">请再次输入密码！</div>');
                 $('.imgcode').click();
@@ -284,6 +291,8 @@
             }else{
                 $('#input_psw_confirm').siblings('.error').remove() ;
             }
+
+            // 验证确认密码和密码是否相同
             if(input_psw_confirm!=input_login_password){
                 $('#input_psw_confirm').focus().siblings('.error').remove().end().after('<div class="error error-normal">重复密码不一致！</div>');
                 $('.imgcode').click();
@@ -292,53 +301,58 @@
                 $('#input_psw_confirm').siblings('.error').remove() ;
             }
         }
+
+        // 注册表单提交时
         signup_form.on('submit',function(e){
-           e.stopPropagation();
-            check_input();
+            e.stopPropagation();            // 阻止事件冒泡
+            check_input();                  // 调用验证表单的函数
             signup_form.find('button[type=submit]').button('loading');
-            $.post(signup_form.prop('action'),signup_form.serialize(),function(re){
-                if(re.error){
-                    if(re.error=='手机短信验证码不正确'){
-                        $('#input_vcode').focus().siblings('.error').remove().end().after('<div class="error">手机短信验证码不正确!</div>');
-                        $('.imgcode').click();
-                    }else{
-                         $('#input_vcode').siblings('.error').remove() ;
-                    }
-                    if(re.error=='图形验证码不正确'){
-                      $('#img_vcode').focus().siblings('.error').remove().end().after('<div class="error">图形验证码不正确!</div>');
+
+            $.post('/User/AjaxRegister',signup_form.serialize(),function(re){
+                // re 是 ajax 响应的数据
+
+
+                console.log(re);
+
+                // 错误
+                if (re.Result==1) {
+
+                    if (re.ErrorMessage == '验证码错误') {
+                        $('#vcode').focus().siblings('.error').remove().end().after('<div class="error">图形验证码不正确!</div>');
                       $('.imgcode').click();
                     }else{
-                          $('#img_vcode').siblings('.error').remove() ;
+                        $('#vcode').siblings('.error').remove();
                     }
-                    if(re.error=='该手机号已被注册，请更换一个'){
-                      $('#input_login_name').focus().siblings('.error').remove().end().after('<div class="error">该手机已经被注册</div>');
+
+                    if (re.ErrorMessage == "用户名已被使用") {
+                      $('#input_login_name').focus().siblings('.error').remove().end().after('<div class="error">该用户名已经被注册</div>');
                       $('.imgcode').click();
                     }else{
                           $('#input_login_name').siblings('.error').remove() ;
                     }
                 }
-                if(re.success){
+
+                // ajax正确
+                if (re.Result==0) {
                    $('#input_vcode').siblings('.error').remove() ;
-                    location = re.redirect;
+                   // location.href = re.redirect;
+                    // 用户名 没有重复， 并且验证码正确
+
+                   if (check_input() != false) {
+                       // 提交表单，写入数据库
+                       // $('#member_signup_form').submit();
+                       $.post('/User/Register', signup_form.serialize(), function () {
+                           window.location.href = '/User/Login';
+                       });
+                   }
+
                 }
                 signup_form.find('button[type=submit]').button('reset');
             },'json');
             return false;
         });
 
-        //获得短信验证码
-        var _cutdown_sms = function(btn){
-            btn.addClass('disabled');
-            var cutdown = 90,btn_o_text = btn.text(),timer =
-            setInterval((function(){
-                btn.text((cutdown--)+'秒后可重试');
-                if(cutdown<1){
-                    clearInterval(timer);
-                    btn.text(btn_o_text).removeClass('disabled');
-                }
-                return arguments.callee;
-            })(),1000);
-        };
+
      signup_form.find('.mobile-vcode button').on('click',function(e){
           check_input();
           if($(document).find('.error-normal').length>0){
@@ -357,16 +371,16 @@
             }else{
                 $('#input_login_name').siblings('.error').remove() ;
             }
-            $.post('/passport-send_vcode_sms.html',{mobile:$('#input_login_name').val(),img_vcode:$("#img_vcode").val()},function(re){
+            $.post('/passport-send_vcode_sms.html', { mobile: $('#input_login_name').val(), img_vcode: $("#vcode").val() }, function (re) {
                 if(re && re.error){
                     btn.removeClass('disabled');
                     if(re.error=="图形验证码不正确"){
-                     $('#img_vcode').focus().siblings('.error').remove().end().after('<div class="error">请输入正确的验证码！</div>');
+                        $('#vcode').focus().siblings('.error').remove().end().after('<div class="error">请输入正确的验证码！</div>');
                      $('.imgcode').click();
                      return false;
                     }
                     if(re.error=="该手机号已被注册，请更换一个"){
-                       $('#img_vcode').siblings('.error').remove();
+                        $('#vcode').siblings('.error').remove();
                        $('#input_login_name').focus().siblings('.error').remove().end().after('<div class="error">该手机已经被注册!</div>');
                       $('.imgcode').click();
                        return false;
@@ -374,26 +388,8 @@
                   }
                 if(re && re.success){
                   btn.addClass('disabled');
-                   $('#img_vcode').siblings('.error').remove();
-                   /*$('#img_vcode').on('blur',function(e){
-                        var ipt = $('#input_login_name');
-                        $.post('/passport-check_login_name.html',{'pam_account[login_name]':ipt.val()},function(re){
-                            if(re.error){
-                                ipt.focus().siblings('.error').remove().end().after('<div class="error">该账户已被注册！</div>');
-                                $('.imgcode').click();
-                            }else if(re.success){
-                                ipt.siblings('.error').remove();
-                                if(re.data && re.data.is_mobile){
-                                    $('.local-vcode').hide();
-                                    $('.mobile-vcode').show();
-                                }else{
-                                    $('.local-vcode').show();
-                                    $('.mobile-vcode').hide();
-                                }
-                            }
-                        },'json');
-                         return false;
-                    });*/
+                  $('#vcode').siblings('.error').remove();
+
                     _cutdown_sms(btn);
                 }
             },'json');
@@ -422,7 +418,7 @@
                 <a class="ft-sina" href="http://weibo.com/fila2010?refer_flag=1001030101_" target="_blank"></a>
                 <a class="ft-weixin">
                     <div class="ft-weixin-tip">
-                        <img src="~/Images/weixin0525.jpg">
+                        <img src="~/images/weixin0525.jpg">
                     </div>
                 </a>
             </div>
@@ -437,7 +433,7 @@
     <div class="fixed-toolbar">
         <a class="fixed-service" onclick="xiaoneng_isExitsFunction();" href="javascript:;">客服</a>
     </div>
-    <script src="~/scripts/header_180905.js"></script>
+    <script src="~/Scripts/header_180905.js"></script>
     <script charset="utf-8">
 /*购物数量 事件拦截开始*/
 

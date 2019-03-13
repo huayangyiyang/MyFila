@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="ReceiverName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AreaId" Type="Int32" />
+    <Property Name="DetailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Area" Relationship="Self.FK__Address__AreaId__37A5467C" FromRole="Address" ToRole="Area" />
+    <NavigationProperty Name="Userinfo" Relationship="Self.FK__Address__UserId__36B12243" FromRole="Address" ToRole="Userinfo" />
+  </EntityType>
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" />
+    <NavigationProperty Name="Address" Relationship="Self.FK__Address__AreaId__37A5467C" FromRole="Area" ToRole="Address" />
+    <NavigationProperty Name="Area1" Relationship="Self.FK__Area__ParentId__1273C1CD" FromRole="Area" ToRole="Area1" />
+    <NavigationProperty Name="Area2" Relationship="Self.FK__Area__ParentId__1273C1CD" FromRole="Area1" ToRole="Area" />
+  </EntityType>
+  <EntityType Name="cart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="goodsname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="goodscolor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="goodssize" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="goodsnumber" Type="Int32" />
+    <Property Name="goodsnewprice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="goodsimage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Userinfo" Relationship="Self.FK__cart__UserId__3F466844" FromRole="cart" ToRole="Userinfo" />
+  </EntityType>
+  <EntityType Name="Goods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TypeId" Type="Int32" />
+    <Property Name="OldPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NewPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GoodsColorId" Type="Int32" />
+    <Property Name="GoodsSizeId" Type="Int32" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Saled" Type="Int32" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="OnSale" Type="Boolean" />
+    <NavigationProperty Name="GoodsColor" Relationship="Self.FK__Goods__GoodsColo__20C1E124" FromRole="Goods" ToRole="GoodsColor" />
+    <NavigationProperty Name="GoodsSize" Relationship="Self.FK__Goods__GoodsSize__21B6055D" FromRole="Goods" ToRole="GoodsSize" />
+    <NavigationProperty Name="GoodsType" Relationship="Self.FK__Goods__TypeId__1FCDBCEB" FromRole="Goods" ToRole="GoodsType" />
+    <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__Goods__276EDEB3" FromRole="Goods" ToRole="GoodsComment" />
+    <NavigationProperty Name="GoodsImage" Relationship="Self.FK__GoodsImag__Goods__3C69FB99" FromRole="Goods" ToRole="GoodsImage" />
+  </EntityType>
+  <EntityType Name="GoodsColor">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Red" Type="Int32" />
+    <Property Name="Green" Type="Int32" />
+    <Property Name="Blue" Type="Int32" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__GoodsColo__20C1E124" FromRole="GoodsColor" ToRole="Goods" />
+  </EntityType>
+  <EntityType Name="GoodsComment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodsId" Type="Int32" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Star" Type="Int32" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK__GoodsComm__Goods__276EDEB3" FromRole="GoodsComment" ToRole="Goods" />
+    <NavigationProperty Name="Userinfo" Relationship="Self.FK__GoodsComm__UserI__286302EC" FromRole="GoodsComment" ToRole="Userinfo" />
+  </EntityType>
+  <EntityType Name="GoodsImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoodsId" Type="Int32" />
+    <Property Name="BigImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SmallImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK__GoodsImag__Goods__3C69FB99" FromRole="GoodsImage" ToRole="Goods" />
+  </EntityType>
+  <EntityType Name="GoodsSize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__GoodsSize__21B6055D" FromRole="GoodsSize" ToRole="Goods" />
+  </EntityType>
+  <EntityType Name="GoodsType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="PId" Type="Int32" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__TypeId__1FCDBCEB" FromRole="GoodsType" ToRole="Goods" />
+    <NavigationProperty Name="GoodsType1" Relationship="Self.FK__GoodsType__PId__1CF15040" FromRole="GoodsType" ToRole="GoodsType1" />
+    <NavigationProperty Name="GoodsType2" Relationship="Self.FK__GoodsType__PId__1CF15040" FromRole="GoodsType1" ToRole="GoodsType" />
+  </EntityType>
+  <EntityType Name="Sex">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Userinfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Nickname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Address" Relationship="Self.FK__Address__UserId__36B12243" FromRole="Userinfo" ToRole="Address" />
+    <NavigationProperty Name="cart" Relationship="Self.FK__cart__UserId__3F466844" FromRole="Userinfo" ToRole="cart" />
+    <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__UserI__286302EC" FromRole="Userinfo" ToRole="GoodsComment" />
+  </EntityType>
+  <Association Name="FK__Address__AreaId__37A5467C">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Address__UserId__36B12243">
+    <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+    <End Role="Address" Type="Self.Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userinfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Area__ParentId__1273C1CD">
+    <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+    <End Role="Area1" Type="Self.Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Area1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cart__UserId__3F466844">
+    <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+    <End Role="cart" Type="Self.cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userinfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="cart">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goods__GoodsColo__20C1E124">
+    <End Role="GoodsColor" Type="Self.GoodsColor" Multiplicity="0..1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsColor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="GoodsColorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goods__GoodsSize__21B6055D">
+    <End Role="GoodsSize" Type="Self.GoodsSize" Multiplicity="0..1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsSize">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="GoodsSizeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Goods__TypeId__1FCDBCEB">
+    <End Role="GoodsType" Type="Self.GoodsType" Multiplicity="0..1" />
+    <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Goods">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GoodsComm__Goods__276EDEB3">
+    <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+    <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoodsComment">
+        <PropertyRef Name="GoodsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GoodsImag__Goods__3C69FB99">
+    <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+    <End Role="GoodsImage" Type="Self.GoodsImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goods">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoodsImage">
+        <PropertyRef Name="GoodsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GoodsComm__UserI__286302EC">
+    <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+    <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Userinfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoodsComment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GoodsType__PId__1CF15040">
+    <End Role="GoodsType" Type="Self.GoodsType" Multiplicity="0..1" />
+    <End Role="GoodsType1" Type="Self.GoodsType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GoodsType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GoodsType1">
+        <PropertyRef Name="PId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MyShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Address" EntityType="Self.Address" />
+    <EntitySet Name="Area" EntityType="Self.Area" />
+    <EntitySet Name="cart" EntityType="Self.cart" />
+    <EntitySet Name="Goods" EntityType="Self.Goods" />
+    <EntitySet Name="GoodsColor" EntityType="Self.GoodsColor" />
+    <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" />
+    <EntitySet Name="GoodsImage" EntityType="Self.GoodsImage" />
+    <EntitySet Name="GoodsSize" EntityType="Self.GoodsSize" />
+    <EntitySet Name="GoodsType" EntityType="Self.GoodsType" />
+    <EntitySet Name="Sex" EntityType="Self.Sex" />
+    <EntitySet Name="Userinfo" EntityType="Self.Userinfo" />
+    <AssociationSet Name="FK__Address__AreaId__37A5467C" Association="Self.FK__Address__AreaId__37A5467C">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Address__UserId__36B12243" Association="Self.FK__Address__UserId__36B12243">
+      <End Role="Userinfo" EntitySet="Userinfo" />
+      <End Role="Address" EntitySet="Address" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Area__ParentId__1273C1CD" Association="Self.FK__Area__ParentId__1273C1CD">
+      <End Role="Area" EntitySet="Area" />
+      <End Role="Area1" EntitySet="Area" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cart__UserId__3F466844" Association="Self.FK__cart__UserId__3F466844">
+      <End Role="Userinfo" EntitySet="Userinfo" />
+      <End Role="cart" EntitySet="cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goods__GoodsColo__20C1E124" Association="Self.FK__Goods__GoodsColo__20C1E124">
+      <End Role="GoodsColor" EntitySet="GoodsColor" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goods__GoodsSize__21B6055D" Association="Self.FK__Goods__GoodsSize__21B6055D">
+      <End Role="GoodsSize" EntitySet="GoodsSize" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Goods__TypeId__1FCDBCEB" Association="Self.FK__Goods__TypeId__1FCDBCEB">
+      <End Role="GoodsType" EntitySet="GoodsType" />
+      <End Role="Goods" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GoodsComm__Goods__276EDEB3" Association="Self.FK__GoodsComm__Goods__276EDEB3">
+      <End Role="Goods" EntitySet="Goods" />
+      <End Role="GoodsComment" EntitySet="GoodsComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GoodsImag__Goods__3C69FB99" Association="Self.FK__GoodsImag__Goods__3C69FB99">
+      <End Role="Goods" EntitySet="Goods" />
+      <End Role="GoodsImage" EntitySet="GoodsImage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GoodsComm__UserI__286302EC" Association="Self.FK__GoodsComm__UserI__286302EC">
+      <End Role="Userinfo" EntitySet="Userinfo" />
+      <End Role="GoodsComment" EntitySet="GoodsComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GoodsType__PId__1CF15040" Association="Self.FK__GoodsType__PId__1CF15040">
+      <End Role="GoodsType" EntitySet="GoodsType" />
+      <End Role="GoodsType1" EntitySet="GoodsType" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

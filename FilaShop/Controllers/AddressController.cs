@@ -1,4 +1,5 @@
-﻿using FilaShop.Models;
+﻿using FilaShop.Filter;
+using FilaShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Web.Mvc;
 
 namespace FilaShop.Controllers
 {
+    [LoginFilter]
     public class AddressController : Controller
     {
-        private MyFilaEntities db = new MyFilaEntities();
+        private MyShopEntities db = new MyShopEntities();
         /// <summary>
         /// 删除地址
         /// </summary>
@@ -26,8 +28,8 @@ namespace FilaShop.Controllers
 
             //由id从数据库 查询到 用户要删除的数据完整信息
             Address address= db.Address.Where(a=>a.Id== addressid && a.UserId==user.Id).FirstOrDefault();
-            //判断地址对象的Isdefault 是True 或false
-            // Address Isdefaultaddress = new Address();
+            //判断地址对象的IsDefault 是True 或false
+            // Address IsDefaultaddress = new Address();
             Address firstaddress;
             if (address.Isdefault==true)
             {
@@ -60,10 +62,10 @@ namespace FilaShop.Controllers
             {
                 address.UserId = user.Id;
                 
-                if (address.Isdefault==true)
+                if (address.Isdefault == true)
                 {
                     //默认收货地址只能有1个，如果其他的默认收货地址，要把其他收货地址更改为非默认的
-                   var oleaddresslist =  db.Address.Where(a => a.UserId == user.Id && a.Isdefault ==true).FirstOrDefault();
+                   var oleaddresslist =  db.Address.Where(a => a.UserId == user.Id && a.Isdefault == true).FirstOrDefault();
 
                     if (oleaddresslist !=null)
                     {
@@ -106,7 +108,7 @@ namespace FilaShop.Controllers
             }
             Address address = db.Address.Find(addressid);
             var address2 = db.Address.Where(a => a.Isdefault == true && a.UserId == address.UserId).FirstOrDefault();
-            if (address.Isdefault ==false)
+            if (address.Isdefault == false)
             {
                 if (address2!=null)
                 {
@@ -142,10 +144,10 @@ namespace FilaShop.Controllers
             //查找数据库中的本条记录的isdetail是true或false
              var oldaddress=db.Address.Find(naddress.Id);
             Address firstaddress;
-            if (oldaddress!=null && oldaddress.Isdefault==true)
+            if (oldaddress!=null && oldaddress.Isdefault == true)
             {
                 //如果把默认值改为false，则选择其余中的第一项设为默认值
-                if (naddress.Isdefault == false || naddress.Isdefault==false )
+                if (naddress.Isdefault == false || naddress.Isdefault == false )
                 {
                     firstaddress= db.Address.Where(a => a.UserId == user.Id && a.Id != naddress.Id).FirstOrDefault();
                     firstaddress.Isdefault = true;
@@ -180,7 +182,24 @@ namespace FilaShop.Controllers
                 return RedirectToAction("Login", "User");
             }
 
+            ViewBag.user = user;
+            //当前用户的购物车数量
+            var cartlist = db.Cart.Where(c => c.UserId == user.Id);
+            int? sum = 0;
+            if (cartlist!=null)
+            {
+                foreach (var item in cartlist)
+                {
+                    sum += item.Number;
+                }
+            }
+            ViewBag.sum = sum;
+
+            //本用户的地址列表
             IEnumerable<Address> addresslist = db.Address.Where(a => a.UserId == user.Id);
+
+            //获取省级
+            ViewBag.province = db.Area.Where(a => a.ParentId == null).ToList();
 
             return View(addresslist.ToList());
         }

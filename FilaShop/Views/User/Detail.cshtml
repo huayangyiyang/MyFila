@@ -1,6 +1,7 @@
 ﻿@using FilaShop.Models
 @model Userinfo
 
+
 <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
@@ -36,12 +37,34 @@
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap-datetimepicker.min.css">
     <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.zh-cn.js"></script>
+    <style>
+        .showmesssagename{
+            color:red;
+            font-size:12px;
+        }
+        .showmesssagenick{
+            color:red;
+            font-size:12px;
+        }
+        .showmesssagepwd{
+            color:red;
+            font-size:12px;
+        }
+
+        .showright{
+            width:15px;
+            height:15px;
+        }
+        .updaeuser{
+            display:none;
+        }
+    </style>
 </head>
 <body>
 
     <header class="fila-header">
         <div class="logo">
-            <a href="/">
+            <a href="~/Product/List">
                 <img src="~/Images/fila_blue_150.png" alt="">
             </a>
         </div>
@@ -98,22 +121,22 @@
                                     </a>
                                 </li>
                                 <li data-myaction="form" class="mm-site_member-form">
-                                    <a href="/my-form.html">
+                                    <a href="#">
                                         <span>晒单评价</span>
                                     </a>
                                 </li>
                                 <li data-myaction="order" class="mm-site_member-order">
-                                    <a href="/aftersales-order-1ao.html">
+                                    <a href="#">
                                         <span>售后申请</span>
                                     </a>
                                 </li>
                                 <li data-myaction="request" class="mm-site_member-request">
-                                    <a href="/aftersales-request-1ar.html">
+                                    <a href="#">
                                         <span>售后处理列表</span>
                                     </a>
                                 </li>
                                 <li data-myaction="index" class="mm-site_member-index">
-                                    <a href="/mysale.html">
+                                    <a href="#">
                                         <span>我的预约</span>
                                     </a>
                                 </li>
@@ -125,42 +148,42 @@
                         <dd>
                             <ul class="nav nav-pills nav-stacked">
                                 <li data-myaction="setting" class="mm-site_member-setting active">
-                                    <a href="/my-setting.html">
+                                    <a href="~/User/Detail/@Model.Id">
                                         <span>会员信息</span>
                                     </a>
                                 </li>
                                 <li data-myaction="securitycenter" class="mm-site_member-securitycenter">
-                                    <a href="/my-securitycenter.html">
+                                    <a href="#">
                                         <span>账户安全</span>
                                     </a>
                                 </li>
                                 <li data-myaction="exchange_coupon" class="mm-site_exchange-exchange_coupon">
-                                    <a href="/integralexchange-exchange_coupon.html">
+                                    <a href="#">
                                         <span>积分商城</span>
                                     </a>
                                 </li>
                                 <li data-myaction="integral" class="mm-site_member-integral">
-                                    <a href="/my-integral.html">
+                                    <a href="#">
                                         <span>我的积分</span>
                                     </a>
                                 </li>
                                 <li data-myaction="favorite" class="mm-site_member-favorite">
-                                    <a href="/my-favorite.html">
+                                    <a href="#">
                                         <span>我的收藏</span>
                                     </a>
                                 </li>
                                 <li data-myaction="coupon" class="mm-site_member-coupon">
-                                    <a href="/my-coupon.html">
+                                    <a href="#">
                                         <span>我的优惠券</span>
                                     </a>
                                 </li>
                                 <li data-myaction="message" class="mm-site_member-message">
-                                    <a href="/my-message.html">
+                                    <a href="#">
                                         <span>我的消息</span>
                                     </a>
                                 </li>
                                 <li data-myaction="index" class="mm-site_member-index">
-                                    <a href="/invoice-index-invoice.html">
+                                    <a href="#">
                                         <span>增票资质</span>
                                     </a>
                                 </li>
@@ -178,36 +201,26 @@
                         <div class="page-header">
                             <h1>会员信息</h1>
                         </div>
-                        <form id="member_setting_form" class="form-horizontal" action="/my-save_setting.html" method="post">
+                        <form id="member_setting_form" class="form-horizontal" action="/User/Update" method="post">
                             <table class="table info-table">
                                 <tr>
                                     <td width="150" class="text-center">
                                         <img class="img-thumbnail img-circle" width="100" height="100" src="~/Images/d2827718db427c364b5d724ece3ecd2b.jpg" alt="17621989302头像" />
                                         <div class="mt20">
-                                            <a href="/my-avatar.html" class="theme-btn">设置头像</a>
+                                            <a href="#" class="theme-btn">设置头像</a>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="showuser">
+
                                         <p>
-                                            <label class="title"><span style="color:red;">*</span>姓名:</label>
-                                            <input type="text" id="name-form-control" class="form-control name-form-control" name="contact[name]" value="17621989302" placeholder="填写姓名" required>
+                                            <label class="title"><span style="color:red;">*</span>用户名:</label>@Model.Username
+                                            
                                         </p>
                                         <p>
-                                            <label class="title"><span style="color:red;">*</span>手机号:</label>
-                                            17621989302
+                                            <label class="title"><span style="color:red;">*</span>昵称:</label>@Model.Nickname
+                                            
                                         </p>
-                                        <p>
-                                            <label class="title">邮箱:</label>
-                                            <a style="color:#FF0000" href="/my-set_pam_email.html">去绑定邮箱</a>
-                                        </p>
-                                        <!-- <p>
-                                            <label class="title">
-                                            余额:
-                                                                    </label>
-                                            <span class="pr20">
-                                                                                0
-                                                                        </span>
-                                            币                    </p> -->
+                                        
                                         <p>
                                             <label class="title">等级:</label>
                                             <!-- <a href="/my-explog.html"> -->
@@ -215,211 +228,48 @@
                                             <!-- </a> -->
                                         </p>
                                         <!--  -->
-                                        <div class="form-group">
-                                            <label class="title"><span style="color:red;">*</span>生日:</label>
-                                            <div class="input-group date input-append form_datetime clearfix form-control" style="position: relative;">
-                                                <!--                             <input type="text" value="" name="contact[birthday]" required>
-                                                 -->
-                                                <input type="text" value="" name="contact[birthday]" required>
-                                                <button class="btn default date-set" type="button" style="position: absolute;right: 0;top: 0;">
-                                                    <i class="icon-th glyphicon glyphicon-calendar"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <script>
-                        $('.form_datetime').datetimepicker({
-                            format: "yyyy-mm-dd",
-                            autoclose: true,
-                            todayBtn: true,
-                            minView :2,
-                            pickerPosition: "bottom-left",
-                            language: 'zh-CN'
-                        });
-                                        </script>
-
-                                        <!-- 性别 -->
-                                        <div class="form-group">
-                                            <label class="title"><span style="color:red;">*</span>性别:</label>
-                                            <select class="form-control input-xsmall" name="contact[sex]" required>
-                                                <option value="2">-</option>
-                                                <option value="0" selected>女</option>
-                                                <option value="1">男</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="title">地区:</label>
-                                            <div class="input-group  region" id="el_4de96f0">
-                                                <input name="contact[area]" data-v="" package="mainland" type="hidden" value="" />
-                                                <select data-level-index="0" class="form-control input-xsmall"><option value="_NULL_">请选择</option></select>
-                                                <select data-level-index="1" class="form-control input-xsmall" style="visibility:hidden"></select>
-                                                <select data-level-index="2" class="form-control input-xsmall" style="visibility:hidden"></select>
-                                            </div>
-
-                                            <script>
-
-!function(){
 
 
-    var region_js_path ='http://www.fila.cn/public/javascripts/';
-    var region_data_path ='/data/misc/';
-    var callback = '';
 
-    var _region_init = function(region_panel_id,region_data,callback){
-        region_sel.init(region_panel_id,region_data, callback);//REGION_DATA FROM SCRIPT
-    }
-    function region_init(){
-        if( typeof(region_sel)!='undefined'){
-            return _region_init($('#el_4de96f0'), REGION_DATA,callback);
-        }else{
-            $.ajax({
-                url:region_js_path+'region_sel.js?v62dd',
-                dataType:'script',
-                complete:function(){
-                    _region_init($('#el_4de96f0'), REGION_DATA,callback);
-                }
-            });
-        }
-    }
-    if(typeof(REGION_DATA)=='undefined'){
-        $.ajax({
-            url:region_data_path + 'region_data.js?v62dd',
-            dataType:'script',
-            complete:function(){
-                region_init();
-            }
-        });
-    }else{
-        region_init();
-    }
-}();
-
-
-                                            </script>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="title">联系地址:</label>
-                                            <input class="form-control " type="text" name="contact[addr]" value="" id="el_4de96f1" />
-                                        </div>
-                                        <!-- 职业 -->
-                                        <div class="form-group">
-                                            <label class="title"><span style="color:red;">*</span>职业:</label>
-                                            <select class="form-control input-xsmall" name="contact[career]" required>
-                                                <option value="">请选择</option>
-                                                <option value="公务员、政府/事业机构雇员">公务员、政府/事业机构雇员</option>
-                                                <option value="专业人士（如律师/医生/老师/咨询顾问）">专业人士（如律师/医生/老师/咨询顾问）</option>
-                                                <option value="企业中高层管理人员">企业中高层管理人员</option>
-                                                <option value="企业一般职员">企业一般职员</option>
-                                                <option value="自由职业">自由职业</option>
-                                                <option value="家庭主妇">家庭主妇</option>
-                                                <option value="学生">学生</option>
-                                                <option value="其他">其他</option>
-                                            </select>
-                                        </div>
-
-                                        <!-- 宝宝生日、性别 -->
-                                        <div class="form-group">
-                                            <label class="title">宝宝生日:</label>
-                                            <div class="input-group date input-append form_datetime clearfix form-control" style="position: relative;">
-                                                <input type="text" value="" name="contact[baby_birthday]">
-                                                <button class="btn default date-set" type="button" style="position: absolute;right: 0;top: 0;">
-                                                    <i class="icon-th glyphicon glyphicon-calendar"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <script>
-                        $('.form_datetime').datetimepicker({
-                            format: "yyyy-mm-dd",
-                            autoclose: true,
-                            todayBtn: true,
-                            minView :2,
-                            pickerPosition: "bottom-left",
-                            language: 'zh-CN'
-                        });
-                                        </script>
-                                        <div class="form-group">
-                                            <label class="title">宝宝性别:</label>
-                                            <select class="form-control input-xsmall" name="contact[baby_gender]">
-                                                <option value="2">-</option>
-                                                <option value="0" selected>女</option>
-                                                <option value="1">男</option>
-                                            </select>
-                                        </div>
-                                        <!-- 二宝生日、性别 -->
-                                        <div class="form-group">
-                                            <label class="title">二宝生日:</label>
-                                            <div class="input-group date input-append form_datetime clearfix form-control" style="position: relative;">
-                                                <input type="text" value="" name="contact[second_baby_birthday]">
-                                                <button class="btn default date-set" type="button" style="position: absolute;right: 0;top: 0;">
-                                                    <i class="icon-th glyphicon glyphicon-calendar"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <script>
-                        $('.form_datetime').datetimepicker({
-                            format: "yyyy-mm-dd",
-                            autoclose: true,
-                            todayBtn: true,
-                            minView :2,
-                            pickerPosition: "bottom-left",
-                            language: 'zh-CN'
-                        });
-                                        </script>
-                                        <div class="form-group">
-                                            <label class="title">二宝性别:</label>
-                                            <select class="form-control input-xsmall" name="contact[second_baby_gender]">
-                                                <option value="2">-</option>
-                                                <option value="0" selected>女</option>
-                                                <option value="1">男</option>
-                                            </select>
-                                        </div>
-                                        <!-- 三宝生日、性别 -->
-                                        <div class="form-group">
-                                            <label class="title">三宝生日:</label>
-                                            <div class="input-group date input-append form_datetime clearfix form-control" style="position: relative;">
-                                                <input type="text" value="" name="contact[third_baby_birthday]">
-                                                <button class="btn default date-set" type="button" style="position: absolute;right: 0;top: 0;">
-                                                    <i class="icon-th glyphicon glyphicon-calendar"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                        <script>
-                        $('.form_datetime').datetimepicker({
-                            format: "yyyy-mm-dd",
-                            autoclose: true,
-                            todayBtn: true,
-                            minView :2,
-                            pickerPosition: "bottom-left",
-                            language: 'zh-CN'
-                        });
-                                        </script>
-                                        <div class="form-group">
-                                            <label class="title">三宝性别:</label>
-                                            <select class="form-control input-xsmall" name="contact[third_baby_gender]">
-                                                <option value="2">-</option>
-                                                <option value="0" selected>女</option>
-                                                <option value="1">男</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="title">推特:</label>
-                                            <input class="form-control " type="text" name="contact[twitter]" id="el_4de96f2" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="title">微博:</label>
-                                            <input class="form-control " type="text" name="contact[weibo]" id="el_4de96f3" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="title">qq:</label>
-                                            <input class="form-control " type="text" name="contact[qq]" id="el_4de96f4" />
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="title">ins:</label>
-                                            <input class="form-control " type="text" name="contact[ins]" id="el_4de96f5" />
-                                        </div>
                                         <div class="form-group mt40">
                                             <label class="title"></label>
-                                            <button type="submit" data-loading-text="正在提交..." class="theme-btn animated fadeInUp">保存</button>
+                                            <button type="button" class="theme-btn animated fadeInUp  updateUserbtn">编辑</button>
+                                        </div>
+
+                                    </td>
+                                    <td class="updaeuser">
+                                        
+                                        <p>
+                                            <label class="title"><span style="color:red;">*</span>用户名:</label>
+                                            <input type="hidden" name="Id" value="@Model.Id" /> 
+                                            <input type="text" id="name-form-control" class="form-control name-form-control" name="Username" value="@Model.Username" placeholder="填写用户名" required>
+                                        <span class="showmesssagename">@ViewBag.message</span>
+                                        </p>
+                                        <p>
+                                            <label class="title"><span style="color:red;">*</span>昵称:</label>
+                                            <input type="text" id="nickname-form-control" class="form-control name-form-control" name="Nickname" value="@Model.Nickname" placeholder="填写昵称" required>
+                                        <span class="showmesssagenick"></span>
+                                        </p>
+                                        <p>
+                                            <label class="title">密码:</label>
+                                            <input type="password" id="pwd-form-control" class="form-control name-form-control" name="uPassword" value="@Model.Password" placeholder="填写密码" required>
+                                            <span class="showmesssagepwd"></span>
+                                        </p>
+                                        
+                                       
+                                        <p>
+                                            <label class="title">等级:</label>
+                                            <!-- <a href="/my-explog.html"> -->
+                                            <span style="text-decoration: underline;">注册会员</span>
+                                            <!-- </a> -->
+                                        </p>
+                                        <!--  -->
+                                       
+                                        
+                                       
+                                        <div class="form-group mt40">
+                                            <label class="title"></label>
+                                            <button type="submit"  class="theme-btn animated fadeInUp">保存修改</button>
                                         </div>
 
                                     </td>
@@ -428,34 +278,7 @@
                         </form>
                     </div>
 
-                    <script>
-    $(function(){
-        $('#name-form-control').keyup(function(){
-            var name = $(this).val();
-            if($.trim(name)!=''){
-                $('.theme-btn').removeClass('hide') ;
-            }
-        });
-
-        $('#member_setting_form').on('submit',function(e){
-            e.stopPropagation();
-            var form = $(this);
-            $.post(form.prop('action'),form.serialize(),function(re){
-                if(re.error){
-                    alert('error',re.error);
-                }
-                if(re.success){
-                    if(re.redirect){
-                        location = re.redirect;
-                    }else{
-                        alert(re.success);
-                    }
-                }
-            },'json');
-            return false;
-        });
-    })
-                    </script>
+                   
                 </div>
             </div>
         </div>
@@ -495,90 +318,7 @@
         <a class="fixed-service" onclick="xiaoneng_isExitsFunction();" href="javascript:;">客服</a>
     </div>
     <script src="Scripts/header_180905.js"></script>
-    <script charset="utf-8">
-/*购物数量 事件拦截开始*/
-
-$(function(){
-    var change_event_timer = 0;
-    var _change_quantity = function(ipt,num){
-        ipt = $(ipt),last_val = parseInt(ipt.val());
-        var set_v = last_val+num;
-        ipt.val(set_v);
-        if(isNaN(ipt.val()) || ipt.val()<1){
-            ipt.val('1');
-        }
-        if(ipt.attr('data-max') && set_v>parseInt(ipt.attr('data-max'))){
-            ipt.val(ipt.attr('data-max'));
-        }
-        if(ipt.attr('data-min') && set_v<parseInt(ipt.attr('data-min'))){
-            ipt.val(ipt.attr('data-min'));
-        }
-        if(set_v === parseInt($(ipt).attr('data-now')))return;
-
-        //限购商品限制数量加减
-        if($('.order-max').length>0){
-            var max_buy = new Number($('.notice-restrict .order-max').text());
-            if(set_v >= max_buy){
-                ipt.attr('data-now',max_buy);
-                ipt.val(max_buy);
-            }
-        }
-        if($('.order-max').length==0&&$('.member-max').length>0){
-            var max_buy = new Number($('.notice-restrict .member-max').text());
-            if(set_v >= max_buy){
-                ipt.attr('data-now',max_buy);
-                ipt.val(max_buy);
-            }
-        }
-
-        //预约商品限制数量加减
-        if(!$('.reserve-quantity').hasClass('hide')){
-            var $el = $('#J_sale_buy_num');
-            var max_sale = $el.data('max-sale');
-            if(set_v >= max_sale ){
-                ipt.attr('data-now',max_sale);
-                ipt.val(max_sale);
-            }
-        }
-
-        $(ipt).attr('data-now',set_v);
-        ipt.trigger('_change',[ipt.val(),num]);
-    }
-
-    $(document).on('click','.product-quantity .spinner-buttons',function(e){
-        var btn = $(this);
-        btn.find('button').eq(0).blur();
-        if(btn.data('animating'))return;
-        if(btn.next('.spinner-input').length){
-            _change_quantity(btn.next('.spinner-input'),-1);
-        }
-        if(btn.prev('.spinner-input').length){
-            _change_quantity(btn.prev('.spinner-input'),+1);
-        }
-        btn.data('animating',true);
-        btn.css('opacity',.2);
-        btn.animate({opacity:1},'slow',function(){
-            $(this).removeData('animating');
-        });
-
-
-    });
-    $(document).on('keyup','.product-quantity .spinner-input',function(e){
-        switch (e.keyCode) {
-            case 38:
-                _change_quantity(this,+1);
-                break;
-            case 40:
-                _change_quantity(this,-1);
-                break;
-            default:
-                _change_quantity(this,0);
-        }
-    });
-});
-
-/*购物数量 事件拦截结束*/
-    </script>
+   
     <div style="display:none" data-rel="Baidu Analytics">
         <script>
 var _hmt = _hmt || [];
@@ -589,6 +329,159 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
         </script>
+        
+        <script>
+            $('.updateUserbtn').click(function () {
+                $('.showuser').hide();
+                $('.updaeuser').show();
+            });
+
+
+
+            var rename = $('#name-form-control');  //用户名
+            var Textrepwd = $('#pwd-form-control');//密码
+            var textnickname = $('#nickname-form-control');  //昵称
+
+            var renamespan = $('.showmesssagename');  // 用户名输入框提示信息
+            var Textrepwdspan = $('.showmesssagepwd'); //密码输入框提示信息
+            var nicknamespan = $('.showmesssagenick'); //昵称输入框提示信息
+
+            rename.blur(function () {
+                if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{4,12}$/, renamespan, rename, '用户名输入的格式不正确')) {
+
+                    $.get('/User/CheckUserName', { 'Username': rename.val() }, function (data) {
+                        $(data).each(function (i, e) {
+                            if (e.Name != null) {
+                                // alert(e.Name);
+                                renamespan.html('用户名已经存在').css('color', 'red');
+                                rename.focus();
+                            }
+
+                        });
+                    });
+                }
+            });
+            rename.keyup(function () {
+                if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{4,12}$/, renamespan, rename, '用户名输入的格式不正确')) {
+
+                    $.get('/User/CheckUserName', { 'Username': rename.val() }, function (data) {
+                        $(data).each(function (i, e) {
+                            if (e.Name != null) {
+                                // alert(e.Name);
+                                renamespan.html('用户名已经存在').css('color', 'red');
+                                rename.focus();
+                            }
+
+                        });
+                    });
+                }
+                
+            });
+
+            Textrepwd.focus(function () {
+                if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{4,12}$/, renamespan, rename, '用户名输入的格式不正确') && renamespan.html() == '正确') {
+                    checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{6,14}$/, Textrepwdspan, Textrepwd, '密码输入的格式不正确');
+                } else {
+                    rename.focus();
+                }
+            });
+            Textrepwd.keyup(function () {
+                if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{4,12}$/, renamespan, rename, '用户名输入的格式不正确')) {
+                    checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{6,14}$/, Textrepwdspan, Textrepwd, '密码输入的格式不正确');
+                }
+            });
+            Textrepwd.blur(function () {
+                if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{4,12}$/, renamespan, rename, '用户名输入的格式不正确')) {
+                    checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{6,14}$/, Textrepwdspan, Textrepwd, '密码输入的格式不正确');
+                }
+            });
+
+
+            textnickname.blur(function () {
+                if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{4,12}$/, renamespan, rename, '用户名输入的格式不正确')) {
+                    if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{6,14}$/, Textrepwdspan, Textrepwd, '密码输入的格式不正确')) {
+                        
+                    } else {
+                        Textrepwd.focus();
+                    }
+
+                } else {
+                    rename.focus();
+                }
+            });
+
+            textnickname.keyup(function () {
+                checkIsTrueOrFalse(/^[\u4e00-\u9fa5]{2,10}$/, nicknamespan, textnickname, '昵称输入的格式不正确');
+            });
+            textnickname.focus(function () {
+                if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{4,12}$/, renamespan, rename, '用户名输入的格式不正确')) {
+                    if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{6,14}$/, Textrepwdspan, Textrepwd, '密码输入的格式不正确')) {
+                        
+
+                    } else {
+                        Textrepwd.focus();
+                    }
+
+                } else {
+                    rename.focus();
+                }
+
+            });
+
+
+
+
+            function checkIsTrueOrFalse(regstr, conspan, coninput, errstr) {
+                if (coninput.val().length == 0) {
+                    conspan.html('不能为空').css('color', 'red');
+                } else {
+                    if (regstr.test(coninput.val())) {
+                        conspan.html('正确').css('color', 'green');
+                        return true;
+                    } else {
+                        conspan.html(errstr).css('color', 'red');
+                        return false;
+                    }
+                }
+
+            };
+
+
+
+
+            var formid = $('#member_setting_form');
+            formid.submit(function () {
+                if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{4,12}$/, renamespan, rename, '用户名输入的格式不正确')) {
+                    if (checkIsTrueOrFalse(/^[a-zA-Z0-9_-]{6,14}$/, Textrepwdspan, Textrepwd, '密码输入的格式不正确')) {
+
+                        if (checkIsTrueOrFalse(/^[\u4e00-\u9fa5]{2,10}$/, nicknamespan, textnickname, '昵称输入的格式不正确')) {
+
+                            return true;
+                        } else {
+                            textnickname.focus();
+                            return false;
+                        }
+
+                    } else {
+                        Textrepwd.focus();
+                        return false;
+                    }
+
+                } else {
+                    rename.focus();
+                    return false;
+                }
+
+
+
+
+            });
+
+        </script>
+
+
+
+
     </div>
 </body>
 </html>

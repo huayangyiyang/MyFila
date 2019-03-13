@@ -51,8 +51,7 @@
     <link rel="stylesheet" href="~/Content/82027472763e44c5bc99dcaa522470bd.css" type="text/css">
     <link href="~/Content/orders/public.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/Content/orders/base.css">
-    <script type="text/javascript" src="~/scripts/orders/jquery_cart.js">
-    </script>
+    <script type="text/javascript" src="~/scripts/orders/jquery_cart.js"></script>
     <link rel="stylesheet" type="text/css" href="~/Content/orders/checkOut.css">
     <style type="text/css">
         .bgcolor {
@@ -282,18 +281,18 @@
                                         <div class="item-row">
                                             <div class="col col-1">
                                                 <div class="g-pic">
-                                                    <img src="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage" srcset="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage 2x" width="40" height="40" />
+                                                    <img src="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage" srcset="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage 2x" width="40" height="40" />
                                                 </div>
                                                 <div class="g-info">
                                                     <a href="~/Product/Detail/@item.GoodsId">
-                                                        @item.Product.Name   @item.Product.ProductColor.Name  @item.Product.ProductSize.Name
+                                                        @item.Goods.Name   @item.Goods.GoodsColor.Name  @item.Goods.GoodsSize.Name
                                                     </a>
                                                 </div>
                                             </div>
 
-                                            <div class="col col-2">@string.Format("{0:0.00}", item.Product.NewPrice) 元</div>
+                                            <div class="col col-2">@string.Format("{0:0.00}", item.Goods.NewPrice) 元</div>
                                             <div class="col col-3">@item.Number</div>
-                                            <div class="col col-4">@string.Format("{0:0.00}", item.Product.NewPrice * item.Number) 元</div>
+                                            <div class="col col-4">@string.Format("{0:0.00}", item.Goods.NewPrice * item.Number) 元</div>
                                         </div>
                                     </dd>
                                 }

@@ -1,12 +1,12 @@
 ﻿@using FilaShop.Models
 
-@model List<Product>
+@model List<Goods>
     @{
         ///ProductType    商品类别列表
-        var productTypes = ViewBag.ProductTypes as IEnumerable<ProductType>;
+        var productTypes = ViewBag.ProductTypes as IEnumerable<GoodsType>;
 
         //由producttypeid查找的一条商品类别记录
-        var currentptype = ViewBag.producttype as ProductType;
+        var currentptype = ViewBag.producttype as GoodsType;
 
         //全部数据多少条
         int allCount = Convert.ToInt32( ViewBag.allCount);
@@ -173,13 +173,13 @@
                 @if (userinfo != null)
                 {
                     <li class="navbar-user ">
-                        <a href="~/User/Detail" target="_blank">
+                        <a href="~/User/CommandCenter/@userinfo.Id" target="_blank">
                             您好，
                             <span>@userinfo.Nickname</span>
                         </a>
                     </li>
                     <li class="navbar-logout ">
-                        <a href="~/User/LoginOut" title="退出">退出</a>
+                        <a href="~/User/LoginOut" class="navbarlogoutout" title="退出">退出</a>
                     </li>
                     <li>
                         <a class="cart-a-01" href="~/Cart/List"><img class="cart-a-img" src="~/Images/cart-icon.png" /></a>
@@ -190,10 +190,10 @@
                 else
                 {
                     <li class="navbar-login">
-                        <a href="~/User/Login" target="_blank" title="登入">登入</a>
+                        <a href="~/User/Login" class="navbarlogina" target="_blank" title="登入">登入</a>
                     </li>
                     <li class="navbar-register">
-                        <a href="~/User/Register" target="_blank" title="注册">注册</a>
+                        <a href="~/User/Register" class="navbarloginr" target="_blank" title="注册">注册</a>
                     </li>
                     <li class="navbar-cart dropdown">
                         <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
@@ -239,7 +239,7 @@
                     @foreach (var pt in productTypes)
                     {
                         String firststr = string.Empty;
-                        if (currentptype != null &&  pt.Id== currentptype.ProductType2.Id)
+                        if (currentptype != null &&  pt.Id== currentptype.GoodsType2.Id)
                         {
                             firststr = "active";
                         }else
@@ -252,7 +252,7 @@
                                 <h4><a href="javascript:;">@pt.Name</a></h4>
 
                                 @* 二级菜单开始 *@
-                                @foreach (var p in pt.ProductType1)
+                                @foreach (var p in pt.GoodsType1)
                                 {
                                     string secondstr = string.Empty;
                                     if (currentptype!=null&& p.Id==currentptype.Id)
@@ -696,7 +696,7 @@
                                                 <li class="result-all"><a href="~/Product/List">全部商品</a></li>
                                                 @if (currentptype != null)
                                                 {
-                                                    <li class="result-tagItem"><a href="~/Product/List" data-name="适合人群">@currentptype.ProductType2.Name -@currentptype.Name <span>+</span></a></li>
+                                                    <li class="result-tagItem"><a href="~/Product/List" data-name="适合人群">@currentptype.GoodsType2.Name -@currentptype.Name <span>+</span></a></li>
                                                 }
                                             </ul>
                                         </div>
@@ -775,24 +775,24 @@
                                                     </ul>
                                                 </div>
                                                 <a href="~/Product/Detail?productid=@product.Id" target="_blank">
-                                                    <img data-original="../Images/Product/@product.ProductImage.FirstOrDefault().BigImage" data-alt="@product.Name" style="display: block;" src="../Images/Product/@product.ProductImage.FirstOrDefault().BigImage">
+                                                    <img data-original="../Images/Product/@product.GoodsImage.FirstOrDefault().BigImage" data-alt="@product.Name" style="display: block;" src="../Images/Product/@product.GoodsImage.FirstOrDefault().BigImage">
                                                 </a>
                                             </div>
                                             <div class="caption">
                                                 <div class="goods-infos">
-                                                    <a href="~/Prodect/Detail/@product.Id" target="_blank">
+                                                    <a href="~/Product/Detail?productid=@product.Id" target="_blank">
                                                         <h3 class="g-name">@product.Name </h3>
                                                     </a>
                                                     <ul class="list-inline">
                                                         <li class="price-1 text-danger">@string.Format("{0:0.00}",product.NewPrice)</li>
-                                                        <li class="price-1 text-danger">销量：@product.Sales</li>
+                                                        <li class="price-1 text-danger">销量：@product.Saled</li>
                                                     </ul>
                                                 </div>
                                                 <div class="pic-sm-fila" style="display: none;">
                                                     <ul class="list-inline">
                                                         <li>
-                                                            <a data-href="../Images/Product/@product.ProductImage.FirstOrDefault().BigImage" data-middlesrc="../Images/Product/@product.ProductImage.FirstOrDefault().BigImage" target="_blank" href="~/Prodect/Detail/@product.Id">
-                                                                <img height="42" width="42" data-original="../Images/Product/@product.ProductImage.FirstOrDefault().BigImage" style="display: block;" src="../Images/Product/@product.ProductImage.FirstOrDefault().BigImage">
+                                                            <a data-href="../Images/Product/@product.GoodsImage.FirstOrDefault().BigImage" data-middlesrc="../Images/Product/@product.GoodsImage.FirstOrDefault().BigImage" target="_blank" href="~/Prodect/Detail/@product.Id">
+                                                                <img height="42" width="42" data-original="../Images/Product/@product.GoodsImage.FirstOrDefault().BigImage" style="display: block;" src="../Images/Product/@product.GoodsImage.FirstOrDefault().BigImage">
                                                             </a>
                                                         </li>
                                                         
@@ -909,6 +909,10 @@
     <script src="~/Scripts/jquery.icheck.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="~/Scripts/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
+        //获取到当前页面的url地址
+        $('.navbarlogina').attr('href', '/User/Login?returnUrl=' + location.pathname);
+        //$('.navbarloginr').attr('href', '/User/Register?returnUrl=' + location.pathname);
+       // $('.navbarlogoutout').attr('href', '/User/Logout?returnUrl=' + location.pathname);
 		/***列表页 js***/
 		function pageClick(id) {
 			$("input[name=p]").val(id);

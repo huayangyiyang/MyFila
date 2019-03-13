@@ -203,13 +203,13 @@
                         <div class="alert alert-warning order-member">
                             <div class="m-baseinfo row">
                                 <div class="col-xs-2">
-                                    <a href="~/User/Detail">
+                                    <a href="~/User/Detail/@userinfo.Id">
                                         <img width=77 height=77 class="img-circle" src="~/Images/d2827718db427c364b5d724ece3ecd2b.jpg" alt="17621989302头像" />
                                     </a>
                                 </div>
                                 <div class="col-xs-6">
                                     <h4>
-                                        <a href="~/User/Detail">@userinfo.Nickname</a>
+                                        <a href="~/User/Detail/@userinfo.Id">@userinfo.Nickname</a>
                                         <!--<span class="btn-group">
                                                                     <a class="btn btn-xs btn-default" href="/my-set_pam_uname.html">设置昵称</a>
                                                                 </span>-->
@@ -346,7 +346,7 @@
                                         <th width="67%">
                                             <ul class="list-inline">
                                                 <li>创建时间：@item.OrderTime</li>
-                                                <li>订单号：<a class="text-muted" href="#"><strong>@item.ordernum</strong></a></li>
+                                                <li>订单号：<a class="text-muted" href="~/OrderDetail/Detail?Id=@item.Id"><strong>@item.ordernum</strong></a></li>
                                                 
                                                 
                                                 @switch (item.OrderState)
@@ -396,23 +396,23 @@
                                                 }
                                                         <div class="row mo-item @last">
                                                             <div class="col-xs-2">
-                                                                <a href="~/Product/Detail/@item.OrderDetail.ToList()[i].Product.Id">
+                                                                <a href="~/Product/Detail?Productid=@item.OrderDetail.ToList()[i].Goods.Id">
                                                                     <img class="img-thumbnail" 
-                                                                         src="~/Images/Product/@item.OrderDetail.ToList()[i].Product.ProductImage.FirstOrDefault().BigImage" alt="@item.OrderDetail.ToList()[i].Product.Name" />
+                                                                         src="~/Images/Product/@item.OrderDetail.ToList()[i].Goods.GoodsImage.FirstOrDefault().BigImage" alt="@item.OrderDetail.ToList()[i].Goods.Name" />
                                                                 </a>
                                                             </div>
                                                             <div class="col-xs-5 pl0 pr0">
-                                                                <a class="text-muted limit-height" href="~/Product/Detail/@item.OrderDetail.ToList()[i].Product.Id">@item.OrderDetail.ToList()[i].Product.Name<br>
-                                                                @item.OrderDetail.ToList()[i].Product.ProductColor.Name / @item.OrderDetail.ToList()[i].Product.ProductSize.Name
+                                                                <a class="text-muted limit-height" href="~/Product/Detail?Productid=@item.OrderDetail.ToList()[i].Goods.Id">@item.OrderDetail.ToList()[i].Goods.Name<br>
+                                                                @item.OrderDetail.ToList()[i].Goods.GoodsColor.Name / @item.OrderDetail.ToList()[i].Goods.GoodsSize.Name
                                                                 
                                                                                                         </a>
                                                             </div>
                                                             <!--<div class="col-xs-3">6904527616901</div>-->
                                                             <div class="col-xs-2 text-center">
                                                                 <ul class="list-unstyled">
-                                                                    <li class="market-price hide"><del>@string.Format("{0:0.00}", item.OrderDetail.ToList()[i].Product.OldPrice) </del></li>
+                                                                    <li class="market-price hide"><del>@string.Format("{0:0.00}", item.OrderDetail.ToList()[i].Goods.OldPrice) </del></li>
                                                                     
-                                                                    <li class="i-g-price">@string.Format("{0:0.00}", item.OrderDetail.ToList()[i].Product.NewPrice)</li>
+                                                                    <li class="i-g-price">@string.Format("{0:0.00}", item.OrderDetail.ToList()[i].Goods.NewPrice)</li>
                                                                 </ul>
                                                             </div>
                                                             <div class="col-xs-1 text-right">

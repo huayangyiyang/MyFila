@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="69c6ea1dadec4283a7e31fb4f74acf6c" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Address" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Admin" Width="1.5" PointX="7.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Area" Width="1.5" PointX="1.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Cart" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Goods" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GoodsColor" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GoodsComment" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GoodsImage" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GoodsSize" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GoodsType" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Menu" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.OrderDetail" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Orders" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Userinfo" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__Address__AreaId__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Address__UserId__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Orders__AddressI__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Area__ParentId__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Cart__GoodsId__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Cart__UserId__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Goods__GoodsColo__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Goods__GoodsSize__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Goods__TypeId__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GoodsComm__Goods__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GoodsImag__Goods__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__OrderDeta__Goods__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GoodsComm__UserI__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__GoodsType__PId__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Menu__PId__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__OrderDeta__Order__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__Orders__UserId__2F10007B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -44,15 +44,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServerCompact, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.2.0\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.1.3\lib\net45\EntityFramework.SqlServerCompact.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -146,7 +146,9 @@
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\c7f3e557d5f34715a0cc801730dbb8d9.css" />
-    <Content Include="Content\carts.css" />
+    <Content Include="Content\carts\carts.css" />
+    <Content Include="Content\carts\reset.css" />
+    <Content Include="Content\cart\carts.css" />
     <Content Include="Content\cb71474e4d5b483f99884f9635c22ae7.css" />
     <Content Include="Content\center\2619eddcaf3b478bbb31b02bbf27a479.css" />
     <Content Include="Content\center\annimate.css" />
@@ -186,7 +188,7 @@
     <Content Include="Content\public.css" />
     <Content Include="Content\ratchet-theme.min.css" />
     <Content Include="Content\ratchet.min.css" />
-    <Content Include="Content\reset.css" />
+    <Content Include="Content\cart\reset.css" />
     <Content Include="Content\styles.css" />
     <Content Include="Content\swiper.css" />
     <Content Include="Content\theme.css" />
@@ -343,6 +345,7 @@
     <Content Include="Images\fila.jpg" />
     <Content Include="Images\fila_blue_150.png" />
     <Content Include="Images\gift-left.png" />
+    <Content Include="Images\icon-goods-list.png" />
     <Content Include="Images\icon1-1.png" />
     <Content Include="Images\icon1-2.png" />
     <Content Include="Images\icon2-1.png" />
@@ -703,6 +706,8 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\cartlist\carts.js" />
     <Content Include="scripts\cartlist\jquery.min.js" />
+    <Content Include="scripts\carts\carts.js" />
+    <Content Include="scripts\carts\jquery.min.js" />
     <Content Include="scripts\d65868b7da324fdcb8f1f37c02b4b2c4.js" />
     <Content Include="scripts\detail\buy.js" />
     <Content Include="scripts\detail\common.js" />
@@ -747,6 +752,8 @@
     <Content Include="Views\Test\List.cshtml" />
     <Content Include="Views\Orders\OrderDetail.cshtml" />
     <Content Include="Views\User\CommandCenter.cshtml" />
+    <Content Include="Views\OrderDetail\Detail.cshtml" />
+    <Content Include="Views\Address\List.cshtml" />
     <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -754,8 +761,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\OrderDetail\Detail.cshtml" />
-    <Content Include="Views\Address\List.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />
@@ -784,16 +790,41 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filter\LoginFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Area.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Goods.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoodsColor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoodsComment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoodsImage.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoodsSize.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GoodsType.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -817,28 +848,11 @@
     <Compile Include="Models\Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Product.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductColor.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductImage.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductSize.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ProductType.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Userinfo.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -854,9 +868,7 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Detail.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Cart\List.cshtml" />
-    <Content Include="Views\Orders\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -875,12 +887,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AddOrderNumber\AddOrderNumber.csproj">
-      <Project>{f1827cd7-c0a4-454f-b2f0-9f3890a3fcb3}</Project>
+      <Project>{21d3ce78-6267-4d16-862d-fae4bce34b71}</Project>
       <Name>AddOrderNumber</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Comman\Comman.csproj">
+    <ProjectReference Include="..\Comman\Common.csproj">
       <Project>{7915859f-e7ad-46d1-b970-efe086c0e2b2}</Project>
-      <Name>Comman</Name>
+      <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

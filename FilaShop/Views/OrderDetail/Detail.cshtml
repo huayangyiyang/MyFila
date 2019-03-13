@@ -396,21 +396,21 @@
                                 <div class="noborder-tab">
                                     <div style="padding: 0;width: 25%;float: left;">
                                         <a href="~/Product/Detail/@item.GoodsId">
-                                            <img class="img-thumbnail" src="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage" alt="@item.Product.Name-@item.Product.ProductColor.Name/@item.Product.ProductSize.Name" width="50" height="50" />
+                                            <img class="img-thumbnail" src="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage" alt="@item.Goods.Name-@item.Goods.GoodsColor.Name/@item.Goods.GoodsSize.Name" width="50" height="50" />
                                         </a>
                                     </div>
                                     <div style="text-align: left;width: 75%;float: left;line-height: 20px;" class="goods-content">
                                         <a href="~/Product/Detail/@item.GoodsId">
-                                            @item.Product.Name<br />
-                                            @item.Product.ProductColor.Name/@item.Product.ProductSize.Name
+                                            @item.Goods.Name<br />
+                                            @item.Goods.GoodsColor.Name/@item.Goods.GoodsSize.Name
                                         </a>
                                     </div>
                                 </div>
                             </td>
                             <td></td>
                             <td>
-                                <span class="i-g-price">@string.Format("{0:0.00}", item.Product.NewPrice)</span><br>
-                                <del class="market-price hide" style="color: #ccc">@string.Format("{0:0.00}",item.Product.OldPrice)</del>
+                                <span class="i-g-price">@string.Format("{0:0.00}", item.Goods.NewPrice)</span><br>
+                                <del class="market-price hide" style="color: #ccc">@string.Format("{0:0.00}",item.Goods.OldPrice)</del>
                             </td>
                             <td>@item.Number</td>
                             <td>@item.Number</td>

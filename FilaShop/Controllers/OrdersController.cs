@@ -6,23 +6,29 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using AddOrderNumber;
+using FilaShop.Filter;
 
 namespace FilaShop.Controllers
 {
+    [LoginFilter]
     public class OrdersController : Controller
     {
-        private MyFilaEntities db = new MyFilaEntities();
-        
+        private MyShopEntities db = new MyShopEntities();
+
         // GET: Orders
-        public ActionResult Add(double total_text, double piece_num,int?[] Goodsid,int?[] Number)
+        public ActionResult Add(double textpiece_num, double texttotal_text, int?[] Goodsid,int?[] Number)
         {
             
             Userinfo user = Session["user"] as Userinfo;
+            if (user!=null)
+            {
+
+           
             //新增订单
             Orders orders = new Orders {
                 UserId = user.Id,
                 OrderTime = DateTime.Now,
-                Price = (decimal)total_text,
+                Price = (decimal)texttotal_text,
                 OrderState = 0,
                 ordernum = AddNumber.AddSeralNum(DateTime.Now) 
            };
@@ -46,7 +52,7 @@ namespace FilaShop.Controllers
 
             //向订单中添加完毕后，购物车的相关数据清空
             IQueryable<int?> cartdelete = Goodsid.AsQueryable();
-            var cartlist = db.Cart.Where(c =>  c.UserId == user.Id && cartdelete.Contains(c.ProductId));
+            var cartlist = db.Cart.Where(c =>  c.UserId == user.Id && cartdelete.Contains(c.GoodsId));
             db.Cart.RemoveRange(cartlist);
 
 
@@ -57,6 +63,10 @@ namespace FilaShop.Controllers
             //获取最新添加的订单编号
            // int Id = orders.Id;
             return RedirectToAction("Detail",new {Id=orders.Id });
+            }else
+            {
+                return RedirectToAction("Login", "User");
+            }
         }
 
 

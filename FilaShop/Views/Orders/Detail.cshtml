@@ -426,7 +426,9 @@
                订单--添加地址
             </h3>
         </div>
+        @*订单地址开始*@
         <div class="address-content">
+            @*订单地址开始*@
              <div class="address-content-first">
                  <h3 class="address-content-first-h3">收货地址</h3>
              </div>
@@ -539,7 +541,7 @@
                 </form>
             </div>
 
-
+            @*订单地址结束*@
 
 
 
@@ -583,7 +585,9 @@
                                
                                
           </div>
-          <div class="checkout-box-ft address-content">
+         
+        @*订单地址结束*@
+         <div class="checkout-box-ft address-content">
                                 <!-- 商品清单  一个隐藏的form表单存放选中的收货地址和订单信息-->
               <form id="ordersform" action="~/Orders/Update" method="get" >
                   <input type="hidden" name="orderId" value="@norder.Id" class="formorderid" />
@@ -609,18 +613,18 @@
                                           <div class="item-row">
                                               <div class="col col-1">
                                                   <div class="g-pic">
-                                                      <img src="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage" srcset="~/Images/Product/@item.Product.ProductImage.FirstOrDefault().BigImage 2x" width="40" height="40" />
+                                                      <img src="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage" srcset="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage 2x" width="40" height="40" />
                                                   </div>
                                                   <div class="g-info">
                                                       <a href="~/Product/Detail/@item.GoodsId">
-                                                          @item.Product.Name   @item.Product.ProductColor.Name  @item.Product.ProductSize.Name
+                                                          @item.Goods.Name   @item.Goods.GoodsColor.Name  @item.Goods.GoodsSize.Name
                                                       </a>
                                                   </div>
                                               </div>
 
-                                              <div class="col col-2">@string.Format("{0:0.00}", item.Product.NewPrice) 元</div>
+                                              <div class="col col-2">@string.Format("{0:0.00}", item.Goods.NewPrice) 元</div>
                                               <div class="col col-3">@item.Number</div>
-                                              <div class="col col-4">@string.Format("{0:0.00}", item.Product.NewPrice * item.Number) 元</div>
+                                              <div class="col col-4">@string.Format("{0:0.00}", item.Goods.NewPrice * item.Number) 元</div>
                                           </div>
                                       </dd>
                                                 }

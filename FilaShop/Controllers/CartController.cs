@@ -1,4 +1,5 @@
 ﻿
+using FilaShop.Filter;
 using FilaShop.Models;
 using System;
 using System.Collections.Generic;
@@ -8,9 +9,10 @@ using System.Web.Mvc;
 
 namespace FilaShop.Controllers
 {
+    [LoginFilter]
     public class CartController : Controller
     {
-        private MyFilaEntities db = new MyFilaEntities();
+        private MyShopEntities db = new MyShopEntities();
         /// <summary>
         /// 打开购物车页面
         /// </summary>
@@ -31,41 +33,7 @@ namespace FilaShop.Controllers
             //当前用户的购物车的所有物品
             IEnumerable<Cart> clist = db.Cart.Where(c => c.UserId == user.Id).OrderByDescending(c => c.Id);
             ViewBag.cartcount = clist.Sum(c => c.Number);
-            Address arss = new Address {
-                Id = 1,
-                UserId=1,
-                ReceiverName= "王位",
-                Phone= "15698743654",
-                AreaId=130621,
-                DetailAddress= "大光明电影院(儿艺店)",
-                Isdefault=true
-            };
-            Address arss1 = new Address
-            {
-                Id = 2,
-                UserId = 1,
-                ReceiverName = "张文",
-                Phone = "18965412367",
-                AreaId = 130726,
-                DetailAddress = "洞泾镇洞舟路99号	",
-                Isdefault = false
-            };
-            Address arss2 = new Address
-            {
-                Id = 3,
-                UserId = 1,
-                ReceiverName = "赵丽	",
-                Phone = "18965412367",
-                AreaId = 140781,
-                DetailAddress = "洞泾镇洞舟路99号	",
-                Isdefault = false
-            };
-
-
-            IList<Address> addrelist = new List<Address>();
-            addrelist.Add(arss);
-            addrelist.Add(arss1);
-            addrelist.Add(arss2);
+           
 
             //当前用户的收货地址列表
             ViewBag.addresslist = db.Address.Where(a => a.UserId == user.Id).ToList();
@@ -95,9 +63,9 @@ namespace FilaShop.Controllers
                 Cart cart = new Cart();
 
                 cart.UserId = user.Id;
-                cart.ProductId  = productid;
+                cart.GoodsId  = productid;
                 //添加到购物车前，要做判断，购物车是否已经存在该物品
-               var  cartList = db.Cart.Where(c => c.UserId == user.Id && c.ProductId == productid);
+               var  cartList = db.Cart.Where(c => c.UserId == user.Id && c.GoodsId == productid);
                 if (cartList.Count()== 1)
                 {
                     //购物车中已经存在该物品

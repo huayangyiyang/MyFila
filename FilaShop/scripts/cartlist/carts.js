@@ -55,90 +55,28 @@ $(function () {
         })
     })
 
-    //=======================================每个店铺checkbox与全选checkbox的关系/每个店铺与其下商品样式的变化===================================================
-
-    //店铺有一个未选中，全局全选按钮取消对勾，若店铺全选中，则全局全选按钮打对勾。
-    $shopCheckbox.each(function () {
-        $(this).click(function () {
-            if ($(this).is(':checked')) {
-                //判断：店铺全选中，则全局全选按钮打对勾。
-                var len = $shopCheckbox.length;
-                var num = 0;
-                $shopCheckbox.each(function () {
-                    if ($(this).is(':checked')) {
-                        num++;
-                    }
-                });
-                if (num == len) {
-                    $wholeChexbox.prop("checked", true);
-                    $wholeChexbox.next('label').addClass('mark');
-                }
-
-                //店铺下的checkbox选中状态
-                $(this).parents('.cartBox').find('.son_check').prop("checked", true);
-                $(this).parents('.cartBox').find('.son_check').next('label').addClass('mark');
-            } else {
-                //否则，全局全选按钮取消对勾
-                $wholeChexbox.prop("checked", false);
-                $wholeChexbox.next('label').removeClass('mark');
-
-                //店铺下的checkbox选中状态
-                $(this).parents('.cartBox').find('.son_check').prop("checked", false);
-                $(this).parents('.cartBox').find('.son_check').next('label').removeClass('mark');
-            }
-            totalMoney();
-        });
-    });
-
-
-    //========================================每个店铺checkbox与其下商品的checkbox的关系======================================================
-
-    //店铺$sonChecks有一个未选中，店铺全选按钮取消选中，若全都选中，则全选打对勾
-    $cartBox.each(function () {
-        var $this = $(this);
-        var $sonChecks = $this.find('.son_check');
-        $sonChecks.each(function () {
-            $(this).click(function () {
-                if ($(this).is(':checked')) {
-                    //判断：如果所有的$sonChecks都选中则店铺全选打对勾！
-                    var len = $sonChecks.length;
-                    var num = 0;
-                    $sonChecks.each(function () {
-                        if ($(this).is(':checked')) {
-                            num++;
-                        }
-                    });
-                    if (num == len) {
-                        $(this).parents('.cartBox').find('.shopChoice').prop("checked", true);
-                        $(this).parents('.cartBox').find('.shopChoice').next('label').addClass('mark');
-                    }
-
-                } else {
-                    //否则，店铺全选取消
-                    $(this).parents('.cartBox').find('.shopChoice').prop("checked", false);
-                    $(this).parents('.cartBox').find('.shopChoice').next('label').removeClass('mark');
-                }
-                totalMoney();
-            });
-        });
-    });
-
-
+    
     //=================================================商品数量==============================================
-    var $plus = $('.plus'),
-        $reduce = $('.reduce'),
-        $all_sum = $('.sum');
+
+    /*
+    var $plus = $('.plus'), //加号
+        $reduce = $('.reduce'),//减号
+        $all_sum = $('.sum');  //求和
         //+号
     $plus.click(function () {
+        //购物车编号
         $cartid = $(this).prev().prev().prev('input');
+        
+        //获取当前行的数量
         var $inputVal = $(this).prev('input'),
-        $count = parseInt($inputVal.val())+1,
-            $obj = $(this).parents('.amount_box').find('.reduce'),
-            $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
+            $count = parseInt($inputVal.val()) + 1,
+        
+            $obj = $(this).parents('.amount_box').find('.reduce'),  
+            $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),//单行总价
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
-            $priceTotal = $count*parseInt($price);
+            $priceTotal = $count * parseInt($price.substring(1));
         $inputVal.val($count);
-        $priceTotalObj.html($priceTotal);
+        $priceTotalObj.html($priceTotal);//单行总价
         
         if($inputVal.val()>1 && $obj.hasClass('reSty')){
             $obj.removeClass('reSty');
@@ -155,13 +93,13 @@ $(function () {
     	//输入框中的数量
         var $inputVal = $(this).next('input'),
             $count = parseInt($inputVal.val())-1,
-            $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
+            $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),//单行总价
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
-            $priceTotal = $count * parseInt($price);
+            $priceTotal = $count * parseInt($price.substring(1));
 
         if($inputVal.val()>1){
             $inputVal.val($count);
-            $priceTotalObj.html($priceTotal);
+            $priceTotalObj.html($priceTotal);//单行总价
         }
         if($inputVal.val()==1 && !$(this).hasClass('reSty')){
             $(this).addClass('reSty');
@@ -174,7 +112,7 @@ $(function () {
 
     $all_sum.keyup(function () {
         var $count = 0,
-            $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
+            $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),//单行总价
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
             $priceTotal = 0;
         if($(this).val()==''){
@@ -187,14 +125,14 @@ $(function () {
         $priceTotalObj.html($priceTotal);
         totalMoney();
     })
-
+    */
     //======================================移除商品========================================
 
     var $order_lists = null;
     var $order_content = '';
-    var cartnowid = null;
+    
     $('.delBtn').click(function () {
-        cartnowid = $('.delBtn').parent().parent().prev().prev().find('input[name="Cartid"]').val();
+       // cartnowid = $(this).parent().parent().prev().prev().find('input[name="Cartid"]').val();
         $order_lists = $(this).parents('.order_lists');
         $order_content = $order_lists.parents('.order_content');
         $('.model_bg').fadeIn(300);
@@ -221,7 +159,8 @@ $(function () {
         closeM();
         $sonCheckBox = $('.son_check');
         totalMoney();
-        $.post(deleterul, { 'id': cartnowid }, function () { });
+         //数据库使用ajax移除
+       // $.post(deleterul, { 'id': cartnowid }, function () { });
     })
 
     //======================================总计==========================================
@@ -233,12 +172,13 @@ $(function () {
         $sonCheckBox.each(function () {
             //.substring(1)
             if ($(this).is(':checked')) {
-                var goods = parseInt($(this).parents('.order_lists').find('.sum_price').html());
+                var goods = parseInt($(this).parents('.order_lists').find('.sum_price').html().substring(1));
                 var num =  parseInt($(this).parents('.order_lists').find('.sum').val());
                 total_money += goods;
                 total_count += num;
             }
         });
+        //总价的
         $('.total_text').html(total_money);
         $('.piece_num').html(total_count);
 

@@ -1,4 +1,5 @@
-﻿using FilaShop.Models;
+﻿using FilaShop.Filter;
+using FilaShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,11 @@ using System.Web.Mvc;
 
 namespace FilaShop.Controllers
 {
+    [LoginFilter]
     public class OrderDetailController : Controller
     {
 
-        private MyFilaEntities db = new MyFilaEntities();
+        private MyShopEntities db = new MyShopEntities();
         /// <summary>
         ///  用户中心  订单详情页面
         /// </summary>

@@ -9,7 +9,7 @@ namespace FilaShop.Controllers
 {
     public class ProductController : Controller
     {
-        private MyFilaEntities db = new MyFilaEntities();
+        private MyShopEntities db = new MyShopEntities();
         /// <summary>
         /// 商品列表页
         /// </summary>
@@ -27,9 +27,9 @@ namespace FilaShop.Controllers
             Session.Add("user", user);
             */
             //商品集合，且是已经上架商品
-           IEnumerable<Product> list= db.Product.Where(p => p.OnSale == true);
+           IEnumerable<Goods> list= db.Goods.Where(p => p.OnSale == true);
             //页面中左侧商品类别列表集合
-            ViewBag.ProductTypes = db.ProductType.Where(p => p.Pid == null).OrderBy(ptype=>ptype.Id);
+            ViewBag.ProductTypes = db.GoodsType.Where(g => g.PId == null).OrderBy(ptype=>ptype.Id);
             var user = Session["user"] as Userinfo;
             if (user != null)
             {
@@ -53,7 +53,7 @@ namespace FilaShop.Controllers
             {
                 list = list.Where(p => p.TypeId == producttypeid);
                 
-                ViewBag.producttype = db.ProductType.Find(producttypeid);
+                ViewBag.producttype = db.GoodsType.Find(producttypeid);
             }
 
             // 排序  方式【综合排序，按照id降序，新价格降序，销量降序】
@@ -62,10 +62,10 @@ namespace FilaShop.Controllers
                 switch (order)
                 {
                     case 1://综合排序，按照id降序，新价格降序，销量降序
-                        list = list.OrderByDescending(p => p.Id).OrderByDescending(py => py.NewPrice).OrderByDescending(pyt => pyt.Sales);
+                        list = list.OrderByDescending(p => p.Id).OrderByDescending(py => py.NewPrice).OrderByDescending(pyt => pyt.Saled);
                         break;
                     case 2://销量降序
-                        list = list.OrderByDescending(pyt => pyt.Sales);
+                        list = list.OrderByDescending(pyt => pyt.Saled);
 
                         break;
                     case 3://新价格升序
@@ -112,21 +112,22 @@ namespace FilaShop.Controllers
         public ActionResult Detail(int? productid)
         {
             //页面中左侧商品类别列表集合
-            ViewBag.ProductTypes = db.ProductType.Where(p => p.Pid == null).OrderBy(ptype => ptype.Id);
+            ViewBag.ProductTypes = db.GoodsType.Where(g => g.PId == null).OrderBy(ptype => ptype.Id);
 
             //购物车中当前用户的商品数量
             var user = Session["user"] as Userinfo;
             if (user != null)
             {
                 ViewBag.cartcount = db.Cart.Where(c => c.UserId == user.Id).Sum(c => c.Number);
+                ViewBag.user = user;
             }
 
             //由商品id查询到的商品具体信息
-            Product productdetail= db.Product.Find(productid);
+            Goods productdetail= db.Goods.Find(productid);
             //商品尺码表
-            ViewBag.productSizes = db.ProductSize;
+            ViewBag.productSizes = db.GoodsSize;
             //商品颜色表
-            ViewBag.productColors = db.ProductColor;
+            ViewBag.productColors = db.GoodsColor;
 
             return View(productdetail);
         }

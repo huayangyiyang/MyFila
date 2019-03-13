@@ -1,0 +1,4 @@
+F:\CSharp\Comman\obj\Debug\Comman.dll
+F:\CSharp\Comman\obj\Debug\Comman.pdb
+F:\CSharp\Comman\bin\Debug\Comman.dll
+F:\CSharp\Comman\bin\Debug\Comman.pdb

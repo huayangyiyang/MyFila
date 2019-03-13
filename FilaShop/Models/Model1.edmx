@@ -1,0 +1,1089 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ReceiverName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="200" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="DetailAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="Isdefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Avater" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="ParentId" Type="int" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="GoodsId" Type="int" />
+          <Property Name="Number" Type="int" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="TypeId" Type="int" />
+          <Property Name="OldPrice" Type="money" />
+          <Property Name="NewPrice" Type="money" />
+          <Property Name="GoodsColorId" Type="int" />
+          <Property Name="GoodsSizeId" Type="int" />
+          <Property Name="Saled" Type="int" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="OnSale" Type="bit" />
+          <Property Name="Detail" Type="ntext" />
+        </EntityType>
+        <EntityType Name="GoodsColor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Red" Type="int" />
+          <Property Name="Green" Type="int" />
+          <Property Name="Blue" Type="int" />
+        </EntityType>
+        <EntityType Name="GoodsComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoodsId" Type="int" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Star" Type="int" />
+        </EntityType>
+        <EntityType Name="GoodsImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GoodsId" Type="int" />
+          <Property Name="BigImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="SmallImage" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="GoodsSize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="GoodsType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="PId" Type="int" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="PId" Type="int" />
+          <Property Name="Controller" Type="nvarchar" MaxLength="200" />
+          <Property Name="Action" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrdersId" Type="int" />
+          <Property Name="GoodsId" Type="int" />
+          <Property Name="Number" Type="int" />
+          <Property Name="price" Type="money" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ordernum" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="OrderTime" Type="datetime" />
+          <Property Name="AddressId" Type="int" />
+          <Property Name="Price" Type="money" />
+          <Property Name="OrderState" Type="int" />
+        </EntityType>
+        <EntityType Name="Userinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="Nickname" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__Address__AreaId__24927208">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__UserId__239E4DCF">
+          <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userinfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Area__ParentId__20C1E124">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Area1" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Area1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__GoodsId__2C3393D0">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__UserId__2B3F6F97">
+          <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userinfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__GoodsColo__1A14E395">
+          <End Role="GoodsColor" Type="Self.GoodsColor" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsColor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="GoodsColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__GoodsSize__1B0907CE">
+          <End Role="GoodsSize" Type="Self.GoodsSize" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsSize">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="GoodsSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__TypeId__1920BF5C">
+          <End Role="GoodsType" Type="Self.GoodsType" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__Goods__276EDEB3">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsComment">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__UserI__286302EC">
+          <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userinfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsImag__Goods__1DE57479">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="GoodsImage" Type="Self.GoodsImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsImage">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsType__PId__1273C1CD">
+          <End Role="GoodsType" Type="Self.GoodsType" Multiplicity="0..1" />
+          <End Role="GoodsType1" Type="Self.GoodsType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsType1">
+              <PropertyRef Name="PId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__PId__38996AB5">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="PId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Goods__33D4B598">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__32E0915F">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrdersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__AddressI__300424B4">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserId__2F10007B">
+          <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userinfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsColor" EntityType="Self.GoodsColor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsImage" EntityType="Self.GoodsImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsSize" EntityType="Self.GoodsSize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GoodsType" EntityType="Self.GoodsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Userinfo" EntityType="Self.Userinfo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Address__AreaId__24927208" Association="Self.FK__Address__AreaId__24927208">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__UserId__239E4DCF" Association="Self.FK__Address__UserId__239E4DCF">
+            <End Role="Userinfo" EntitySet="Userinfo" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Area__ParentId__20C1E124" Association="Self.FK__Area__ParentId__20C1E124">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Area1" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__GoodsId__2C3393D0" Association="Self.FK__Cart__GoodsId__2C3393D0">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__UserId__2B3F6F97" Association="Self.FK__Cart__UserId__2B3F6F97">
+            <End Role="Userinfo" EntitySet="Userinfo" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__GoodsColo__1A14E395" Association="Self.FK__Goods__GoodsColo__1A14E395">
+            <End Role="GoodsColor" EntitySet="GoodsColor" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__GoodsSize__1B0907CE" Association="Self.FK__Goods__GoodsSize__1B0907CE">
+            <End Role="GoodsSize" EntitySet="GoodsSize" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__TypeId__1920BF5C" Association="Self.FK__Goods__TypeId__1920BF5C">
+            <End Role="GoodsType" EntitySet="GoodsType" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__Goods__276EDEB3" Association="Self.FK__GoodsComm__Goods__276EDEB3">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__UserI__286302EC" Association="Self.FK__GoodsComm__UserI__286302EC">
+            <End Role="Userinfo" EntitySet="Userinfo" />
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsImag__Goods__1DE57479" Association="Self.FK__GoodsImag__Goods__1DE57479">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="GoodsImage" EntitySet="GoodsImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsType__PId__1273C1CD" Association="Self.FK__GoodsType__PId__1273C1CD">
+            <End Role="GoodsType" EntitySet="GoodsType" />
+            <End Role="GoodsType1" EntitySet="GoodsType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__PId__38996AB5" Association="Self.FK__Menu__PId__38996AB5">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Menu1" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Goods__33D4B598" Association="Self.FK__OrderDeta__Goods__33D4B598">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__32E0915F" Association="Self.FK__OrderDeta__Order__32E0915F">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__AddressI__300424B4" Association="Self.FK__Orders__AddressI__300424B4">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserId__2F10007B" Association="Self.FK__Orders__UserId__2F10007B">
+            <End Role="Userinfo" EntitySet="Userinfo" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ReceiverName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="DetailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Isdefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Area" Relationship="Self.FK__Address__AreaId__24927208" FromRole="Address" ToRole="Area" />
+          <NavigationProperty Name="Userinfo" Relationship="Self.FK__Address__UserId__239E4DCF" FromRole="Address" ToRole="Userinfo" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__AddressI__300424B4" FromRole="Address" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NickName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Avater" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__AreaId__24927208" FromRole="Area" ToRole="Address" />
+          <NavigationProperty Name="Area1" Relationship="Self.FK__Area__ParentId__20C1E124" FromRole="Area" ToRole="Area1" />
+          <NavigationProperty Name="Area2" Relationship="Self.FK__Area__ParentId__20C1E124" FromRole="Area1" ToRole="Area" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="GoodsId" Type="Int32" />
+          <Property Name="Number" Type="Int32" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Cart__GoodsId__2C3393D0" FromRole="Cart" ToRole="Goods" />
+          <NavigationProperty Name="Userinfo" Relationship="Self.FK__Cart__UserId__2B3F6F97" FromRole="Cart" ToRole="Userinfo" />
+        </EntityType>
+        <EntityType Name="Goods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeId" Type="Int32" />
+          <Property Name="OldPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NewPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GoodsColorId" Type="Int32" />
+          <Property Name="GoodsSizeId" Type="Int32" />
+          <Property Name="Saled" Type="Int32" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="OnSale" Type="Boolean" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK__Cart__GoodsId__2C3393D0" FromRole="Goods" ToRole="Cart" />
+          <NavigationProperty Name="GoodsColor" Relationship="Self.FK__Goods__GoodsColo__1A14E395" FromRole="Goods" ToRole="GoodsColor" />
+          <NavigationProperty Name="GoodsSize" Relationship="Self.FK__Goods__GoodsSize__1B0907CE" FromRole="Goods" ToRole="GoodsSize" />
+          <NavigationProperty Name="GoodsType" Relationship="Self.FK__Goods__TypeId__1920BF5C" FromRole="Goods" ToRole="GoodsType" />
+          <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__Goods__276EDEB3" FromRole="Goods" ToRole="GoodsComment" />
+          <NavigationProperty Name="GoodsImage" Relationship="Self.FK__GoodsImag__Goods__1DE57479" FromRole="Goods" ToRole="GoodsImage" />
+          <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Goods__33D4B598" FromRole="Goods" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="GoodsColor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Red" Type="Int32" />
+          <Property Name="Green" Type="Int32" />
+          <Property Name="Blue" Type="Int32" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__GoodsColo__1A14E395" FromRole="GoodsColor" ToRole="Goods" />
+        </EntityType>
+        <EntityType Name="GoodsComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoodsId" Type="Int32" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Star" Type="Int32" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__GoodsComm__Goods__276EDEB3" FromRole="GoodsComment" ToRole="Goods" />
+          <NavigationProperty Name="Userinfo" Relationship="Self.FK__GoodsComm__UserI__286302EC" FromRole="GoodsComment" ToRole="Userinfo" />
+        </EntityType>
+        <EntityType Name="GoodsImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GoodsId" Type="Int32" />
+          <Property Name="BigImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SmallImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__GoodsImag__Goods__1DE57479" FromRole="GoodsImage" ToRole="Goods" />
+        </EntityType>
+        <EntityType Name="GoodsSize">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__GoodsSize__1B0907CE" FromRole="GoodsSize" ToRole="Goods" />
+        </EntityType>
+        <EntityType Name="GoodsType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PId" Type="Int32" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__Goods__TypeId__1920BF5C" FromRole="GoodsType" ToRole="Goods" />
+          <NavigationProperty Name="GoodsType1" Relationship="Self.FK__GoodsType__PId__1273C1CD" FromRole="GoodsType" ToRole="GoodsType1" />
+          <NavigationProperty Name="GoodsType2" Relationship="Self.FK__GoodsType__PId__1273C1CD" FromRole="GoodsType1" ToRole="GoodsType" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PId" Type="Int32" />
+          <Property Name="Controller" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Action" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Menu1" Relationship="Self.FK__Menu__PId__38996AB5" FromRole="Menu" ToRole="Menu1" />
+          <NavigationProperty Name="Menu2" Relationship="Self.FK__Menu__PId__38996AB5" FromRole="Menu1" ToRole="Menu" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrdersId" Type="Int32" />
+          <Property Name="GoodsId" Type="Int32" />
+          <Property Name="Number" Type="Int32" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK__OrderDeta__Goods__33D4B598" FromRole="OrderDetail" ToRole="Goods" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__32E0915F" FromRole="OrderDetail" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ordernum" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="OrderTime" Type="DateTime" Precision="3" />
+          <Property Name="AddressId" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="OrderState" Type="Int32" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Orders__AddressI__300424B4" FromRole="Orders" ToRole="Address" />
+          <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Order__32E0915F" FromRole="Orders" ToRole="OrderDetail" />
+          <NavigationProperty Name="Userinfo" Relationship="Self.FK__Orders__UserId__2F10007B" FromRole="Orders" ToRole="Userinfo" />
+        </EntityType>
+        <EntityType Name="Userinfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Nickname" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="Self.FK__Address__UserId__239E4DCF" FromRole="Userinfo" ToRole="Address" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK__Cart__UserId__2B3F6F97" FromRole="Userinfo" ToRole="Cart" />
+          <NavigationProperty Name="GoodsComment" Relationship="Self.FK__GoodsComm__UserI__286302EC" FromRole="Userinfo" ToRole="GoodsComment" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__UserId__2F10007B" FromRole="Userinfo" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK__Address__AreaId__24927208">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Address__UserId__239E4DCF">
+          <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userinfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__AddressI__300424B4">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Area__ParentId__20C1E124">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Area1" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Area1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__GoodsId__2C3393D0">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__UserId__2B3F6F97">
+          <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userinfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__GoodsColo__1A14E395">
+          <End Role="GoodsColor" Type="Self.GoodsColor" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsColor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="GoodsColorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__GoodsSize__1B0907CE">
+          <End Role="GoodsSize" Type="Self.GoodsSize" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsSize">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="GoodsSizeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Goods__TypeId__1920BF5C">
+          <End Role="GoodsType" Type="Self.GoodsType" Multiplicity="0..1" />
+          <End Role="Goods" Type="Self.Goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Goods">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__Goods__276EDEB3">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsComment">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsImag__Goods__1DE57479">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="GoodsImage" Type="Self.GoodsImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsImage">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Goods__33D4B598">
+          <End Role="Goods" Type="Self.Goods" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goods">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="GoodsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsComm__UserI__286302EC">
+          <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+          <End Role="GoodsComment" Type="Self.GoodsComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userinfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GoodsType__PId__1273C1CD">
+          <End Role="GoodsType" Type="Self.GoodsType" Multiplicity="0..1" />
+          <End Role="GoodsType1" Type="Self.GoodsType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GoodsType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GoodsType1">
+              <PropertyRef Name="PId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Menu__PId__38996AB5">
+          <End Role="Menu" Type="Self.Menu" Multiplicity="0..1" />
+          <End Role="Menu1" Type="Self.Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Menu1">
+              <PropertyRef Name="PId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__32E0915F">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrdersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserId__2F10007B">
+          <End Role="Userinfo" Type="Self.Userinfo" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Userinfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MyShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Address" EntityType="Self.Address" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Area" EntityType="Self.Area" />
+          <EntitySet Name="Cart" EntityType="Self.Cart" />
+          <EntitySet Name="Goods" EntityType="Self.Goods" />
+          <EntitySet Name="GoodsColor" EntityType="Self.GoodsColor" />
+          <EntitySet Name="GoodsComment" EntityType="Self.GoodsComment" />
+          <EntitySet Name="GoodsImage" EntityType="Self.GoodsImage" />
+          <EntitySet Name="GoodsSize" EntityType="Self.GoodsSize" />
+          <EntitySet Name="GoodsType" EntityType="Self.GoodsType" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="Userinfo" EntityType="Self.Userinfo" />
+          <AssociationSet Name="FK__Address__AreaId__24927208" Association="Self.FK__Address__AreaId__24927208">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Address__UserId__239E4DCF" Association="Self.FK__Address__UserId__239E4DCF">
+            <End Role="Userinfo" EntitySet="Userinfo" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__AddressI__300424B4" Association="Self.FK__Orders__AddressI__300424B4">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Area__ParentId__20C1E124" Association="Self.FK__Area__ParentId__20C1E124">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Area1" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__GoodsId__2C3393D0" Association="Self.FK__Cart__GoodsId__2C3393D0">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__UserId__2B3F6F97" Association="Self.FK__Cart__UserId__2B3F6F97">
+            <End Role="Userinfo" EntitySet="Userinfo" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__GoodsColo__1A14E395" Association="Self.FK__Goods__GoodsColo__1A14E395">
+            <End Role="GoodsColor" EntitySet="GoodsColor" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__GoodsSize__1B0907CE" Association="Self.FK__Goods__GoodsSize__1B0907CE">
+            <End Role="GoodsSize" EntitySet="GoodsSize" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Goods__TypeId__1920BF5C" Association="Self.FK__Goods__TypeId__1920BF5C">
+            <End Role="GoodsType" EntitySet="GoodsType" />
+            <End Role="Goods" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__Goods__276EDEB3" Association="Self.FK__GoodsComm__Goods__276EDEB3">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsImag__Goods__1DE57479" Association="Self.FK__GoodsImag__Goods__1DE57479">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="GoodsImage" EntitySet="GoodsImage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Goods__33D4B598" Association="Self.FK__OrderDeta__Goods__33D4B598">
+            <End Role="Goods" EntitySet="Goods" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsComm__UserI__286302EC" Association="Self.FK__GoodsComm__UserI__286302EC">
+            <End Role="Userinfo" EntitySet="Userinfo" />
+            <End Role="GoodsComment" EntitySet="GoodsComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GoodsType__PId__1273C1CD" Association="Self.FK__GoodsType__PId__1273C1CD">
+            <End Role="GoodsType" EntitySet="GoodsType" />
+            <End Role="GoodsType1" EntitySet="GoodsType" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Menu__PId__38996AB5" Association="Self.FK__Menu__PId__38996AB5">
+            <End Role="Menu" EntitySet="Menu" />
+            <End Role="Menu1" EntitySet="Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__32E0915F" Association="Self.FK__OrderDeta__Order__32E0915F">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserId__2F10007B" Association="Self.FK__Orders__UserId__2F10007B">
+            <End Role="Userinfo" EntitySet="Userinfo" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="MyShopEntities">
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="Model.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="DetailAddress" ColumnName="DetailAddress" />
+                <ScalarProperty Name="Isdefault" ColumnName="Isdefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="Model.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Avater" ColumnName="Avater" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Area">
+            <EntityTypeMapping TypeName="Model.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cart">
+            <EntityTypeMapping TypeName="Model.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="Model.Goods">
+              <MappingFragment StoreEntitySet="Goods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+                <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+                <ScalarProperty Name="GoodsColorId" ColumnName="GoodsColorId" />
+                <ScalarProperty Name="GoodsSizeId" ColumnName="GoodsSizeId" />
+                <ScalarProperty Name="Saled" ColumnName="Saled" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OnSale" ColumnName="OnSale" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsColor">
+            <EntityTypeMapping TypeName="Model.GoodsColor">
+              <MappingFragment StoreEntitySet="GoodsColor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Red" ColumnName="Red" />
+                <ScalarProperty Name="Green" ColumnName="Green" />
+                <ScalarProperty Name="Blue" ColumnName="Blue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsComment">
+            <EntityTypeMapping TypeName="Model.GoodsComment">
+              <MappingFragment StoreEntitySet="GoodsComment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Star" ColumnName="Star" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsImage">
+            <EntityTypeMapping TypeName="Model.GoodsImage">
+              <MappingFragment StoreEntitySet="GoodsImage">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+                <ScalarProperty Name="BigImage" ColumnName="BigImage" />
+                <ScalarProperty Name="SmallImage" ColumnName="SmallImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsSize">
+            <EntityTypeMapping TypeName="Model.GoodsSize">
+              <MappingFragment StoreEntitySet="GoodsSize">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GoodsType">
+            <EntityTypeMapping TypeName="Model.GoodsType">
+              <MappingFragment StoreEntitySet="GoodsType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menu">
+            <EntityTypeMapping TypeName="Model.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PId" ColumnName="PId" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail">
+            <EntityTypeMapping TypeName="Model.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrdersId" ColumnName="OrdersId" />
+                <ScalarProperty Name="GoodsId" ColumnName="GoodsId" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Model.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ordernum" ColumnName="ordernum" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OrderState" ColumnName="OrderState" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Userinfo">
+            <EntityTypeMapping TypeName="Model.Userinfo">
+              <MappingFragment StoreEntitySet="Userinfo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

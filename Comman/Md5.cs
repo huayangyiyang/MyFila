@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Comman
 {
-    class Md5
+  public  class Md5
     {
         public static string JiaMi(string str)
         {

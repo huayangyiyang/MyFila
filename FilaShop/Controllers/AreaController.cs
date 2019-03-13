@@ -1,4 +1,5 @@
-﻿using FilaShop.Models;
+﻿using FilaShop.Filter;
+using FilaShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Web.Mvc;
 
 namespace FilaShop.Controllers
 {
+    [LoginFilter]
     public class AreaController : Controller
     {
-        private MyFilaEntities db = new MyFilaEntities();
+        private MyShopEntities db = new MyShopEntities();
         // GET: Area
         public ActionResult List(Int32? id)
         {

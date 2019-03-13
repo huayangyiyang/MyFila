@@ -1,0 +1,44 @@
+c:\users\000029\documents\visual studio 2015\Projects\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+c:\users\000029\documents\visual studio 2015\Projects\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe
+c:\users\000029\documents\visual studio 2015\Projects\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.pdb
+c:\users\000029\documents\visual studio 2015\Projects\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.exe
+c:\users\000029\documents\visual studio 2015\Projects\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.pdb
+C:\Users\000029\Desktop\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+C:\Users\000029\Desktop\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.exe
+C:\Users\000029\Desktop\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.pdb
+C:\Users\000029\Desktop\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe
+C:\Users\000029\Desktop\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.pdb
+E:\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+E:\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.exe
+E:\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.pdb
+E:\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe
+E:\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.pdb
+E:\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.csprojResolveAssemblyReference.cache
+E:\code\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+E:\code\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.exe
+E:\code\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.pdb
+E:\code\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe
+E:\code\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.pdb
+E:\code\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.csprojResolveAssemblyReference.cache
+C:\Users\msi\Desktop\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+C:\Users\msi\Desktop\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.exe
+C:\Users\msi\Desktop\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.pdb
+C:\Users\msi\Desktop\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe
+C:\Users\msi\Desktop\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.pdb
+C:\Users\msi\Desktop\SmsApiTest\SmsApiTest\bin\Debug\Newtonsoft.Json.Net20.dll
+C:\Users\msi\Desktop\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+C:\Users\msi\Desktop\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.exe
+C:\Users\msi\Desktop\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.pdb
+C:\Users\msi\Desktop\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.exe
+C:\Users\msi\Desktop\CSharp\SmsApiTest\SmsApiTest\bin\Debug\SmsApiTest.pdb
+C:\Users\msi\Desktop\CSharp\SmsApiTest\SmsApiTest\bin\Debug\Newtonsoft.Json.Net20.dll
+C:\Users\msi\Desktop\CSharp\SmsApiTest\SmsApiTest\obj\Debug\SmsApiTest.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Downloads\CSharp\CSharp\CSharp\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+C:\Users\Administrator\Downloads\CSharp\CSharp\CSharp\SmsApiTest\obj\Debug\SmsApiTest.exe
+C:\Users\Administrator\Downloads\CSharp\CSharp\CSharp\SmsApiTest\obj\Debug\SmsApiTest.pdb
+C:\Users\msi\Desktop\sdk\CSharp\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+C:\Users\msi\Desktop\sdk\CSharp\SmsApiTest\obj\Debug\SmsApiTest.exe
+C:\Users\msi\Desktop\sdk\CSharp\SmsApiTest\obj\Debug\SmsApiTest.pdb
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\SmsApiTest\bin\Debug\SmsApiTest.exe.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\SmsApiTest\obj\Debug\SmsApiTest.exe
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\SmsApiTest\obj\Debug\SmsApiTest.pdb

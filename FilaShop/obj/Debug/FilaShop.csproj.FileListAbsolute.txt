@@ -1,0 +1,287 @@
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\ApplicationInsights.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\csc.exe
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\vbc.exe
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\VBCSCompiler.exe
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\FilaShop.dll.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\FilaShop.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\FilaShop.pdb
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\EntityFramework.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.Web.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.ApplicationInsights.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Helpers.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Mvc.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Razor.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Webpages.Deployment.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Webpages.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Webpages.Razor.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\EntityFramework.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.Web.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.ApplicationInsights.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Razor.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Webpages.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Webpages.Deployment.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Webpages.Razor.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Helpers.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Web.Mvc.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\zh-Hans\System.Web.Razor.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\zh-Hans\System.Web.Helpers.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\zh-Hans\System.Web.Mvc.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\obj\Debug\FilaShop.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\obj\Debug\FilaShop.pdb
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\csc.exe.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\csc.rsp
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\csi.exe
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\csi.rsp
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\System.AppContext.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\vbc.exe.config
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\roslyn\vbc.rsp
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\sqlcese40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\sqlceqp40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\sqlceme40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\sqlceer40EN.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\sqlcecompact40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\sqlceca40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\README_ENU.txt
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\msvcr90.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\sqlcese40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\sqlceqp40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\sqlceme40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\sqlceer40EN.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\sqlcecompact40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\sqlceca40.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\README_ENU.txt
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\msvcr90.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\EntityFramework.SqlServer.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\EntityFramework.SqlServerCompact.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\System.Data.SqlServerCe.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\EntityFramework.SqlServer.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\EntityFramework.SqlServerCompact.xml
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\AddOrderNumber.dll
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\bin\AddOrderNumber.pdb
+C:\Users\jack\Downloads\新建文件夹 (2)\CSharp\FilaShop\obj\Debug\FilaShop.csprojResolveAssemblyReference.cache
+D:\新建文件夹\CSharp\FilaShop\bin\ApplicationInsights.config
+D:\新建文件夹\CSharp\FilaShop\bin\FilaShop.dll.config
+D:\新建文件夹\CSharp\FilaShop\bin\FilaShop.dll
+D:\新建文件夹\CSharp\FilaShop\bin\FilaShop.pdb
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\csc.exe
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\csc.exe.config
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\csc.rsp
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\csi.exe
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\csi.rsp
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\System.AppContext.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\System.Collections.Immutable.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\System.IO.FileSystem.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\System.Reflection.Metadata.dll
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\vbc.exe
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\vbc.exe.config
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\vbc.rsp
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\VBCSCompiler.exe
+D:\新建文件夹\CSharp\FilaShop\bin\roslyn\VBCSCompiler.exe.config
+D:\新建文件夹\CSharp\FilaShop\bin\x86\sqlcese40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\x86\sqlceqp40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\x86\sqlceme40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\x86\sqlceer40EN.dll
+D:\新建文件夹\CSharp\FilaShop\bin\x86\sqlcecompact40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\x86\sqlceca40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\README_ENU.txt
+D:\新建文件夹\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\msvcr90.dll
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\sqlcese40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\sqlceqp40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\sqlceme40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\sqlceer40EN.dll
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\sqlcecompact40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\sqlceca40.dll
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\README_ENU.txt
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\msvcr90.dll
+D:\新建文件夹\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest
+D:\新建文件夹\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest
+D:\新建文件夹\CSharp\FilaShop\bin\AddOrderNumber.dll
+D:\新建文件夹\CSharp\FilaShop\bin\EntityFramework.dll
+D:\新建文件夹\CSharp\FilaShop\bin\EntityFramework.SqlServer.dll
+D:\新建文件夹\CSharp\FilaShop\bin\EntityFramework.SqlServerCompact.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.Agent.Intercept.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.DependencyCollector.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.Web.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.WindowsServer.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.ApplicationInsights.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.Web.Infrastructure.dll
+D:\新建文件夹\CSharp\FilaShop\bin\System.Data.SqlServerCe.dll
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Helpers.dll
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Mvc.dll
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Razor.dll
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Webpages.Deployment.dll
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Webpages.dll
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Webpages.Razor.dll
+D:\新建文件夹\CSharp\FilaShop\bin\AddOrderNumber.pdb
+D:\新建文件夹\CSharp\FilaShop\bin\EntityFramework.xml
+D:\新建文件夹\CSharp\FilaShop\bin\EntityFramework.SqlServer.xml
+D:\新建文件夹\CSharp\FilaShop\bin\EntityFramework.SqlServerCompact.xml
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.DependencyCollector.xml
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.Web.xml
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.AI.WindowsServer.xml
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.ApplicationInsights.xml
+D:\新建文件夹\CSharp\FilaShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Razor.xml
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Webpages.xml
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Webpages.Deployment.xml
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Webpages.Razor.xml
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Helpers.xml
+D:\新建文件夹\CSharp\FilaShop\bin\System.Web.Mvc.xml
+D:\新建文件夹\CSharp\FilaShop\bin\zh-Hans\EntityFramework.resources.dll
+D:\新建文件夹\CSharp\FilaShop\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\新建文件夹\CSharp\FilaShop\bin\zh-Hans\System.Web.Razor.resources.dll
+D:\新建文件夹\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.resources.dll
+D:\新建文件夹\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+D:\新建文件夹\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+D:\新建文件夹\CSharp\FilaShop\bin\zh-Hans\System.Web.Helpers.resources.dll
+D:\新建文件夹\CSharp\FilaShop\bin\zh-Hans\System.Web.Mvc.resources.dll
+D:\新建文件夹\CSharp\FilaShop\obj\Debug\FilaShop.csprojResolveAssemblyReference.cache
+D:\新建文件夹\CSharp\FilaShop\obj\Debug\FilaShop.dll
+D:\新建文件夹\CSharp\FilaShop\obj\Debug\FilaShop.pdb
+F:\CSharp\FilaShop\bin\ApplicationInsights.config
+F:\CSharp\FilaShop\bin\FilaShop.dll.config
+F:\CSharp\FilaShop\bin\FilaShop.dll
+F:\CSharp\FilaShop\bin\FilaShop.pdb
+F:\CSharp\FilaShop\bin\roslyn\csc.exe
+F:\CSharp\FilaShop\bin\roslyn\csc.exe.config
+F:\CSharp\FilaShop\bin\roslyn\csc.rsp
+F:\CSharp\FilaShop\bin\roslyn\csi.exe
+F:\CSharp\FilaShop\bin\roslyn\csi.rsp
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\CSharp\FilaShop\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\CSharp\FilaShop\bin\roslyn\System.AppContext.dll
+F:\CSharp\FilaShop\bin\roslyn\System.Collections.Immutable.dll
+F:\CSharp\FilaShop\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\CSharp\FilaShop\bin\roslyn\System.IO.FileSystem.dll
+F:\CSharp\FilaShop\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\CSharp\FilaShop\bin\roslyn\System.Reflection.Metadata.dll
+F:\CSharp\FilaShop\bin\roslyn\vbc.exe
+F:\CSharp\FilaShop\bin\roslyn\vbc.exe.config
+F:\CSharp\FilaShop\bin\roslyn\vbc.rsp
+F:\CSharp\FilaShop\bin\roslyn\VBCSCompiler.exe
+F:\CSharp\FilaShop\bin\roslyn\VBCSCompiler.exe.config
+F:\CSharp\FilaShop\bin\x86\sqlcese40.dll
+F:\CSharp\FilaShop\bin\x86\sqlceqp40.dll
+F:\CSharp\FilaShop\bin\x86\sqlceme40.dll
+F:\CSharp\FilaShop\bin\x86\sqlceer40EN.dll
+F:\CSharp\FilaShop\bin\x86\sqlcecompact40.dll
+F:\CSharp\FilaShop\bin\x86\sqlceca40.dll
+F:\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\README_ENU.txt
+F:\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\msvcr90.dll
+F:\CSharp\FilaShop\bin\amd64\sqlcese40.dll
+F:\CSharp\FilaShop\bin\amd64\sqlceqp40.dll
+F:\CSharp\FilaShop\bin\amd64\sqlceme40.dll
+F:\CSharp\FilaShop\bin\amd64\sqlceer40EN.dll
+F:\CSharp\FilaShop\bin\amd64\sqlcecompact40.dll
+F:\CSharp\FilaShop\bin\amd64\sqlceca40.dll
+F:\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\README_ENU.txt
+F:\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\msvcr90.dll
+F:\CSharp\FilaShop\bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest
+F:\CSharp\FilaShop\bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest
+F:\CSharp\FilaShop\bin\AddOrderNumber.dll
+F:\CSharp\FilaShop\bin\Comman.dll
+F:\CSharp\FilaShop\bin\EntityFramework.dll
+F:\CSharp\FilaShop\bin\EntityFramework.SqlServer.dll
+F:\CSharp\FilaShop\bin\EntityFramework.SqlServerCompact.dll
+F:\CSharp\FilaShop\bin\Microsoft.AI.Agent.Intercept.dll
+F:\CSharp\FilaShop\bin\Microsoft.AI.DependencyCollector.dll
+F:\CSharp\FilaShop\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\CSharp\FilaShop\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\CSharp\FilaShop\bin\Microsoft.AI.Web.dll
+F:\CSharp\FilaShop\bin\Microsoft.AI.WindowsServer.dll
+F:\CSharp\FilaShop\bin\Microsoft.ApplicationInsights.dll
+F:\CSharp\FilaShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\CSharp\FilaShop\bin\Microsoft.Web.Infrastructure.dll
+F:\CSharp\FilaShop\bin\System.Data.SqlServerCe.dll
+F:\CSharp\FilaShop\bin\System.Web.Helpers.dll
+F:\CSharp\FilaShop\bin\System.Web.Mvc.dll
+F:\CSharp\FilaShop\bin\System.Web.Razor.dll
+F:\CSharp\FilaShop\bin\System.Web.Webpages.Deployment.dll
+F:\CSharp\FilaShop\bin\System.Web.Webpages.dll
+F:\CSharp\FilaShop\bin\System.Web.Webpages.Razor.dll
+F:\CSharp\FilaShop\bin\AddOrderNumber.pdb
+F:\CSharp\FilaShop\bin\Comman.pdb
+F:\CSharp\FilaShop\bin\EntityFramework.xml
+F:\CSharp\FilaShop\bin\EntityFramework.SqlServer.xml
+F:\CSharp\FilaShop\bin\EntityFramework.SqlServerCompact.xml
+F:\CSharp\FilaShop\bin\Microsoft.AI.DependencyCollector.xml
+F:\CSharp\FilaShop\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\CSharp\FilaShop\bin\Microsoft.AI.Web.xml
+F:\CSharp\FilaShop\bin\Microsoft.AI.WindowsServer.xml
+F:\CSharp\FilaShop\bin\Microsoft.ApplicationInsights.xml
+F:\CSharp\FilaShop\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\CSharp\FilaShop\bin\System.Web.Razor.xml
+F:\CSharp\FilaShop\bin\System.Web.Webpages.xml
+F:\CSharp\FilaShop\bin\System.Web.Webpages.Deployment.xml
+F:\CSharp\FilaShop\bin\System.Web.Webpages.Razor.xml
+F:\CSharp\FilaShop\bin\System.Web.Helpers.xml
+F:\CSharp\FilaShop\bin\System.Web.Mvc.xml
+F:\CSharp\FilaShop\bin\zh-Hans\EntityFramework.resources.dll
+F:\CSharp\FilaShop\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\CSharp\FilaShop\bin\zh-Hans\System.Web.Razor.resources.dll
+F:\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.resources.dll
+F:\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+F:\CSharp\FilaShop\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+F:\CSharp\FilaShop\bin\zh-Hans\System.Web.Helpers.resources.dll
+F:\CSharp\FilaShop\bin\zh-Hans\System.Web.Mvc.resources.dll
+F:\CSharp\FilaShop\obj\Debug\FilaShop.csprojResolveAssemblyReference.cache
+F:\CSharp\FilaShop\obj\Debug\FilaShop.dll
+F:\CSharp\FilaShop\obj\Debug\FilaShop.pdb
