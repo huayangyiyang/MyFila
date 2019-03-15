@@ -72,9 +72,6 @@ namespace FilaShop.Controllers
                         oleaddresslist.Isdefault = false;
                         address.Isdefault = true;
                     }
-                       
-                    
-
                 }else
                 {
                     address.Isdefault = false;
@@ -91,6 +88,49 @@ namespace FilaShop.Controllers
                 return RedirectToAction("Login", "User");
             }
             
+        }
+
+
+        /// <summary>
+        /// 添加新地址
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public ActionResult UsercontentAdd(Address address)
+        {
+            Userinfo user = Session["user"] as Userinfo;
+            if (user != null)
+            {
+                address.UserId = user.Id;
+
+                if (address.Isdefault == true)
+                {
+                    //默认收货地址只能有1个，如果其他的默认收货地址，要把其他收货地址更改为非默认的
+                    var oleaddresslist = db.Address.Where(a => a.UserId == user.Id && a.Isdefault == true).FirstOrDefault();
+
+                    if (oleaddresslist != null)
+                    {
+                        oleaddresslist.Isdefault = false;
+                        address.Isdefault = true;
+                    }
+                }
+                else
+                {
+                    address.Isdefault = false;
+
+                }
+                db.Address.Add(address);
+                db.SaveChanges();
+
+
+
+                return RedirectToAction("List", "Address");
+            }
+            else
+            {
+                return RedirectToAction("Login", "User");
+            }
+
         }
 
         /// <summary>
@@ -124,7 +164,11 @@ namespace FilaShop.Controllers
                 db.SaveChanges();
             }
 
-            return RedirectToAction("Detail","Orders");
+            //获取到当前用户的最新订单
+            Orders neworder = db.Orders.Where(o => o.UserId == user.Id).OrderByDescending(o => o.OrderTime).FirstOrDefault();
+
+
+            return RedirectToAction("Detail","Orders",new{orderid= neworder.Id });
         }
 
        
@@ -168,12 +212,65 @@ namespace FilaShop.Controllers
 
             }
 
-
+            //获取到当前用户的最新订单
+            Orders neworder = db.Orders.Where(o => o.UserId == user.Id).OrderByDescending(o => o.OrderTime).FirstOrDefault();
             db.SaveChanges();
-            return RedirectToAction("Detail","Orders");
+            return RedirectToAction("Detail","Orders", new { orderid = neworder.Id });
         }
 
 
+        /// <summary>
+        /// Edit编辑地址
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult UserContentEdit(Address naddress)
+        {
+            Userinfo user = Session["user"] as Userinfo;
+            if (user == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+
+
+            //查找数据库中的本条记录的isdetail是true或false
+            var oldaddress = db.Address.Find(naddress.Id);
+            Address firstaddress;
+            if (oldaddress != null && oldaddress.Isdefault == true)
+            {
+                //如果把默认值改为false，则选择其余中的第一项设为默认值
+                if (naddress.Isdefault == false || naddress.Isdefault == false)
+                {
+                    firstaddress = db.Address.Where(a => a.UserId == user.Id && a.Id != naddress.Id).FirstOrDefault();
+                    firstaddress.Isdefault = true;
+                    oldaddress.Isdefault = false;
+                }
+                else
+                {
+                    oldaddress.Isdefault = true;
+                }
+
+                //不改变默认地址的值，但是改变其他项的值
+
+                oldaddress.ReceiverName = naddress.ReceiverName;
+                oldaddress.Phone = naddress.Phone;
+                oldaddress.AreaId = naddress.AreaId;
+                oldaddress.DetailAddress = naddress.DetailAddress;
+
+
+
+            }
+
+
+            db.SaveChanges();
+            return RedirectToAction("List", "Address");
+        }
+
+
+        /// <summary>
+        /// 地址展示
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public ActionResult List(int? Id)
         {
             Userinfo user = Session["user"] as Userinfo;

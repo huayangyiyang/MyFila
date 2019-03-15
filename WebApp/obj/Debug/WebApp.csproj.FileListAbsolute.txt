@@ -171,3 +171,4 @@ F:\CSharp\WebApp\bin\zh-Hans\System.Web.Helpers.resources.dll
 F:\CSharp\WebApp\bin\zh-Hans\System.Web.Mvc.resources.dll
 F:\CSharp\WebApp\obj\Debug\WebApp.dll
 F:\CSharp\WebApp\obj\Debug\WebApp.pdb
+F:\CSharp\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache

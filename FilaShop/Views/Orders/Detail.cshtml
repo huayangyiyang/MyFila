@@ -373,7 +373,7 @@
                 @if (userinfo != null)
                 {
                     <li class="navbar-user ">
-                        <a href="~/User/Detail" target="_blank">
+                        <a href="~/User/CommandCenter/@userinfo.Id" target="_blank">
                             您好，
                             <span>@userinfo.Nickname</span>
                         </a>
@@ -954,7 +954,7 @@
 
                   if (renamespan.html() == '√' && rephone.html() == '√') {
                       if (select02.val() != "" && select02.val() != null && select02.val() > 0) {
-                          alert(select02.val());
+                          //alert(select02.val());
                           rearea.html('√').css('color', 'green');
                           //  alert(select02.val());
                       } else {

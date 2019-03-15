@@ -856,7 +856,7 @@ $(function(){
               function addNewAddress(){
                   $('.add-new-address').show();
                   $('.receiveman01').html('新增').css('color', 'red');
-                  $('.addnewaddrssform').attr('action', '/Address/Add');
+                  $('.addnewaddrssform').attr('action', '/Address/UsercontentAdd');
                   $('.addnewaddrssform').find('input[type="text"]').val('');
                   $('.addnewaddrssform').find('input[type="text"]').next('span').html('');
                   $('.select00').val('-1');
@@ -869,7 +869,7 @@ $(function(){
               $('.editbutton').click(function () {
                   $('.add-new-address').show();
                   $('.receiveman01').html('编辑').css('color', 'red');
-                  $('.addnewaddrssform').attr('action', '/Address/Edit');
+                  $('.addnewaddrssform').attr('action', '/Address/UserContentEdit');
                   var editaddressid = $(this).parent().parent().find('input[type="radio"]').val();
                   var editrecename = $(this).parent().parent().find('p[class="addressman"]').html();
                   var editrecephone = $(this).parent().parent().find('p[class="addressphone"]').html();
@@ -1028,7 +1028,7 @@ $(function(){
 
                   if (renamespan.html() == '√' && rephone.html() == '√') {
                       if (select02.val() != "" && select02.val() != null && select02.val() > 0) {
-                          alert(select02.val());
+                          //alert(select02.val());
                           rearea.html('√').css('color', 'green');
                           //  alert(select02.val());
                       } else {

@@ -749,7 +749,6 @@
     <Content Include="scripts\vue.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Orders\Detail.cshtml" />
-    <Content Include="Views\Test\List.cshtml" />
     <Content Include="Views\Orders\OrderDetail.cshtml" />
     <Content Include="Views\User\CommandCenter.cshtml" />
     <Content Include="Views\OrderDetail\Detail.cshtml" />
@@ -879,8 +878,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Area\" />
-    <Folder Include="Views\OrderNumber\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
