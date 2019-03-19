@@ -24,6 +24,20 @@
     //编辑按钮传递的id值
     Address editAddress= ViewBag.editAddress as Address;
 
+    //定义一个默认地址的id
+    var morenaddressid = 0;
+
+    //默认地址
+    foreach (var item in addresslist)
+    {
+        if (item.Isdefault == true)
+        {
+            morenaddressid = item.Id;
+        }
+    }
+
+
+    var province = ViewBag.province as List<Area>;
 }
 <!DOCTYPE HTML>
 <html >
@@ -199,7 +213,9 @@
            background-color:white;
        }
        .cart-h1{
-           color:#002965;font-size:20px;font-weight:bold;
+           color:white;
+           font-size:20px;
+           font-weight:bold;
        }
        .sumnumber{
            height:124px;
@@ -211,6 +227,321 @@
        .goproductlist>h2>a{
            text-decoration:none;
 
+       }
+
+       .second-address{
+           margin:0 auto;
+           
+           width:1200px;
+           
+           margin-bottom:10px;
+       }
+        .bgcolor {
+            color: white;
+            font-weight: bold;
+            background-color: mediumblue;
+        }
+
+        .backstr {
+            color: white;
+            font-weight: bold;
+            background-color: dodgerblue;
+        }
+
+            .backstr a {
+                color: white;
+            }
+
+        .pageSize {
+            width: 50px;
+            height: 35px;
+            border: 1px solid #DDDDDD;
+        }
+
+        .nocanclick:hover {
+            background-color: none;
+        }
+
+        .nocontent {
+            color: red;
+            font-size: 25px;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .page-header{
+            margin:0 auto;
+        }
+        .cart-h1{
+            text-align:center;
+            margin:0 auto;
+            background-color:#03234C;
+            color:white;
+            padding-top:10px;
+            padding-bottom:10px;
+        }
+       .address-content{
+           width:80%;
+           margin:0 auto;
+           padding:10px;
+       }
+       
+       .address-content-first-h3{
+           color:black;
+           padding-top:10px;
+           padding-bottom:10px;
+           border-bottom:2px solid #03234C;
+       }
+       
+       .first-address{
+           width:330px;
+           height:200px;
+          
+       }
+       .first-address-jiahao{
+           padding-top:10px;
+           width:330px;
+           height:195px;
+           
+       }
+       .first-address{
+           padding:10px;
+           font-size:14px;
+       }
+       .editbutton{
+           width:120px;
+           height:35px;
+           border:1px solid black;
+       }
+       .editbutton:hover{
+           border:1px solid blue;
+           color:red;
+           background-color:darkgray;
+       }
+       .deletebtn:hover{
+           border:1px solid blue;
+           color:red;
+            background-color:darkgray;
+       }
+       .deletebtn{
+           width:120px;
+           height:35px;
+           border:1px solid black;
+       }
+       .div-btn-01{
+           margin-top:5px;
+       }
+       .address-content-second>div{
+           float:left;
+       }
+       .clear-float{
+           float:none;
+           clear:both;
+       }
+       .first-address-content{
+           width:290px;
+           height:180px;
+           border:1px gray solid;
+           padding-left:10px;
+           
+       }
+       .first-address-jiahao02{
+           margin-left:10px;
+           width:290px;
+           height:180px;
+           border:1px gray solid;
+           padding-left:10px;
+           padding-top:50px;
+           text-align:center;
+       }
+       .addressman{
+           padding-top:5px;
+       }
+       .redborder{
+           border:2px red solid;
+       }
+       .shouthis{
+           visibility:visible;
+       }
+       .hidethis{
+           display:none;
+       }
+       .add-new-address{
+           padding:20px;
+           display:none;
+           height:400px;
+           border:1px solid blue;
+           margin:0 auto;
+       }
+       .addnewaddrssform{
+
+       }
+       .checkout-container .checkout-maddr .addr-default .add-new-mddr .btn-new-maddr {
+            float: left !important;
+        }
+
+        .cart-container .cart-body .c-ci-title .col-xs-9 .text-warning .glyphicon-warning-sign {
+            color: #e6002d;
+        }
+       .addressform{
+           width:800px;
+           height:600px;
+           background-color:greenyellow;
+           display:none;
+       }
+       .li01addborder{
+          border:2px solid blue;
+       }
+       .oldliborder{
+           border:1px solid gray;
+       }
+        .spanhidden {
+            visibility:visible;
+        }
+        .morenhide{
+            visibility:hidden;
+        }
+        .thirddiv{
+            position:absolute;
+            margin:0 auto;
+            width:100%;
+            height:100%;
+            margin:0 auto;
+            border:1px solid black;
+            margin-top:-300px;
+            margin-left:-30px;
+            background-color:darkgray;
+        }
+        .thirddivdisplay{
+            display:none;
+        }
+        .addUseraddressdiv{
+            width:500px;
+            height:150px;
+            margin:0 auto;
+            padding-top:50px;
+            padding-left:30px;
+            text-align:center;
+        }
+        .addressdiv02{
+            height:150px;
+            width:250px;
+            
+            padding:2px;
+        }
+        .receivemandiv01>div{
+            float:left;
+        }
+        .clearfloat{
+            width:0;
+            height:0;
+            float:none;
+            clear:both;
+        }
+        .deleteaddress{
+            text-decoration:none;
+        }
+        .select01{
+            width:100px;
+            height:30px;
+            margin-left:5px;
+            border:1px solid black;
+            
+        }
+        .selecthide{
+            visibility:hidden;
+        }
+        .selectshow {
+            visibility:visible;
+        }
+        .select00{
+            width:100px;
+            height:30px;
+            margin-left:5px;
+            border:1px solid black;
+        }
+        .select02{
+            width:100px;
+            margin-left:5px;
+            height:30px;
+            border:1px solid black;
+           
+        }
+        .showthisdiv{
+            display:block;
+        }
+        .hidethisdiv{
+            display:none;
+        }
+        .inputsubmit:hover{
+            border:1px solid blue;
+            background-color:white;
+            color:blue;
+        }
+        .addresscolse:hover {
+            border:1px solid blue;
+            color:blue;
+        }
+        .submitbtn{
+            margin-left:15px;
+            width:60px;
+            height:40px;
+            border:1px solid black;
+            background-color:grey;
+        }
+        .closebtn{
+            margin-left:60%;
+            width:60px;
+            height:40px;
+            border:1px solid black;
+        }
+        .divvis{
+            visibility:hidden;
+        }
+        .adressbtnedit{
+            width:118px; 
+        }
+       .address-form{
+           margin:0 auto;
+           width:60%;
+           padding:15px;
+           border:1px solid #03234C;
+           margin-top:10%;
+           background-color:white;
+       }
+       .address-province,.address-shi,.address-qu{
+           display:none;
+           
+       }
+       .cart-list-top{
+
+           border-top:2px solid #03234C;
+       }
+       .amount-goods{
+           display:none;
+       }
+       .amount-goods2{
+            display:none;
+       }
+       .plushidde{
+            display:none;
+       }
+       .empty-is{
+           margin-top:20%;
+       }
+       .empty-is>h3{
+           margin-left:35%;
+           color:red;
+           font-size:30px;
+       }
+       .totalSecond{
+           color:blue;
+       }
+       .totalsecond{
+           color:blue;
+       }
+       .totalsecond1{
+           font-size:18px;
+           color:black;
        }
     </style>
    <script>
@@ -287,19 +618,172 @@
             </ul>
         </div>
     </header>
-    <div class="main">
+     @if(Model.Count==0)
+     {
+         <div class="empty-is">
+             <h3>购物车是空的,即将跳转到商品列表页面
+             <br />
+                 <span id="totalSecond" class="totalsecond">5</span><span class="totalsecond1">秒后跳转到商品订单列表页面</span>
+             </h3>
+             
+
+             <script language="javascript" type="text/javascript">
+
+                var second = document.getElementById('totalSecond').textContent;
+
+                if (navigator.appName.indexOf("Explorer") > -1)  {
+                    second = document.getElementById('totalSecond').innerText;
+                } else {
+                    second = document.getElementById('totalSecond').textContent;
+                }
+
+                setInterval("redirect()", 1000);
+                function redirect() {
+                    if (second < 0) {
+                        //OrderDetail/Detail?Id=21
+                        location.href = '/Product/List';
+                } else {
+                    if (navigator.appName.indexOf("Explorer") > -1) {
+                        document.getElementById('totalSecond').innerText = second--;
+                    } else {
+                        document.getElementById('totalSecond').textContent = second--;
+                    }
+                }
+                }
+             </script>
+         </div>
+     }else
+     {
+     <div class="main">
 
         <div class="page-header  cart-title">
             <h1 class="cart-h1">
                 购物车
             </h1>
         </div>
+       
+            @*订单地址开始*@
+            <div class="address-content second-address">
+                @*订单地址开始*@
+                <div class="address-content-first">
+                    <h3 class="address-content-first-h3">收货地址</h3>
+                </div>
+                <div class="address-content-second">
+                    @foreach (var item in addresslist)
+                    {
+                        string redborder = "";//边框颜色
+                        string hidethis = "";//隐藏
+                        string shouthis = "";//显示
+                        if (item.Isdefault == true)
+                        {
+                            morenaddressid = item.Id;
+                            redborder = "redborder";
+                            hidethis = "";
+                            shouthis = "shouthis";
+                        }
+                        else
+                        {
+                            redborder = "";
+                            hidethis = "hidethis";
+                            shouthis = "";
+                        }
+                        <div class="first-address ">
+                            <div class="first-address-content @redborder">
 
-        @*购物车中商品信息展示*@
-       
-       
+                                <input type="radio" style="display:none;" name="showaddressid" value="@item.Id" />
+                                <p class="addressman">@item.ReceiverName</p><p class="addressphone">@item.Phone</p>
+                                <hr />
+                                <p class="addressqu"> @item.Area.Area2.Area2.Name @item.Area.Area2.Name  @item.Area.Name</p>
+                                <p class="address-province">@item.Area.Area2.Area2.Id</p>
+                                <p class="address-shi">@item.Area.Area2.Id</p>
+                                <p class="address-qu">@item.AreaId</p>
+                                <p class="addressdetail">@item.DetailAddress</p>
+
+                                <span class="isdefault-address @hidethis "><img src="~/Images/check_true.png" width="15" height="15">默认收货地址</span>
+                                <div class="div-btn-01 @hidethis ">
+                                    <input type="button" class="editbutton" name="editbutton" value="编辑" />
+                                    <input type="button" name="deletebtn" class="deletebtn" value="删除" />
+                                    @* onclick="javascript:deletethis(@item.Id);"
+                                onclick="javascript:editthis(@item.Id);"
+                                    *@
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    }
+                    <div class="first-address-jiahao">
+                        <div class="first-address-jiahao02">
+                            <a href="javascript:addNewAddress();">
+                                <span class="iconfont icon-add"><img src="~/Images/orders/add_cart.png"></span><br />
+                                使用新地址
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear-float"></div>
+                <div class="add-new-address">
+                    <form action="" method="get" id="addnewaddrssform" class="addnewaddrssform">
+                        <div style="height:45px;border-bottom:1px solid gray;">
+                            <h4>收货人地址信息管理&nbsp;&nbsp;<span class="receiveman01" style="font-weight:bold;"></span></h4>
+                        </div>
+                        <hr />
+                        <div style="height:45px;margin-top:5px;display:none;">
+                            <span>收货人id：</span><input style="width:250px;height:30px;border:1px solid black;" type="text" name="Id" class="aeditaddressid" id="addressid" value="" />
+                        </div>
+
+                        <div style="height:45px;margin-top:5px;">
+                            <span>收货人姓名：</span><input style="width:250px;height:30px;border:1px solid black;" type="text" name="ReceiverName" class="receivemanname" id="receivemanname" value=""
+                                                      placeholder="收货人姓名2-12位中文" />
+                            <span id="receivemannamespan1"></span>
+                        </div>
+
+                        <div style="height:45px;margin-top:5px;">
+                            <span>收货人电话：</span>
+                            <input style="width:250px;height:30px;border:1px solid black;" type="text" name="Phone" class="receivemanphone" id="receivemanphone" value=""
+                                   placeholder="收货人电话是11位手机号" /><span id="receivemanphonespan1"></span>
+                        </div>
+                        <div style="height:45px;margin-top:5px;">
+                            <span>收货人地区：</span>
+                            <select onchange="getNext(this); clearThree(this);" data-lever-index="0" id="select00" class="select00">
+                                <option value="-1">请选择</option>
+                                @foreach (var item in province)
+                                {
+                                    <option value="@item.Id">@item.Name</option>
+                                }
+                            </select>
+
+                            <select onchange="getNext(this);" data-lever-index="1" class="select01 " style="visibility:hidden;">
+                                <option value="-1">请选择</option>
+                            </select>
+
+                            <select name="AreaId" class="select02 " data-lever-index="2" id="select02" style="visibility:hidden;"></select><span id="receivemanAreaIdspan1"></span>
+                        </div>
+
+                        <div style="height:45px;margin-top:5px;">
+                            <span>具体地址：&nbsp;</span><input style="width:400px;height:30px;border:1px solid black;" type="text" name="DetailAddress" class="addressdetail" id="addressdetail"
+                                                           placeholder="具体地址" value="" />
+                            <span id="receivemandetailspan1"></span>
+                        </div>
+
+                        <div style="height:60px;margin-top:5px; border-top:1px solid gray;padding-top:10px;">
+                            <span>默认收货地址：</span>
+                            <input type="checkbox" name="IsDefault" class="addressiddetail" id="addressiddetail" value="false" />
+
+                            <input type="button" name="close" value="关闭" id="addresscolse" class="addresscolse closebtn" />
+                            <input type="submit" class="inputsubmit submitbtn " name="submit" value="提交" />
+                        </div>
+                    </form>
+                </div>
+
+                @*订单地址结束*@
+        </div>
+
+
+       @*购物车中商品信息展示*@
         <section class="cartMain">
-            <div class="cartMain_hd">
+            <div class="cartMain_hd cart-list-top">
                 <ul class="order_lists cartTop">
                     <li class="list_chk">
                         <!--所有商品全选-->
@@ -334,7 +818,7 @@
                                             <img src="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage" style="width:70px;height:90px;" alt="">
                                         </a>
                                     </div>
-                                    <div class="list_text" style="padding-top:40px;"><a href="~/Product/Detail/@item.GoodsId">@item.Goods.Name</a></div>
+                                    <div class="list_text" style="padding-top:40px;"><a href="~/Product/Detail?productid=@item.GoodsId">@item.Goods.Name</a></div>
                                 </li>
                                 <li class="list_info" style="padding-top:40px;">
                                     <p>颜色：@item.Goods.GoodsColor.Name</p>
@@ -350,7 +834,9 @@
                                         
                                         <a href="javascript:;" class="reduce reSty">-</a>
                                         <input type="text" value="@item.Number" name="Number" style="height:24px;" class="sum" disabled="disabled">
-                                        <a href="javascript:;" class="plus">+</a>
+                                        <a href="javascript:;" class="plus ">+</a>
+                                        <span class="amount-goods">@item.Goods.Amount</span>
+                                        <span class="amount-goods2"></span>
                                     </div>
                                 </li>
                                 <li class="list_sum" style="padding-top:40px;">
@@ -366,6 +852,7 @@
 
 
                     @*商品件数 和总价*@
+                    <input type="hidden" name="addressid" value="@morenaddressid" class="formaddressid" />
                     <input type="hidden" name="textpiece_num" class="textpiece_num" value="" />
                     <input type="hidden" name="texttotal_text" class="texttotal_text" value="" />
                 </form>
@@ -403,7 +890,7 @@
     </div>
        
         </div>
-
+     }
     <!-- 公共部分 Footer -->
     <script>
         var updateurl = '/Cart/Update/';//修改数量跳转页面
@@ -429,6 +916,7 @@
         };
        
         $('.reduce').click(function () {
+            $(this).next().next().show();
             //购物车编号
             var cartid = $(this).prev('input').val();
             //商品数量
@@ -456,18 +944,46 @@
         $('.plus').click(function () {
             //商品单价
             var price = $(this).parent().parent().prev().find('p[class="price"]').html().substring(1);
-           
             //商品数量
             var goodnum = $(this).prev('input').val();
-          
+            //商品数据库数量
+            var amountgoods = $(this).next('span').html();
+            //商品编号
+            var goodsid = $(this).parent().find('input[name="Goodsid"]').val()
 
-           // $(this).prev('input').val(parseInt(goodnum) + 1);
+            // 获取到商品的库存数量
+           // var amount = 0;
+            //核实商品的的库存是否足够
+            $.post('/Product/CheckGoodsAccount/', { 'goodsid': goodsid }, function (data) {
+                var amount = parseInt(data);
+                $('.amount-goods2').html(data);
+            });
+            
+
             //购物车编号
             var cartid = $(this).prev().prev().prev('input').val();
-            var pricethis = (parseInt(price)) * (parseInt(goodnum) + 1);
+            //执行＋1后的商品数量
+            var resultnum = parseInt(parseInt(goodnum) + 1);
+
+            var amount = parseInt($('.amount-goods').html());
+           // alert('amount=' + amount);
+          //  alert(resultnum > amount);
+            if(resultnum == amount) {
+                //数量超过库存
+                alert('购买数量不能超过库存数量');
+              
+                $(this).hide();//不可点击
+                $.post(updateurl, { 'cartid': cartid, 'stryunsuan': '=' }, function () { });
+               
+            } else if (resultnum < amount) {
+                //使用ajax修改数据库
+                $.post(updateurl, { 'cartid': cartid, 'stryunsuan': '+' }, function () { });
+            } else if (resultnum > amount) {
+                //数量超过库存
+                alert('购买数量不能超过库存数量');
+                $(this).hide();//不可点击
+            }
            
-            //使用ajax修改数据库
-            $.post(updateurl, { 'cartid': cartid, 'stryunsuan': '+' }, function () { });
             //每行总价
            // $(this).parent().parent().next().find('p[class="sum_price"]').html(pricethis);
             
@@ -480,5 +996,286 @@
     </script>
 
     
+
+    <script type="text/javascript">
+              //使用新增地址
+              function addNewAddress(){
+                  $('.add-new-address').show();
+                  $('.receiveman01').html('新增').css('color', 'red');
+                  $('.addnewaddrssform').attr('action', '/Cart/AddAddress');
+                  $('.addnewaddrssform').find('input[type="text"]').val('');
+                  $('.addnewaddrssform').find('input[type="text"]').next('span').html('');
+                  $('.select00').val('-1');
+                  //市级
+                  $('.select01').css('visibility', 'hidden');
+                  $('.select02').css('visibility', 'hidden');
+              }
+
+              //编辑按钮  --编辑地址  ,就是把当前选中的地址添加到  打开的编辑表单里
+              $('.editbutton').click(function () {
+                  $('.add-new-address').show();
+                  $('.receiveman01').html('编辑').css('color', 'red');
+                  $('.addnewaddrssform').attr('action', '/Cart/EditAddress');
+                  var editaddressid = $(this).parent().parent().find('input[type="radio"]').val();
+                  var editrecename = $(this).parent().parent().find('p[class="addressman"]').html();
+                  var editrecephone = $(this).parent().parent().find('p[class="addressphone"]').html();
+
+                  var editrecedetail = $(this).parent().parent().find('p[class="addressdetail"]').html();
+                  var editreceprovince = $(this).parent().parent().find('p[class="address-province"]').html();
+                  var editreceshi = $(this).parent().parent().find('p[class="address-shi"]').html();
+                  var editrecequ = $(this).parent().parent().find('p[class="address-qu"]').html();
+
+
+
+                  //编辑框id
+                  $('.aeditaddressid').val(editaddressid);
+                  //编辑框名字
+                  $('.receivemanname').val(editrecename);
+                  //编辑框电话
+                  $('.receivemanphone').val(editrecephone);
+
+
+                  $('select[data-lever-index]').css('visibility', 'visible');
+                  //编辑框具体地址
+                  $('.addressdetail').val(editrecedetail);
+                  //省级
+
+                  $('.select00').val(editreceprovince).change();
+                  //市级
+                  $('.select01').val(editreceshi).change();
+                  $('.select02').val(editrecequ).change();
+
+
+                  $('.addressiddetail').prop('checked', true).val('true');
+
+
+              });
+
+
+              //删除,没有实现同步，未能实现同步刷新
+              $('.deletebtn').click(function () {
+                  var addressid = $(this).parent().parent().find('input[type="radio"]').val();
+                  $.post('/Address/Delete', { 'addressid': addressid }, function () {
+
+                  });
+                  $(this).parent().parent().parent('.first-address').remove();
+                  $('.formaddressid').val('');
+              })
+
+
+
+              //关闭窗口
+              $('#addresscolse').click(function () {
+                  $('.add-new-address').hide();
+              });
+
+              //点击1个地址的div边框改变颜色，同时显示  默认地址  编辑和删除按钮
+              $('.first-address-content').click(function () {
+                  $('.first-address-content').css('border', '1px solid gray');
+                  $('.div-btn-01').addClass('hidethis');
+                  $('.isdefault-address ').addClass('hidethis');
+                  //即时更改数据库状态
+                 var addressid= $(this).find('input[type="radio"]').val();
+                 $.post('/Address/Update', { 'addressid': addressid }, function () {
+                 });
+                 //$('.first-address-content').children().find('.div-btn-01')
+                 $(this).css('border', '1px solid #03234C');
+                 $(this).find('.div-btn-01').removeClass('hidethis');
+                 $(this).find('.isdefault-address ').removeClass('hidethis');
+                 $('.formaddressid').val(addressid);
+              });
+
+
+             
+
+              //省市县三级联动，省级选项变动  绑定函数
+              function getNext(obj) {
+                  // var id=$(obj).val();
+                  $.ajaxSettings.async = false;
+                  $.post('/Cart/AreaList', { 'id': $(obj).val() }, function (data) {
+                      $(obj).next().empty();//清空
+                      $(data).each(function (i, e) {
+                          var option = '<option value="' + e.Id + '">' + e.Name + '</option>';
+                          $(obj).next().css('visibility', 'visible').append(option);
+                      });
+                  });
+              };
+
+              //清理第三级
+              function clearThree(obj) {
+                  $(obj).next().next().empty().css('visibility', 'hidden');
+              }
+
+
+
+
+
+
+              //修改地址表单的验证
+
+              var receiveName = $('#receivemanname');//收件人名字
+              var phone = $('#receivemanphone');//收件人电话
+              var detailAddress = $('#addressdetail');//具体地址
+              var select02 = $('#select02')//具体区县;
+
+              var renamespan = $('#receivemannamespan1');//收货人提示框
+              var rephone = $('#receivemanphonespan1');//收货人电话
+              var rearea = $('#receivemanAreaIdspan1');//收货人地区
+              var redetail = $('#receivemandetailspan1');//收货人具体地址
+              var province = $('#select00');//收货人的省市
+              var aressform = $('#addnewaddrssform');//form表单
+              //  $('#receivemannamespan1').html('收件人姓名格式不正确').css('color', 'red').css('font-size', '11px');
+              //脚本验证 增加地址的是否输入正确
+              receiveName.blur(function () {
+                  checkIsTrueOrFalse(/^[\u4e00-\u9fa5]{2,10}$/, renamespan, receiveName, '收货人姓名输入的格式不正确')
+              });
+              receiveName.keyup(function () {
+                  checkIsTrueOrFalse(/^[\u4e00-\u9fa5]{2,10}$/, renamespan, receiveName, '收货人姓名输入的格式不正确')
+              });
+
+              phone.focus(function () {
+                  if (renamespan.html() != '√') {
+                      phone.blur();
+                      receiveName.focus();
+                      renamespan.html('收货人名称格式不正确').css('color', 'red');
+                  }
+              });
+              var regstr = /^1[357869]\d{9}$/;
+              phone.keyup(function () {
+
+                  if (regstr.test(phone.val())) {
+                      rephone.html('√').css('color', 'green');
+                  } else {
+                      rephone.html('手机号格式不正确').css('color', 'red');
+                  }
+              });
+
+              phone.blur(function () {
+
+                  if (regstr.test(phone.val())) {
+                      rephone.html('√').css('color', 'green');
+                  } else {
+                      rephone.html('手机号格式不正确').css('color', 'red');
+                  }
+              });
+
+              province.focus(function () {
+                  if (renamespan.html() != '√') {
+                      receiveName.focus();
+                      renamespan.html('收货人名称格式不正确').css('color', 'red');
+                  } else {
+                      if (rephone.html() != '√') {
+                          phone.focus();
+                          renamespan.html('手机号格式不正确').css('color', 'red');
+                      }
+                  }
+              });
+
+
+              select02.change(function () {
+
+                  if (renamespan.html() == '√' && rephone.html() == '√') {
+                      if (select02.val() != "" && select02.val() != null && select02.val() > 0) {
+                          //alert(select02.val());
+                          rearea.html('√').css('color', 'green');
+                          //  alert(select02.val());
+                      } else {
+                          rearea.html('地区不能为空').css('color', 'red');
+                      }
+                  }
+
+              });
+
+
+              detailAddress.focus(function () {
+                  if (renamespan.html() != '√') {
+                      receiveName.focus();
+                      renamespan.html('收货人名称格式不正确').css('color', 'red');
+                      if (rephone.html() != '√') {
+                          phone.focus();
+                          renamespan.html('电话格式不对').css('color', 'red');
+
+                          if (rearea.html() != '√') {
+                              province.focus();
+                              rearea.html('地区不能为空').css('color', 'red');
+                          }
+                      }
+
+                  }
+              });
+              detailAddress.keyup(function () {
+                  checkIsTrueOrFalse(/^[\u4e00-\u9fa5a-zA-Z0-9]{4,}$/, redetail, detailAddress, '地址格式不对');
+              });
+
+              detailAddress.blur(function () {
+                  checkIsTrueOrFalse(/^[\u4e00-\u9fa5a-zA-Z0-9]{4,}$/, redetail, detailAddress, '地址格式不对');
+              });
+
+
+              aressform.submit(function () {
+                  if (renamespan.html() == '√') {
+
+                      if (rephone.html() == '√') {
+
+                          if (rearea.html() == '√') {
+
+                              if (redetail.html() == '√') {
+                                  return true;
+
+                              } else {
+                                  detailAddress.focus();
+                                  redetail.html('地址格式不对').css('color', 'red');
+                                  return false;
+                              }
+
+
+                          } else {
+                              province.focus();
+                              rearea.html('地区不能为空').css('color', 'red');
+                              return false;
+                          }
+
+                      } else {
+                          phone.focus();
+                          renamespan.html('电话格式不对').css('color', 'red');
+                          return false;
+                      }
+                  } else {
+                      receiveName.focus();
+                      renamespan.html('收货人名称格式不正确').css('color', 'red');
+                      return false;
+                  }
+
+              });
+
+
+              //默认收货地址 的值改变
+              //默认地址是否被选中
+              $('.addressiddetail').change(function () {
+                  if ($('.addressiddetail').prop('checked')) {
+                      $('.addressiddetail').val('true');
+
+                  } else {
+                      $('.addressiddetail').val('');
+                      $('.addressiddetail').val('false');
+                  }
+
+              });
+              //验证函数
+              function checkIsTrueOrFalse(regstr, conspan, coninput, errstr) {
+                  if (coninput.val().length == 0) {
+                      conspan.html('不能为空').css('color', 'red');
+                  } else {
+                      if (regstr.test(coninput.val())) {
+                          conspan.html('√').css('color', 'green');
+                          return true;
+                      } else {
+                          conspan.html(errstr).css('color', 'red');
+                          return false;
+                      }
+                  }
+
+              };
+    </script>
 </body>
 </html>

@@ -16,7 +16,15 @@ namespace FilaShop.Controllers
         private MyShopEntities db = new MyShopEntities();
 
         // GET: Orders
-        public ActionResult Add(double textpiece_num, double texttotal_text, int?[] Goodsid,int?[] Number)
+        /// <summary>
+        /// 添加订单
+        /// </summary>
+        /// <param name="textpiece_num"></param>
+        /// <param name="texttotal_text"></param>
+        /// <param name="Goodsid"></param>
+        /// <param name="Number"></param>
+        /// <returns></returns>
+        public ActionResult Add(int? addressid, double textpiece_num, double texttotal_text, int?[] Goodsid,int?[] Number)
         {
             
             Userinfo user = Session["user"] as Userinfo;
@@ -29,6 +37,7 @@ namespace FilaShop.Controllers
                 UserId = user.Id,
                 OrderTime = DateTime.Now,
                 Price = (decimal)texttotal_text,
+                AddressId= addressid,
                 OrderState = 0,
                 ordernum = AddNumber.AddSeralNum(DateTime.Now) 
            };
@@ -47,6 +56,9 @@ namespace FilaShop.Controllers
                 };
                 db.OrderDetail.Add(odetail);
 
+                    //同时对应得商品减去相应的库存
+                    Goods gooods = db.Goods.Find(Goodsid[i]);
+                    gooods.Amount = gooods.Amount - Number[i];
 
             };
 
@@ -54,15 +66,12 @@ namespace FilaShop.Controllers
             IQueryable<int?> cartdelete = Goodsid.AsQueryable();
             var cartlist = db.Cart.Where(c =>  c.UserId == user.Id && cartdelete.Contains(c.GoodsId));
             db.Cart.RemoveRange(cartlist);
-
-
             
-
             db.SaveChanges();
           
             //获取最新添加的订单编号
            // int Id = orders.Id;
-            return RedirectToAction("Detail",new {Id=orders.Id });
+            return RedirectToAction("OrderDetail", new {Id=orders.Id });
             }else
             {
                 return RedirectToAction("Login", "User");
@@ -72,42 +81,7 @@ namespace FilaShop.Controllers
 
 
 
-        /// <summary>
-        /// 订单--详情，添加收货地址
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Detail(string Id)
-        {
-             Userinfo user = Session["user"] as Userinfo;
-               if (user == null)
-               {
-                   return RedirectToAction("Login", "User");
-                }
-               
-            ViewBag.user = user;
-            //当前用户的购物车的所有物品
-           /// IEnumerable<Cart> clist = db.Cart.Where(c => c.UserId == user.Id).OrderByDescending(c => c.Id);
-           // ViewBag.cartcount = clist.Sum(c => c.Number);
-
-
-            //获得当前的省级菜单
-            ViewBag.province = db.Area.Where(a => a.ParentId == null).ToList();
-
-            //当前用户的收货地址列表
-            ViewBag.addresslist = db.Address.Where(a => a.UserId == user.Id).ToList();
-
-
-
-            //当前用户的最近订单
-            int orderid = Convert.ToInt32(Id);
-            // var uorder = db.Orders.Where(o => o.UserId == user.Id).OrderByDescending(o => o.OrderTime).FirstOrDefault();
-            var uorder = db.Orders.Find(orderid);
-            var uorderdetail = db.OrderDetail.Where(or => or.OrdersId == orderid).ToList();
-
-            ViewBag.uorder = uorder;
-            ViewBag.uorderdetail = uorderdetail;
-            return View();
-        }
+       
     
 
         /// <summary>
@@ -132,7 +106,12 @@ namespace FilaShop.Controllers
             return RedirectToAction("OrderDetail", "Orders",new { Id= orderId });
         }
 
-        public ActionResult OrderDetail(string Id)
+        /// <summary>
+        /// 订单详情页面
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public ActionResult OrderDetail(int? Id)
         {
             Userinfo user = Session["user"] as Userinfo;
             if (user == null)
@@ -140,6 +119,7 @@ namespace FilaShop.Controllers
                 return RedirectToAction("Login", "User");
             }else
             {
+                ViewBag.cartcount = db.Cart.Where(c => c.UserId == user.Id).Sum(c => c.Number);
                 ViewBag.user = user;
                 int orderid = Convert.ToInt32(Id);
                 //当前用户的最近订单
@@ -189,6 +169,35 @@ namespace FilaShop.Controllers
             }
 
                 
+        }
+
+        //Id=21&Id=2019031818565900001&sum=1960.00&paytype=2&name=确认支付
+        /// <summary>
+        /// 确认支付页面，修改订单状态   为 已支付
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="ordernum"></param>
+        /// <param name="sum"></param>
+        /// <param name="paytype"></param>
+        /// <returns></returns>
+        public ActionResult Pay(int? Id,string ordernum,double sum,int paytype)
+        {
+            Userinfo user = Session["user"] as Userinfo;
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "User");
+            }
+            ViewBag.user = user;
+            Orders order = db.Orders.Find(Id);
+            order.OrderState = 1;
+            db.SaveChanges();
+
+            ViewBag.Id = Id;
+            ViewBag.ordernum = ordernum;
+            ViewBag.paytype = paytype;
+            ViewBag.sum = sum;
+            return View();
         }
     }
 }

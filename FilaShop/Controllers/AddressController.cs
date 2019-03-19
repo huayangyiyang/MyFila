@@ -172,55 +172,11 @@ namespace FilaShop.Controllers
         }
 
        
-        /// <summary>
-        /// Edit编辑地址
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Edit(Address naddress)
-        {
-            Userinfo user = Session["user"] as Userinfo;
-            if (user == null)
-            {
-                return RedirectToAction("Login", "User");
-            }
-
-
-            //查找数据库中的本条记录的isdetail是true或false
-             var oldaddress=db.Address.Find(naddress.Id);
-            Address firstaddress;
-            if (oldaddress!=null && oldaddress.Isdefault == true)
-            {
-                //如果把默认值改为false，则选择其余中的第一项设为默认值
-                if (naddress.Isdefault == false || naddress.Isdefault == false )
-                {
-                    firstaddress= db.Address.Where(a => a.UserId == user.Id && a.Id != naddress.Id).FirstOrDefault();
-                    firstaddress.Isdefault = true;
-                    oldaddress.Isdefault = false;
-                }else
-                {
-                    oldaddress.Isdefault = true;
-                }
-
-                //不改变默认地址的值，但是改变其他项的值
-               
-                oldaddress.ReceiverName = naddress.ReceiverName;
-                oldaddress.Phone = naddress.Phone;
-                oldaddress.AreaId = naddress.AreaId;
-                oldaddress.DetailAddress = naddress.DetailAddress;
-                
-
-
-            }
-
-            //获取到当前用户的最新订单
-            Orders neworder = db.Orders.Where(o => o.UserId == user.Id).OrderByDescending(o => o.OrderTime).FirstOrDefault();
-            db.SaveChanges();
-            return RedirectToAction("Detail","Orders", new { orderid = neworder.Id });
-        }
+        
 
 
         /// <summary>
-        /// Edit编辑地址
+        ///用户中心 Edit编辑地址
         /// </summary>
         /// <returns></returns>
         public ActionResult UserContentEdit(Address naddress)

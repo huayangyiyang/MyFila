@@ -215,7 +215,7 @@ namespace FilaShop.Controllers
         /// </summary>
         /// <returns></returns>
         [LoginFilter]
-        public ActionResult CommandCenter(int? stateid,int? id)
+        public ActionResult CommandCenter(int? stateid,int? id, int? currentpage)
 
         {//进入用户管理中心，首先得是登录用户
 
@@ -277,6 +277,18 @@ namespace FilaShop.Controllers
                     break;
             }
 
+            //分页
+            ViewBag.allCount = selforders.Count();
+            int pageSize;
+            if (currentpage == null)
+            {
+                currentpage = 1;
+            }
+            pageSize = 5;
+            selforders = selforders.Skip(((Int32)currentpage - 1) * pageSize).Take(pageSize);
+
+            ViewBag.currentpage = currentpage;//当前页
+            ViewBag.pageSize = pageSize;//每页多少条数据
 
             ViewBag.stateid = stateid;
             return View(selforders.ToList());

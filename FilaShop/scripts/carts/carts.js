@@ -128,19 +128,46 @@ $(function () {
     var $plus = $('.plus'),
         $reduce = $('.reduce'),
         $all_sum = $('.sum');
+        
+    
     $plus.click(function () {
         var $inputVal = $(this).prev('input'),
-            $count = parseInt($inputVal.val())+1,
+            $amoutgoods=$(this).next(),//当前库存
+         goodsid = $(this).parent().find('input[name="Goodsid"]').val();
+        //核实商品的的库存是否足够
+        $recount = parseInt($inputVal.val()) + 1;
+        if ($recount == parseInt($amoutgoods.html())) {
+            $count = parseInt($amoutgoods.html());
+            $(this).hide();
+            //var  $count = parseInt($inputVal.val())+1,
             $obj = $(this).parents('.amount_box').find('.reduce'),
             $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
             $price = $(this).parents('.order_lists').find('.price').html(),  //单价
-            $priceTotal = $count*parseInt($price.substring(1));
-        $inputVal.val($count);
-        $priceTotalObj.html('￥'+$priceTotal);
-        if($inputVal.val()>1 && $obj.hasClass('reSty')){
-            $obj.removeClass('reSty');
+            $priceTotal = $count * parseInt($price.substring(1));
+            $inputVal.val($count);
+            $priceTotalObj.html('￥' + $priceTotal);
+            if ($inputVal.val() > 1 && $obj.hasClass('reSty')) {
+                $obj.removeClass('reSty');
+            }
+            totalMoney();
+        } else if ($recount < parseInt($amoutgoods.html())) {
+            $count = $recount;
+            //var  $count = parseInt($inputVal.val())+1,
+            $obj = $(this).parents('.amount_box').find('.reduce'),
+            $priceTotalObj = $(this).parents('.order_lists').find('.sum_price'),
+            $price = $(this).parents('.order_lists').find('.price').html(),  //单价
+            $priceTotal = $count * parseInt($price.substring(1));
+            $inputVal.val($count);
+            $priceTotalObj.html('￥' + $priceTotal);
+            if ($inputVal.val() > 1 && $obj.hasClass('reSty')) {
+                $obj.removeClass('reSty');
+            }
+            totalMoney();
+        } else if ($recount > parseInt($amoutgoods.html())) {
+            $(this).hide();
         }
-        totalMoney();
+        
+           
     });
 
     $reduce.click(function () {

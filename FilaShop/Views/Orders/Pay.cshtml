@@ -1,0 +1,224 @@
+﻿@using FilaShop.Models
+@{
+    Layout = null;
+    Userinfo userinfo = Session["user"] as Userinfo;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>商品列表</title>
+    <meta content="," name="keywords" />
+    <meta content="全部分类," name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="mobile-agent" content="format=[wml|xhtml|html5];url=http://www.fila.cn/m/list/j1_j5">
+    <link rel="alternate" media="only screen and (max-width:640px)" href="http://www.fila.cn/m/list/j1_j5">
+    <meta name="applicable-device" content="pc">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="keywords" content="斐乐,斐乐官方旗舰店,斐乐旗舰店,FILA官方商城,FILA官网，FILA,斐乐官网,FILA网上商城">
+    <meta name="Description" content="访问斐乐(FILA)官网,了解最新的品牌资讯,成为会员,切身体验尊崇的购物旅程,尽在FILA中国官方网站Fila.cn">
+    <link rel="icon" href="//www.fila.cn/favicon.ico" type="image/x-icon">
+    <script language="javascript">
+	        var u = navigator.userAgent;
+	        if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1
+	                        || u.indexOf('Windows Phone') > -1 || u.indexOf('iPhone') > -1
+	                        || u.indexOf('iPad') > -1) {
+	                        window.location.href ='http://www.fila.cn/m/list/j1_j5';
+
+	        }
+
+    </script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!--site header common-->
+    <!--[if lt IE 9]>
+    <script src="~/Scripts/html5fix.js" type="text/javascript" charset="utf-8" ></script>
+    <![endif]-->
+    <script src="~/Scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!-- 列表页样式 -->
+    <link rel="stylesheet" href="~/Content/82027472763e44c5bc99dcaa522470bd.css">
+    <style>
+        .bgcolor {
+            color: white;
+            font-weight: bold;
+            background-color: mediumblue;
+        }
+
+        .backstr {
+            color: white;
+            font-weight: bold;
+            background-color: dodgerblue;
+        }
+
+            .backstr a {
+                color: white;
+            }
+
+        .pageSize {
+            width: 50px;
+            height: 35px;
+            border: 1px solid #DDDDDD;
+        }
+
+        .nocanclick:hover {
+            background-color: none;
+        }
+
+        .nocontent {
+            color: red;
+            font-size: 25px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .cart-a-img {
+            width: 15px;
+            height: 15px;
+        }
+        .contant-div{
+            margin-top:15%;
+        }
+        .paytype{
+            margin:0 auto;
+            margin-left:30%;
+        }
+        .pay-success{
+            font-size:40px;
+            color:red;
+            
+        }
+        .hidethis{
+            visibility:hidden;
+        }
+        .pay-fontsize{
+             font-size:20px;
+            color:black;
+        }
+        .pay-ordernum{
+            font-size:20px;
+        }
+        .totalsecond{
+            font-size:15px;
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <header class="fila-header">
+        <div class="logo">
+            <a href="/">
+                <img src="~/Images/fila_blue_150.png" alt="">
+            </a>
+        </div>
+        <div class="fila-navbar " >
+            <div class="navbar-search hidethis">
+                <input id="key" class="text" type="text" autocomplete="off" name="keyword" value="@Request.QueryString["keyword"]">
+                <button class="button" id="searchbtn01">搜索</button>
+            </div>
+            <ul class="navbar-list">
+
+                <!-- 未登录 -->
+                @if (userinfo != null)
+                {
+                    <li class="navbar-user ">
+                        <a href="~/User/CommandCenter/@userinfo.Id" target="_blank">
+                            您好，
+                            <span>@userinfo.Nickname</span>
+                        </a>
+                    </li>
+                    <li class="navbar-logout ">
+                        <a href="~/User/LoginOut" class="navbarlogoutout" title="退出">退出</a>
+                    </li>
+                    <li>
+                        <a class="cart-a-01" href="~/Cart/List"><img class="cart-a-img" src="~/Images/cart-icon.png" /></a>
+                        <span class="cart-span-01">@ViewBag.cartcount</span>
+                    </li>
+
+                }
+                else
+                {
+                    <li class="navbar-login">
+                        <a href="~/User/Login" class="navbarlogina" target="_blank" title="登入">登入</a>
+                    </li>
+                    <li class="navbar-register">
+                        <a href="~/User/Register" class="navbarloginr" target="_blank" title="注册">注册</a>
+                    </li>
+                    <li class="navbar-cart dropdown">
+                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
+                            <i class="icon icon-cart"></i>
+                            <span class="cart-count hide" id="cart-count"> </span>
+                        </a>
+                        <!--
+                             <ul class="dropdown-menu mini-cart" style="display:none;">
+                            </ul> -->
+                    </li>
+                }
+
+
+                <li class="navbar-country">
+                    <a href="#" target="_blank">
+                        <i class="icon icon-country"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="contant-div"> 
+       <div class="paytype">
+           <span class="pay-success">订单支付成功</span>
+           <br /><br />
+           <span class="pay-fontsize">订单：</span><span class="pay-ordernum"> @ViewBag.ordernum </span>
+               <br /><br />
+           <span class="pay-fontsize">总额：</span><span class="pay-ordernum"> @ViewBag.sum  元</span>
+               <br /><br />
+           <span class="pay-fontsize">支付方式：</span>
+               @if (ViewBag.paytype == 1)
+               {
+               <img src="~/Images/wechat-pay.png" />
+               }
+               else if (ViewBag.paytype == 2)
+               {
+               <img src="~/Images/on-pay.png" />
+               }
+               else if (ViewBag.paytype == 3)
+               {
+               <img src="~/Images/alipay.png" />
+               }
+
+           <br /><br />
+
+           <span id="totalSecond" class="totalsecond">5</span><span>秒后跳转到订单详情页面</span>
+
+           <script language="javascript" type="text/javascript">
+
+                var second = document.getElementById('totalSecond').textContent;
+
+                if (navigator.appName.indexOf("Explorer") > -1)  {
+                    second = document.getElementById('totalSecond').innerText;
+                } else {
+                    second = document.getElementById('totalSecond').textContent;
+                }
+
+                setInterval("redirect()", 1000);
+                function redirect() {
+                    if (second < 0) {
+                        //OrderDetail/Detail?Id=21
+                        location.href = '/OrderDetail/Detail?Id='+@ViewBag.Id;
+                } else {
+                    if (navigator.appName.indexOf("Explorer") > -1) {
+                        document.getElementById('totalSecond').innerText = second--;
+                    } else {
+                        document.getElementById('totalSecond').textContent = second--;
+                    }
+                }
+                }
+           </script>
+</div>
+    </div>
+</body>
+</html>

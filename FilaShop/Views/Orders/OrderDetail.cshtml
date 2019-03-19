@@ -53,13 +53,20 @@
     <link rel="stylesheet" type="text/css" href="~/Content/orders/base.css">
     <script type="text/javascript" src="~/scripts/orders/jquery_cart.js"></script>
     <link rel="stylesheet" type="text/css" href="~/Content/orders/checkOut.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script type="text/javascript" src="~/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="~/scripts/bootstrap.js"></script>
     <style type="text/css">
         .bgcolor {
             color: white;
             font-weight: bold;
             background-color: mediumblue;
         }
-
+         .cart-a-img{
+                width:15px;
+                height:15px;
+            }
         .backstr {
             color: white;
             font-weight: bold;
@@ -173,6 +180,9 @@
             .divimg01:hover {
                 border: 1px solid #03234C;
             }
+          .font-border{
+              font-weight:bold;
+          }
     </style>
 </head>
 <body>
@@ -181,7 +191,7 @@
     <!-- 公共部分 Header -->
     <header class="fila-header">
         <div class="logo">
-            <a href="~/Product/List">
+            <a href="/">
                 <img src="~/Images/fila_blue_150.png" alt="">
             </a>
         </div>
@@ -195,33 +205,28 @@
                 <!-- 未登录 -->
                 @if (userinfo != null)
                 {
-                    <li class="navbar-user ">
-                        <a href="~/User/CommandCenter" target="_blank">
+                    <li class="navbar-user " >
+                        <a href="~/User/CommandCenter/@userinfo.Id" target="_blank">
                             您好，
                             <span>@userinfo.Nickname</span>
                         </a>
                     </li>
                     <li class="navbar-logout ">
-                        <a href="~/User/LoginOut" title="退出">退出</a>
+                        <a href="~/User/LoginOut" class="navbarlogoutout" title="退出">退出</a>
                     </li>
-                    <li class="navbar-cart dropdown">
-                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
-                            <i class="icon icon-cart"></i>
-                            <span class="cart-count " id="cart-count"> @ViewBag.cartcount</span>
-                        </a>
-                        <!--
-                             <ul class="dropdown-menu mini-cart" style="display:none;">
-                            </ul> -->
+                    <li>
+                        <a class="cart-a-01" href="~/Cart/List"><img class="cart-a-img" src="~/Images/cart-icon.png" /></a>
+                        <span class="cart-span-01">@ViewBag.cartcount</span>
                     </li>
 
                 }
                 else
                 {
                     <li class="navbar-login">
-                        <a href="~/User/Login" target="_blank" title="登入">登入</a>
+                        <a href="~/User/Login" class="navbarlogina" target="_blank" title="登入">登入</a>
                     </li>
                     <li class="navbar-register">
-                        <a href="~/User/Register" target="_blank" title="注册">注册</a>
+                        <a href="~/User/Register" class="navbarloginr" target="_blank" title="注册">注册</a>
                     </li>
                     <li class="navbar-cart dropdown">
                         <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
@@ -251,12 +256,23 @@
         </div>
         <div class="address-content">
              <div class="receivedetail">
-                 <h4>收货人信息：</h4>
-                 <span >姓名：</span><span>@norder.Address.ReceiverName</span><br />
-                 <span>电话：</span><span>@norder.Address.Phone</span><br />
-                 <span>省市区：</span><span> @norder.Address.Area.Area2.Area2.Name    @norder.Address.Area.Area2.Name  @norder.Address.Area.Name</span><br />
-                 <span>地址：</span><span>      @norder.Address.DetailAddress</span><br/>
-                 <span>下单时间：</span><span>   @ViewBag.endtime</span>
+                 
+                     <h4 class="font-border">收货人信息：</h4>
+                     <span class="font-border">姓名：</span>
+                     <span>@norder.Address.ReceiverName</span>
+                     <br />
+                     <span class="font-border">电话：</span>
+                     <span>@norder.Address.Phone</span>
+                     <br />
+                     
+                     <span class="font-border">地址：</span>
+                     <span>    @norder.Address.Area.Area2.Area2.Name    @norder.Address.Area.Area2.Name  @norder.Address.Area.Name  @norder.Address.DetailAddress</span>
+                     <br />
+                     <span class="font-border">下单时间：</span>
+                     <span>   @ViewBag.endtime</span>
+                 
+
+                 
              </div>
         </div>
         <div class="checkout-box-ft address-content">
@@ -284,7 +300,7 @@
                                                     <img src="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage" srcset="~/Images/Product/@item.Goods.GoodsImage.FirstOrDefault().BigImage 2x" width="40" height="40" />
                                                 </div>
                                                 <div class="g-info">
-                                                    <a href="~/Product/Detail/@item.GoodsId">
+                                                    <a href="~/Product/Detail?productid=@item.GoodsId">
                                                         @item.Goods.Name   @item.Goods.GoodsColor.Name  @item.Goods.GoodsSize.Name
                                                     </a>
                                                 </div>
@@ -338,22 +354,26 @@
                             <div class="checkout-count-extend xm-add-buy" style="width:100%;border-bottom:1px solid #DFDFDF;border-left:1px solid #DFDFDF;border-right:1px solid #DFDFDF; margin-bottom:20px;" >
                                 
                                     
-                                            <form action="" method="post" class="sureform">
+                                            <form action="~/Orders/Pay" method="get" class="sureform">
                                                 @*订单编号*@
-                                                <input type="hidden" name="Id" value="@ViewBag.bianhao" />
+                                                <input type="hidden" name="Id" class="order-id" value="@norder.Id" />
+                                                <input type="hidden" name="ordernum" class="order-ordernum" value="@norder.ordernum" />
                                                 
                                                 @*订单总额*@
                                                 <input type="hidden" name="sum" value="@string.Format("{0:0.00}", norder.Price)" />
 
-
+                                                <input type="hidden" name="paytype" class="paytype" value="" />
                                                <div class="paytype">
                                                    <div class="divimg01">
+                                                       <span style="display:none">1</span>
                                                        <img src="~/Images/wechat-pay.png" />
                                                    </div>
                                                    <div class="divimg01">
+                                                       <span style="display:none">2</span>
                                                        <img src="~/Images/on-pay.png" />
                                                    </div>
                                                    <div class="divimg01">
+                                                       <span style="display:none">3</span>
                                                        <img src="~/Images/alipay.png" />
                                                    </div>
 
@@ -361,10 +381,10 @@
                                                 <div class="clearfloat"></div>
 
                                                 <div class="divbtn">
-
-
-                                                    <input type="button" name="name" class="cancel" onclick="javascript: cancel(@norder.Id);" value="取消" />
-                                                    <input type="submit" name="name" class="submit"  value="确认支付" />
+                                               
+                                                    @*onclick="javascript: cancel(@norder.Id);"*@
+                                                    <input type="button" name="name" class="cancel" data-toggle="modal" data-target="#myModal"  value="取消" />
+                                                    <input type="submit"  class="submit"  value="确认支付" />
                                                 </div>
                                             </form>
                                      
@@ -390,9 +410,32 @@
             
         }
 
-        $('.sureform').submit(function(){
-            return false;
+        //取消按钮点击
+        $('.cancel').click(function () {
+            var orderid = $(this).parent().parent().children().first();//订单编号
+            $('.cancelOrderid').val(orderid.val().trim());
+            $('.cancel-order-form').attr('action', '/Orders/UpdateState');
+            //$('.cancel').parent().parent().find('input=[class="order-id"]')
+            $('.modal-body').html(orderid.next().val().trim());
+        });
+
+        
+        $('.sureform').submit(function () {
+            var paytype = $('.paytype').val();
+            if (paytype.length<1) {
+                alert('请选择支付方式');
+                return false;
+            }
+            return true;
         })
+       
+        $('.divimg01').click(function () {
+            $('.divimg01').css('border', '1px gray solid');
+            $(this).css('border', '1px blue solid');
+           // alert($(this).find('span').html());
+            $('.paytype').val($(this).find('span').html());
+        });
+
     </script>
     
     <!--收货地址body部分结束-->
@@ -449,6 +492,35 @@
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
     <script src="~/scripts/orders//unslider.min.js" type="text/javascript"></script>
 
-   
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style=" margin-top: 0px; margin-left: 0px; top: 0px; width: 1367px;" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        取消订单
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    在这里添加一些文本
+                </div>
+                <div class="modal-footer">
+                    <form class="form-group cancel-order-form" action="" method="get">
+
+                        <input type="hidden" name="id" value="" class="cancelOrderid" />
+                        <input type="hidden" name="state" value="取消订单" class="cancelOrderstate" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <input type="submit" class="btn btn-primary" value="提交更改" />
+                            
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
 </body>
 </html>

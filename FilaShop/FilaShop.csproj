@@ -144,6 +144,9 @@
     <Content Include="Content\82027472763e44c5bc99dcaa522470bd.css" />
     <Content Include="Content\annimate.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\c7f3e557d5f34715a0cc801730dbb8d9.css" />
     <Content Include="Content\carts\carts.css" />
@@ -406,7 +409,6 @@
     <Content Include="Images\orders\index.supermarket.seckilling.bg-r-2.png" />
     <Content Include="Images\orders\index_icon.png" />
     <Content Include="Images\orders\index_icons1.png" />
-    <Content Include="Images\orders\logo.jpg" />
     <Content Include="Images\orders\LR_lunbo.png" />
     <Content Include="Images\orders\meishi.png" />
     <Content Include="Images\orders\panic-text.png" />
@@ -703,6 +705,7 @@
     <Content Include="scripts\analytics.js" />
     <Content Include="scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="scripts\bootstrap-datetimepicker.zh-cn.js" />
+    <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\cartlist\carts.js" />
     <Content Include="scripts\cartlist\jquery.min.js" />
@@ -731,6 +734,7 @@
     <Content Include="scripts\jquery.validate.min.js" />
     <Content Include="scripts\message.js" />
     <Content Include="scripts\mslider.min.js" />
+    <Content Include="scripts\npm.js" />
     <Content Include="scripts\orders\address_all.js" />
     <Content Include="scripts\orders\base.min.js" />
     <Content Include="scripts\orders\buyConfirm.js" />
@@ -748,7 +752,6 @@
     <Content Include="scripts\validate-extends.js" />
     <Content Include="scripts\vue.min.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Orders\Detail.cshtml" />
     <Content Include="Views\Orders\OrderDetail.cshtml" />
     <Content Include="Views\User\CommandCenter.cshtml" />
     <Content Include="Views\OrderDetail\Detail.cshtml" />
@@ -761,6 +764,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Views\Product\Detail.cshtml" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Views\Orders\Pay.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceme40.dll" />

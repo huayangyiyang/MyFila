@@ -61,18 +61,22 @@
        .sum{
            color:blue;
        }
+       .cart-a-img{
+                width:15px;
+                height:15px;
+            }
     </style>
 </head>
 <body class="order-detail-html">
 
     <header class="fila-header">
         <div class="logo">
-            <a href="~/Product/List">
+            <a href="/">
                 <img src="~/Images/fila_blue_150.png" alt="">
             </a>
         </div>
         <div class="fila-navbar">
-            <div class="navbar-search" style="visibility:hidden;">
+            <div class="navbar-search">
                 <input id="key" class="text" type="text" autocomplete="off" name="keyword" value="@Request.QueryString["keyword"]">
                 <button class="button" id="searchbtn01">搜索</button>
             </div>
@@ -82,32 +86,27 @@
                 @if (userinfo != null)
                 {
                     <li class="navbar-user ">
-                        <a href="~/User/Detail" target="_blank">
+                        <a href="~/User/CommandCenter/@userinfo.Id" target="_blank">
                             您好，
                             <span>@userinfo.Nickname</span>
                         </a>
                     </li>
                     <li class="navbar-logout ">
-                        <a href="~/User/LoginOut" title="退出">退出</a>
+                        <a href="~/User/LoginOut" class="navbarlogoutout" title="退出">退出</a>
                     </li>
-                    <li class="navbar-cart dropdown">
-                        <a class="dropdown-toggle" href="~/Cart/List" target="_blank">
-                            <i class="icon icon-cart"></i>
-                            <span class="cart-count " id="cart-count"> @ViewBag.cartcount</span>
-                        </a>
-                        <!--
-                             <ul class="dropdown-menu mini-cart" style="display:none;">
-                            </ul> -->
+                    <li>
+                        <a class="cart-a-01" href="~/Cart/List"><img class="cart-a-img" src="~/Images/cart-icon.png" /></a>
+                        <span class="cart-span-01">@ViewBag.cartcount</span>
                     </li>
 
                 }
                 else
                 {
                     <li class="navbar-login">
-                        <a href="~/User/Login" target="_blank" title="登入">登入</a>
+                        <a href="~/User/Login" class="navbarlogina" target="_blank" title="登入">登入</a>
                     </li>
                     <li class="navbar-register">
-                        <a href="~/User/Register" target="_blank" title="注册">注册</a>
+                        <a href="~/User/Register" class="navbarloginr" target="_blank" title="注册">注册</a>
                     </li>
                     <li class="navbar-cart dropdown">
                         <a class="dropdown-toggle" href="~/Cart/List" target="_blank">

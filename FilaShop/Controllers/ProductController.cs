@@ -131,5 +131,15 @@ namespace FilaShop.Controllers
 
             return View(productdetail);
         }
+
+        /// <summary>
+        /// 核实商品库存是否充足
+        /// </summary>
+        /// <param name="goodsid"></param>
+        /// <returns></returns>
+        public ActionResult CheckGoodsAccount(int? goodsid)
+        {
+            return Json(db.Goods.Find(goodsid).Amount,JsonRequestBehavior.AllowGet);
+        }
     }
 }

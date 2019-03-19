@@ -29,6 +29,11 @@ namespace FilaShop.Controllers
             {
                 ViewBag.user = user;
 
+
+                
+             ViewBag.cartcount = db.Cart.Where(c => c.UserId == user.Id).Sum(c => c.Number);
+               
+
                 IEnumerable<Orders> orderlist = db.Orders.Where(o => o.Id == Id && o.UserId == user.Id);
 
                 //查询到1条数据，由ID查找
